@@ -3,3040 +3,3475 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV Lab | Crea tu CV profesional</title>
+  <meta
+    name="description"
+    content="Crea un currículum profesional con plantillas recomendadas según tu perfil."
+  >
+
+  <title>CV Lab | Currículums profesionales</title>
 
   <style>
-    :root{
-      --bg:#070b16;
-      --bg-2:#0b1120;
-      --surface:#10182b;
-      --surface-2:#16213a;
-      --line:rgba(255,255,255,.09);
-      --line-2:rgba(255,255,255,.16);
-      --text:#f6f8ff;
-      --muted:#aab2c9;
-      --muted-2:#7f88a3;
-      --primary:#6d5dfc;
-      --primary-2:#4f41da;
-      --success:#41cf8c;
-      --gold:#d4ad4f;
-      --danger:#ff6a79;
-      --radius:18px;
-      --radius-lg:28px;
-      --shadow:0 28px 80px rgba(0,0,0,.35);
-      --container:1200px;
-      --cv-accent:#6d5dfc;
-      --cv-font:Inter,Arial,sans-serif;
-      --cv-scale:1;
+    :root {
+      --background: #070a14;
+      --surface: #10172a;
+      --surface-light: #17213a;
+      --border: rgba(255, 255, 255, 0.09);
+      --border-strong: rgba(255, 255, 255, 0.16);
+
+      --text: #f8f9ff;
+      --muted: #aab2c9;
+      --muted-dark: #7f88a2;
+
+      --primary: #6d5dfc;
+      --primary-dark: #4f41da;
+      --success: #42cf91;
+      --premium: #d9b45d;
+
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+      --container: 1220px;
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html {
+      scroll-behavior: smooth;
     }
 
-    body{
+    body {
+      min-height: 100vh;
+
       background:
-        radial-gradient(circle at 10% 10%, rgba(109,93,252,.15), transparent 25%),
-        radial-gradient(circle at 85% 15%, rgba(86,198,255,.10), transparent 20%),
-        var(--bg);
-      color:var(--text);
-      font-family:Inter,Arial,sans-serif;
-      overflow-x:hidden;
-    }
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(109, 93, 252, 0.15),
+          transparent 24%
+        ),
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(66, 180, 255, 0.1),
+          transparent 22%
+        ),
+        var(--background);
 
-    button,input,textarea,select{
-      font:inherit;
-    }
+      color: var(--text);
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+      font-family:
+        Inter,
+        Arial,
+        sans-serif;
 
-    img{
-      max-width:100%;
-      display:block;
+      overflow-x: hidden;
     }
 
-    .container{
-      width:min(var(--container), calc(100% - 40px));
-      margin:auto;
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      border:1px solid rgba(109,93,252,.35);
-      background:rgba(109,93,252,.12);
-      color:#ddd8ff;
-      border-radius:999px;
-      padding:8px 13px;
-      font-size:13px;
-      font-weight:800;
+    button {
+      cursor: pointer;
     }
 
-    .pill::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--success);
-      box-shadow:0 0 0 6px rgba(65,207,140,.1);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .gradient{
-      background:linear-gradient(90deg,#8b7fff,#59c8ff);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
+    .container {
+      width: min(
+        var(--container),
+        calc(100% - 32px)
+      );
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-height:48px;
-      padding:0 22px;
-      border-radius:999px;
-      border:1px solid transparent;
-      cursor:pointer;
-      transition:.2s ease;
-      font-weight:800;
+      margin-inline: auto;
     }
 
-    .btn:hover{
-      transform:translateY(-2px);
-    }
+    .button {
+      min-height: 46px;
 
-    .btn-primary{
-      background:linear-gradient(135deg,var(--primary),var(--primary-2));
-      color:white;
-      box-shadow:0 16px 36px rgba(79,65,218,.28);
-    }
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
 
-    .btn-secondary{
-      border-color:var(--line-2);
-      background:rgba(255,255,255,.03);
-      color:white;
-    }
+      padding: 0 19px;
 
-    .btn-danger{
-      background:rgba(255,106,121,.12);
-      border-color:rgba(255,106,121,.2);
-      color:#ffdbe0;
-    }
+      border: 1px solid var(--border);
+      border-radius: 999px;
 
-    .section-head{
-      max-width:760px;
-      margin-bottom:42px;
-    }
+      background: rgba(255, 255, 255, 0.04);
+      color: white;
 
-    .section-head.center{
-      text-align:center;
-      margin-inline:auto;
-    }
+      font-weight: 800;
 
-    .section-head h2{
-      margin-top:18px;
-      font-size:clamp(38px,5vw,62px);
-      line-height:1.02;
-      letter-spacing:-.05em;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
     }
 
-    .section-head p{
-      margin-top:16px;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:18px;
-    }
+    .button:hover {
+      transform: translateY(-2px);
 
-    /* NAV */
-    .nav-wrap{
-      position:fixed;
-      inset:0 0 auto;
-      z-index:100;
-      transition:.2s ease;
+      border-color: rgba(109, 93, 252, 0.5);
     }
 
-    .nav-wrap.scrolled{
-      background:rgba(7,11,22,.82);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid var(--line);
-    }
+    .button-primary {
+      border-color: transparent;
 
-    nav{
-      min-height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
+      background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+      );
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:24px;
-      font-weight:900;
-      letter-spacing:-.04em;
+      box-shadow:
+        0 15px 34px rgba(79, 65, 218, 0.28);
     }
 
-    .brand-icon{
-      width:38px;
-      height:38px;
-      display:grid;
-      place-items:center;
-      border-radius:12px;
-      background:linear-gradient(135deg,#8d81ff,#5847f0);
-      box-shadow:0 10px 24px rgba(88,71,240,.35);
-      font-size:13px;
-    }
+    .button-small {
+      min-height: 40px;
 
-    .brand span{
-      color:var(--primary);
-    }
+      padding-inline: 14px;
 
-    .nav-links{
-      display:flex;
-      gap:26px;
-      align-items:center;
+      font-size: 12px;
     }
 
-    .nav-links a{
-      color:#cbd0e3;
-      font-weight:700;
-      font-size:14px;
-    }
+    .section-heading {
+      max-width: 760px;
 
-    .nav-actions{
-      display:flex;
-      gap:10px;
-      align-items:center;
+      margin-bottom: 36px;
     }
 
-    .menu-btn{
-      display:none;
-      width:44px;
-      height:44px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:white;
-      cursor:pointer;
+    .section-heading h2 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
     }
 
-    /* HERO */
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      padding:145px 0 90px;
-    }
+    .section-heading p {
+      margin-top: 15px;
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:70px;
-      align-items:center;
-    }
+      color: var(--muted);
 
-    .hero-copy h1{
-      margin-top:22px;
-      font-size:clamp(56px,7vw,92px);
-      line-height:.95;
-      letter-spacing:-.06em;
-      max-width:760px;
+      font-size: 18px;
+      line-height: 1.7;
     }
 
-    .hero-copy p{
-      margin-top:24px;
-      max-width:640px;
-      color:var(--muted);
-      font-size:20px;
-      line-height:1.75;
-    }
+    /* Navegación */
 
-    .hero-actions{
-      margin-top:32px;
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
+    .navigation {
+      position: sticky;
+      top: 0;
 
-    .hero-note{
-      margin-top:20px;
-      color:var(--muted-2);
-      font-size:13px;
-      font-weight:700;
-    }
+      z-index: 100;
 
-    .hero-stats{
-      margin-top:44px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      max-width:620px;
-    }
+      border-bottom: 1px solid var(--border);
 
-    .hero-stat{
-      border-left:1px solid var(--line-2);
-      padding-left:18px;
-    }
+      background: rgba(7, 10, 20, 0.86);
 
-    .hero-stat strong{
-      display:block;
-      font-size:28px;
-      letter-spacing:-.04em;
+      backdrop-filter: blur(17px);
     }
 
-    .hero-stat span{
-      color:var(--muted-2);
-      font-size:13px;
-    }
+    .navigation-content {
+      min-height: 74px;
 
-    .hero-preview{
-      position:relative;
-      min-height:610px;
-      display:grid;
-      place-items:center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
 
-    .hero-card{
-      width:min(430px, 92%);
-      aspect-ratio:210 / 297;
-      background:#fbfbfe;
-      color:#1b2230;
-      border-radius:24px;
-      box-shadow:0 42px 100px rgba(0,0,0,.45);
-      padding:34px;
-      transform:rotate(3deg);
-      animation:float 6s ease-in-out infinite;
-      overflow:hidden;
+    .brand {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
     }
 
-    @keyframes float{
-      0%,100%{ transform:translateY(0) rotate(3deg); }
-      50%{ transform:translateY(-14px) rotate(1.8deg); }
+    .brand span {
+      color: var(--primary);
     }
 
-    .hero-card-head{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      padding-bottom:20px;
-      border-bottom:2px solid #eceff7;
+    .navigation-actions {
+      display: flex;
+      gap: 10px;
     }
 
-    .hero-avatar{
-      width:72px;
-      height:72px;
-      border-radius:22px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg,#8f83ff,#5b4bf3);
-      color:white;
-      font-size:24px;
-      font-weight:900;
-    }
+    /* Portada */
 
-    .hero-name{
-      font-size:25px;
-      font-weight:900;
-      line-height:1;
-      letter-spacing:-.04em;
+    .hero {
+      padding: 90px 0 75px;
     }
 
-    .hero-role{
-      margin-top:8px;
-      color:#6d5dfc;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      font-size:12px;
-      font-weight:900;
-    }
+    .hero-grid {
+      display: grid;
 
-    .hero-card-grid{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:.82fr 1.18fr;
-      gap:26px;
-    }
+      grid-template-columns: 1.05fr 0.95fr;
 
-    .mini-title{
-      margin-bottom:10px;
-      color:#6d5dfc;
-      text-transform:uppercase;
-      font-size:9px;
-      letter-spacing:.14em;
-      font-weight:900;
+      align-items: center;
+
+      gap: 60px;
     }
+
+    .hero h1 {
+      max-width: 780px;
 
-    .mini-block{
-      margin-bottom:22px;
+      font-size: clamp(50px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
     }
 
-    .mini-line{
-      height:7px;
-      background:#e7e9f2;
-      border-radius:999px;
-      margin-bottom:8px;
+    .hero h1 span {
+      color: var(--primary);
     }
 
-    .mini-line.dark{ background:#bcc2d2; }
-    .mini-line.short{ width:58%; }
-    .mini-line.medium{ width:78%; }
+    .hero p {
+      max-width: 650px;
 
-    .mini-pills{
-      display:flex;
-      gap:6px;
-      flex-wrap:wrap;
-    }
+      margin-top: 24px;
 
-    .mini-pills span{
-      width:54px;
-      height:18px;
-      background:#eceaff;
-      border-radius:999px;
-    }
+      color: var(--muted);
 
-    .floating{
-      position:absolute;
-      display:flex;
-      align-items:center;
-      gap:9px;
-      padding:12px 15px;
-      background:rgba(15,20,38,.84);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:15px;
-      backdrop-filter:blur(16px);
-      box-shadow:var(--shadow);
-      font-weight:800;
-      font-size:13px;
+      font-size: 19px;
+      line-height: 1.75;
     }
 
-    .floating.one{ left:-10px; top:110px; }
-    .floating.two{ right:-8px; bottom:95px; }
-    .floating.three{ top:40px; right:10px; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
 
-    /* FEATURES */
-    .features{
-      padding:110px 0;
-      background:linear-gradient(180deg, rgba(255,255,255,.015), transparent);
+      margin-top: 30px;
     }
 
-    .feature-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
+    .hero-preview {
+      max-width: 430px;
 
-    .feature{
-      min-height:270px;
-      border:1px solid var(--line);
-      border-radius:26px;
-      background:linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      padding:30px;
-      transition:.25s ease;
-    }
+      margin-inline: auto;
+      padding: 32px;
 
-    .feature:hover{
-      transform:translateY(-8px);
-      border-color:rgba(109,93,252,.45);
-    }
+      aspect-ratio: 210 / 297;
 
-    .feature-icon{
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      background:rgba(109,93,252,.12);
-      color:#b5adff;
-      display:grid;
-      place-items:center;
-      margin-bottom:22px;
-      font-size:22px;
-    }
+      border-radius: 26px;
 
-    .feature h3{
-      font-size:22px;
-      letter-spacing:-.02em;
-    }
+      background: white;
+      color: #1d2332;
 
-    .feature p{
-      margin-top:12px;
-      color:var(--muted);
-      line-height:1.7;
-    }
+      box-shadow: var(--shadow);
 
-    /* TEMPLATE CATALOG */
-    .catalog{
-      padding:120px 0;
+      transform: rotate(2deg);
     }
 
-    .catalog-controls{
-      display:grid;
-      grid-template-columns:1.1fr .9fr auto;
-      gap:14px;
-      margin-bottom:28px;
-    }
+    .hero-preview-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
 
-    .control{
-      height:50px;
-      width:100%;
-      border:1px solid var(--line);
-      background:var(--surface);
-      color:white;
-      border-radius:14px;
-      padding:0 14px;
-      outline:none;
-    }
+      padding-bottom: 20px;
 
-    .catalog-note{
-      margin-bottom:22px;
-      color:var(--muted);
-      font-size:14px;
+      border-bottom: 2px solid #eceef5;
     }
 
-    .template-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:24px;
-    }
+    .hero-preview-photo {
+      width: 70px;
+      height: 70px;
 
-    .template-card{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.025);
-      border-radius:28px;
-      overflow:hidden;
-      transition:.25s ease;
-      position:relative;
-    }
+      border-radius: 20px;
 
-    .template-card:hover{
-      transform:translateY(-7px);
-      border-color:rgba(109,93,252,.42);
+      background: var(--primary);
     }
 
-    .template-top{
-      position:relative;
-      aspect-ratio:210 / 250;
-      background:#fff;
-      padding:22px;
-      color:#1e2533;
-      overflow:hidden;
+    .hero-preview-name {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
     }
 
-    .premium-badge,
-    .free-badge,
-    .recommended-badge{
-      position:absolute;
-      z-index:3;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.05em;
-      text-transform:uppercase;
-    }
+    .hero-preview-role {
+      margin-top: 7px;
 
-    .premium-badge{
-      top:14px;
-      right:14px;
-      background:rgba(212,173,79,.95);
-      color:#2c1e00;
-    }
+      color: var(--primary);
 
-    .free-badge{
-      top:14px;
-      right:14px;
-      background:rgba(65,207,140,.95);
-      color:#082917;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
-    .recommended-badge{
-      top:14px;
-      left:14px;
-      background:rgba(109,93,252,.92);
-      color:white;
-    }
+    .hero-preview-grid {
+      display: grid;
 
-    .template-info{
-      padding:18px 20px 20px;
-    }
+      grid-template-columns: 0.8fr 1.2fr;
+
+      gap: 24px;
 
-    .template-info h3{
-      font-size:18px;
+      margin-top: 24px;
     }
 
-    .template-meta{
-      margin-top:8px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.6;
-      min-height:42px;
+    .preview-line {
+      height: 7px;
+
+      margin-bottom: 8px;
+
+      border-radius: 999px;
+
+      background: #e5e8f0;
     }
 
-    .template-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:14px;
+    .preview-line.dark {
+      background: #b9bfce;
     }
 
-    .tag{
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.05);
-      border:1px solid var(--line);
-      font-size:11px;
-      color:#d7dbee;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.03em;
+    .preview-line.medium {
+      width: 78%;
     }
 
-    .template-actions{
-      display:flex;
-      gap:10px;
-      margin-top:16px;
+    .preview-line.short {
+      width: 58%;
     }
+
+    /* Catálogo */
 
-    .template-actions .btn{
-      flex:1;
-      min-height:42px;
-      font-size:13px;
+    .catalog-section {
+      padding: 95px 0;
+
+      background: rgba(255, 255, 255, 0.012);
     }
+
+    .catalog-toolbar {
+      display: grid;
 
-    /* mini template variations */
-    .thumb-head{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      margin-bottom:18px;
+      grid-template-columns:
+        minmax(180px, 1fr)
+        minmax(180px, 1fr)
+        minmax(190px, 1fr)
+        auto;
+
+      gap: 12px;
+
+      margin-bottom: 26px;
     }
+
+    .control {
+      width: 100%;
+      height: 48px;
 
-    .thumb-photo{
-      width:60px;
-      height:60px;
-      border-radius:18px;
-      background:#d9deeb;
-      overflow:hidden;
-      flex:0 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      outline: none;
+
+      background: var(--surface);
+      color: white;
+
+      padding: 0 14px;
     }
+
+    .catalog-grid {
+      display: grid;
 
-    .thumb-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 18px;
     }
+
+    .template-card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
 
-    .thumb-photo.circle{
-      border-radius:50%;
+      background: rgba(255, 255, 255, 0.025);
+
+      overflow: hidden;
+
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease;
     }
+
+    .template-card:hover {
+      transform: translateY(-5px);
 
-    .thumb-title{
-      font-size:18px;
-      font-weight:900;
-      letter-spacing:-.03em;
+      border-color: rgba(109, 93, 252, 0.46);
     }
 
-    .thumb-sub{
-      margin-top:6px;
-      color:#5a63fa;
-      font-size:10px;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      font-weight:900;
+    .template-thumbnail {
+      position: relative;
+
+      aspect-ratio: 210 / 250;
+
+      padding: 18px;
+
+      background: white;
+      color: #202736;
+
+      overflow: hidden;
     }
+
+    .template-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
 
-    .thumb-layout{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:18px;
+      z-index: 3;
+
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .thumb-layout.single{
-      grid-template-columns:1fr;
+    .template-badge.free {
+      background: var(--success);
+      color: #062516;
     }
 
-    .thumb-layout.reverse{
-      grid-template-columns:1.2fr .8fr;
+    .template-badge.premium {
+      background: var(--premium);
+      color: #2a1d00;
     }
+
+    .recommended-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+
+      z-index: 3;
 
-    .thumb-side-dark{
-      background:#18213d;
-      color:white;
-      border-radius:16px;
-      padding:16px;
-      margin:-8px 0 -8px -8px;
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      background: var(--primary);
+      color: white;
+
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
     }
+
+    .thumbnail-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
 
-    .thumb-section{
-      margin-bottom:14px;
+      margin-top: 27px;
     }
+
+    .thumbnail-photo {
+      width: 52px;
+      height: 52px;
+
+      flex: 0 0 auto;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 16px;
+
+      background: #d9deeb;
 
-    .thumb-label{
-      margin-bottom:8px;
-      color:#6d5dfc;
-      font-size:7px;
-      text-transform:uppercase;
-      letter-spacing:.15em;
-      font-weight:900;
+      font-size: 13px;
+      font-weight: 900;
+
+      overflow: hidden;
     }
 
-    .thumb-side-dark .thumb-label{
-      color:#b7afff;
+    .thumbnail-photo.circle {
+      border-radius: 50%;
     }
+
+    .thumbnail-photo img {
+      width: 100%;
+      height: 100%;
 
-    .thumb-line{
-      height:5px;
-      background:#dce0eb;
-      border-radius:999px;
-      margin-bottom:6px;
+      object-fit: cover;
     }
 
-    .thumb-side-dark .thumb-line{
-      background:rgba(255,255,255,.25);
+    .thumbnail-name {
+      font-size: 17px;
+      font-weight: 900;
     }
 
-    .thumb-line.short{ width:60%; }
-    .thumb-line.medium{ width:80%; }
-    .thumb-line.tiny{ width:44%; }
+    .thumbnail-role {
+      margin-top: 5px;
 
-    /* EDITOR */
-    .editor{
-      padding:120px 0;
-      background:linear-gradient(180deg, rgba(109,93,252,.06), transparent 20%), var(--bg-2);
-    }
+      color: var(--primary);
 
-    .editor-shell{
-      display:grid;
-      grid-template-columns:440px minmax(0,1fr);
-      min-height:860px;
-      border:1px solid var(--line);
-      background:var(--surface);
-      border-radius:34px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
+
+    .thumbnail-layout {
+      display: grid;
 
-    .sidebar{
-      border-right:1px solid var(--line);
-      background:#0d1425;
-      display:flex;
-      flex-direction:column;
-      min-width:0;
+      grid-template-columns: 35% 1fr;
+
+      gap: 14px;
+
+      margin-top: 18px;
     }
 
-    .sidebar-top{
-      padding:18px 20px;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
+    .thumbnail-layout.single {
+      grid-template-columns: 1fr;
     }
 
-    .sidebar-top strong{
-      font-size:16px;
+    .thumbnail-sidebar {
+      padding: 12px;
+
+      border-radius: 12px;
+
+      background: var(--thumbnail-sidebar);
     }
+
+    .thumbnail-line {
+      height: 5px;
 
-    .save-status{
-      color:var(--muted-2);
-      font-size:12px;
-      font-weight:700;
-      margin-top:4px;
+      margin: 6px 0;
+
+      border-radius: 999px;
+
+      background: #dfe3ed;
     }
 
-    .tabs{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:8px;
-      padding:14px;
-      border-bottom:1px solid var(--line);
+    .thumbnail-sidebar .thumbnail-line {
+      background: rgba(255, 255, 255, 0.25);
     }
 
-    .tab{
-      min-height:40px;
-      border-radius:12px;
-      border:1px solid transparent;
-      background:transparent;
-      color:var(--muted);
-      cursor:pointer;
-      font-size:12px;
-      font-weight:800;
+    .thumbnail-line.medium {
+      width: 80%;
     }
 
-    .tab.active{
-      background:rgba(109,93,252,.12);
-      border-color:rgba(109,93,252,.25);
-      color:white;
+    .thumbnail-line.short {
+      width: 60%;
     }
 
-    .panels{
-      flex:1;
-      overflow:auto;
-      padding:20px;
+    .template-body {
+      padding: 16px;
     }
 
-    .panel{
-      display:none;
+    .template-body h3 {
+      font-size: 16px;
     }
+
+    .template-description {
+      min-height: 38px;
+
+      margin-top: 7px;
 
-    .panel.active{
-      display:block;
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.5;
     }
+
+    .template-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
 
-    .panel-title{
-      margin-bottom:18px;
+      margin-top: 11px;
     }
+
+    .template-tag {
+      padding: 5px 8px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      color: #d8dced;
 
-    .panel-title h3{
-      font-size:20px;
+      font-size: 10px;
     }
 
-    .panel-title p{
-      margin-top:6px;
-      color:var(--muted-2);
-      font-size:13px;
-      line-height:1.55;
+    .template-actions {
+      display: flex;
+      gap: 8px;
+
+      margin-top: 14px;
     }
 
-    .grid-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
+    .template-actions .button {
+      flex: 1;
     }
+
+    /* Editor */
 
-    .field{
-      margin-bottom:15px;
+    .editor-section {
+      padding: 95px 0;
     }
+
+    .editor-shell {
+      min-height: 860px;
+
+      display: grid;
+
+      grid-template-columns: 430px minmax(0, 1fr);
 
-    .field.full{
-      grid-column:1 / -1;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
     }
+
+    .editor-sidebar {
+      padding: 18px;
+
+      border-right: 1px solid var(--border);
 
-    .field label{
-      display:block;
-      margin-bottom:8px;
-      color:#cbd0e3;
-      font-size:12px;
-      font-weight:800;
+      background: #0d1425;
+
+      overflow: auto;
     }
+
+    .editor-tabs {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 8px;
 
-    .input,.textarea,.select{
-      width:100%;
-      border:1px solid var(--line);
-      background:var(--surface-2);
-      color:white;
-      border-radius:13px;
-      outline:none;
-      transition:.2s ease;
+      margin-bottom: 18px;
     }
 
-    .input,.select{
-      height:46px;
-      padding:0 13px;
+    .editor-tab {
+      min-height: 40px;
+
+      border: 1px solid transparent;
+      border-radius: 12px;
+
+      background: transparent;
+      color: var(--muted);
+
+      font-size: 12px;
+      font-weight: 800;
     }
 
-    .textarea{
-      min-height:110px;
-      resize:vertical;
-      padding:13px;
-      line-height:1.55;
+    .editor-tab.active {
+      border-color: rgba(109, 93, 252, 0.26);
+
+      background: rgba(109, 93, 252, 0.13);
+      color: white;
     }
 
-    .input:focus,.textarea:focus,.select:focus{
-      border-color:rgba(109,93,252,.6);
-      box-shadow:0 0 0 4px rgba(109,93,252,.1);
+    .editor-panel {
+      display: none;
     }
 
-    .repeat-card{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      border-radius:16px;
-      padding:16px;
-      margin-bottom:14px;
+    .editor-panel.active {
+      display: block;
     }
+
+    .form-grid {
+      display: grid;
 
-    .repeat-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      margin-bottom:14px;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 11px;
     }
 
-    .repeat-head strong{
-      font-size:13px;
+    .field {
+      margin-bottom: 14px;
     }
 
-    .icon-btn{
-      width:34px;
-      height:34px;
-      display:grid;
-      place-items:center;
-      border-radius:10px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--muted);
-      cursor:pointer;
+    .field.full {
+      grid-column: 1 / -1;
     }
+
+    .field label {
+      display: block;
 
-    .add-btn{
-      width:100%;
-      min-height:45px;
-      border:1px dashed rgba(109,93,252,.45);
-      background:rgba(109,93,252,.06);
-      color:#dad7ff;
-      border-radius:13px;
-      font-weight:800;
-      cursor:pointer;
+      margin-bottom: 7px;
+
+      color: #cbd1e5;
+
+      font-size: 12px;
+      font-weight: 800;
     }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
 
-    .design-card{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      border-radius:16px;
-      padding:14px;
-      margin-bottom:14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      outline: none;
+
+      background: var(--surface-light);
+      color: white;
+
+      padding: 12px;
     }
+
+    .field textarea {
+      min-height: 105px;
+
+      resize: vertical;
 
-    .swatches{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
+      line-height: 1.5;
     }
 
-    .swatch{
-      width:36px;
-      height:36px;
-      border-radius:50%;
-      border:3px solid transparent;
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);
-      cursor:pointer;
+    .photo-settings {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin-bottom: 18px;
     }
+
+    .photo-preview {
+      width: 90px;
+      height: 90px;
+
+      flex: 0 0 auto;
+
+      display: grid;
+      place-items: center;
 
-    .swatch.active{
-      border-color:white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      background: #202a46;
+
+      font-size: 24px;
+      font-weight: 900;
+
+      overflow: hidden;
     }
 
-    .font-options{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
+    .photo-preview.circle {
+      border-radius: 50%;
     }
 
-    .font-option{
-      min-height:44px;
-      border:1px solid var(--line);
-      border-radius:12px;
-      background:var(--surface-2);
-      color:white;
-      cursor:pointer;
-      font-weight:700;
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
     }
+
+    .option-grid {
+      display: grid;
 
-    .font-option.active{
-      border-color:rgba(109,93,252,.5);
-      box-shadow:0 0 0 3px rgba(109,93,252,.1);
+      grid-template-columns: 1fr 1fr;
+
+      gap: 10px;
     }
+
+    .option-button {
+      min-height: 44px;
 
-    .range{
-      width:100%;
-      accent-color:var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: var(--surface-light);
+      color: white;
+
+      font-weight: 700;
     }
+
+    .option-button.active {
+      border-color: var(--primary);
 
-    .photo-uploader{
-      display:grid;
-      gap:12px;
+      box-shadow:
+        0 0 0 3px rgba(109, 93, 252, 0.12);
     }
 
-    .photo-row{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
+    .color-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
     }
 
-    .photo-preview-box{
-      width:86px;
-      height:86px;
-      border-radius:22px;
-      background:#1e2844;
-      border:1px solid var(--line);
-      overflow:hidden;
-      display:grid;
-      place-items:center;
-      color:#b9c1da;
-      font-weight:900;
-      font-size:24px;
-      flex:0 0 auto;
+    .color-option {
+      width: 35px;
+      height: 35px;
+
+      border: 3px solid transparent;
+      border-radius: 50%;
     }
 
-    .photo-preview-box.circle{
-      border-radius:50%;
+    .color-option.active {
+      border-color: white;
     }
+
+    .plan-notice {
+      padding: 13px 14px;
 
-    .photo-preview-box img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.55;
     }
+
+    .editor-preview {
+      padding: 22px;
 
-    .preview-shell{
-      min-width:0;
-      display:flex;
-      flex-direction:column;
       background:
-        linear-gradient(45deg, rgba(255,255,255,.02) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,.02) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(255,255,255,.02) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,.02) 75%),
+        linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.018) 25%,
+          transparent 25%
+        ),
+        linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.018) 25%,
+          transparent 25%
+        ),
         #0a1020;
-      background-size:24px 24px;
-      background-position:0 0,0 12px,12px -12px,-12px 0;
-    }
-
-    .preview-top{
-      min-height:74px;
-      border-bottom:1px solid var(--line);
-      padding:14px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      background:rgba(9,13,24,.82);
-      backdrop-filter:blur(12px);
-    }
-
-    .preview-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .stage{
-      flex:1;
-      min-height:0;
-      display:flex;
-      justify-content:center;
-      overflow:auto;
-      padding:36px;
-    }
 
-    /* CV DOCUMENT */
-    .cv-document{
-      width:794px;
-      min-height:1123px;
-      background:white;
-      color:#1d2332;
-      box-shadow:0 24px 80px rgba(0,0,0,.38);
-      transform-origin:top center;
-      transition:.2s ease;
-      font-family:var(--cv-font);
-      --accent:var(--cv-accent);
-    }
-
-    .cv-modern,
-    .cv-tech-slate,
-    .cv-ux-portfolio,
-    .cv-analyst-clean,
-    .cv-marketing-bold,
-    .cv-architecture-grid,
-    .cv-health-trust{
-      display:grid;
-      grid-template-columns:260px 1fr;
-    }
+      background-size: 24px 24px;
 
-    .cv-minimal,
-    .cv-executive-dark,
-    .cv-engineering-pro,
-    .cv-sales-impact,
-    .cv-legal-classic,
-    .cv-teacher-soft,
-    .cv-data-matrix,
-    .cv-creative-split{
-      display:block;
-      border-top:12px solid var(--accent);
+      overflow: auto;
     }
 
-    .cv-left{
-      background:#18213d;
-      color:white;
-      padding:52px 34px;
-    }
+    .preview-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
 
-    .cv-right{
-      padding:54px 48px;
+      margin-bottom: 18px;
     }
 
-    .cv-minimal .cv-left,
-    .cv-executive-dark .cv-left,
-    .cv-engineering-pro .cv-left,
-    .cv-sales-impact .cv-left,
-    .cv-legal-classic .cv-left,
-    .cv-teacher-soft .cv-left,
-    .cv-data-matrix .cv-left,
-    .cv-creative-split .cv-left{
-      display:none;
-    }
+    .preview-toolbar span {
+      color: var(--muted);
 
-    .cv-minimal .cv-right,
-    .cv-executive-dark .cv-right,
-    .cv-engineering-pro .cv-right,
-    .cv-sales-impact .cv-right,
-    .cv-legal-classic .cv-right,
-    .cv-teacher-soft .cv-right,
-    .cv-data-matrix .cv-right,
-    .cv-creative-split .cv-right{
-      padding:56px 60px;
+      font-size: 13px;
+      font-weight: 800;
     }
 
-    .cv-executive-dark{
-      background:#121826;
-      color:#f6f8ff;
+    .cv-stage {
+      display: flex;
+      justify-content: center;
     }
 
-    .cv-executive-dark .cv-right{
-      color:#f6f8ff;
-    }
+    /* Documento */
 
-    .cv-executive-dark .cv-summary,
-    .cv-executive-dark .cv-entry p,
-    .cv-executive-dark .contact-inline span{
-      color:#c5ccdf;
-    }
+    .cv-document {
+      --accent: #6d5dfc;
+      --sidebar-color: #19223b;
+      --sidebar-width: 250px;
+      --photo-radius: 24px;
+      --document-font: Inter, Arial, sans-serif;
 
-    .cv-executive-dark .cv-entry-date{
-      color:#aab3c9;
-    }
+      width: 794px;
+      min-height: 1123px;
 
-    .cv-executive-dark .cv-main-title,
-    .cv-executive-dark .cv-role,
-    .cv-executive-dark .cv-entry-company{
-      color:#d9be76;
-    }
+      display: grid;
 
-    .cv-legal-classic{
-      background:#fcfbf7;
-    }
+      grid-template-columns:
+        var(--sidebar-width)
+        1fr;
 
-    .cv-legal-classic .cv-right{
-      border-left:8px solid var(--accent);
-    }
+      background: white;
+      color: #1f2532;
 
-    .cv-creative-split .cv-right{
-      background:
-        linear-gradient(90deg, rgba(109,93,252,.06) 0 34px, transparent 34px);
-    }
+      box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.4);
 
-    .cv-photo{
-      width:110px;
-      height:110px;
-      border-radius:28px;
-      background:var(--accent);
-      color:white;
-      display:grid;
-      place-items:center;
-      font-size:34px;
-      font-weight:900;
-      overflow:hidden;
-      margin-bottom:28px;
+      font-family: var(--document-font);
     }
 
-    .cv-photo.circle{
-      border-radius:50%;
-    }
+    .cv-document.single-column {
+      display: block;
 
-    .cv-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      border-top: 12px solid var(--accent);
     }
 
-    .cv-side-section{
-      margin-top:30px;
+    .cv-document.single-column .cv-sidebar {
+      display: none;
     }
 
-    .cv-side-title,
-    .cv-main-title{
-      margin-bottom:12px;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--accent);
-    }
+    .cv-sidebar {
+      padding: 48px 30px;
 
-    .cv-left .cv-side-title{
-      color:#b7b0ff;
+      background: var(--sidebar-color);
+      color: white;
     }
 
-    .cv-contact-item{
-      margin-bottom:9px;
-      font-size:12px;
-      line-height:1.45;
-      overflow-wrap:anywhere;
-      color:#e4e7f4;
+    .cv-main {
+      padding: 50px 46px;
     }
 
-    .cv-skill{
-      margin-bottom:12px;
-    }
+    .cv-photo {
+      width: 108px;
+      height: 108px;
 
-    .cv-skill-name{
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:6px;
-    }
+      display: grid;
+      place-items: center;
 
-    .cv-skill-bar{
-      height:5px;
-      border-radius:999px;
-      background:rgba(255,255,255,.15);
-      overflow:hidden;
-    }
+      border-radius: var(--photo-radius);
 
-    .cv-skill-bar span{
-      display:block;
-      height:100%;
-      border-radius:inherit;
-      background:#b7b0ff;
-    }
+      background: var(--accent);
+      color: white;
 
-    .cv-name{
-      font-size:44px;
-      line-height:.95;
-      letter-spacing:-.055em;
-      overflow-wrap:anywhere;
-    }
+      font-size: 34px;
+      font-weight: 900;
 
-    .cv-role{
-      margin-top:12px;
-      font-size:15px;
-      font-weight:900;
-      letter-spacing:.09em;
-      text-transform:uppercase;
-      color:var(--accent);
+      overflow: hidden;
     }
 
-    .cv-summary{
-      margin-top:24px;
-      color:#596174;
-      font-size:14px;
-      line-height:1.75;
-    }
+    .cv-photo img {
+      width: 100%;
+      height: 100%;
 
-    .contact-inline{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px 18px;
-      margin-top:18px;
-      padding-bottom:22px;
-      border-bottom:1px solid #e6e9f0;
+      object-fit: cover;
     }
 
-    .contact-inline span{
-      color:#6a7387;
-      font-size:12px;
+    .cv-name {
+      font-size: 42px;
+      line-height: 0.96;
+      letter-spacing: -0.05em;
     }
 
-    .cv-main-section{
-      margin-top:34px;
-    }
+    .cv-role {
+      margin-top: 12px;
 
-    .cv-entry{
-      margin-bottom:24px;
-    }
+      color: var(--accent);
 
-    .cv-entry-head{
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      align-items:flex-start;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
-    .cv-entry h4{
-      font-size:16px;
-      letter-spacing:-.02em;
-    }
+    .cv-summary {
+      margin-top: 22px;
 
-    .cv-entry-company{
-      margin-top:4px;
-      font-size:13px;
-      font-weight:800;
-      color:var(--accent);
-    }
+      color: #5b6377;
 
-    .cv-entry-date{
-      font-size:11px;
-      font-weight:800;
-      color:#7a8294;
-      text-align:right;
-      flex:0 0 auto;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    .cv-entry p{
-      margin-top:9px;
-      color:#646d80;
-      font-size:12px;
-      line-height:1.65;
-      white-space:pre-line;
+    .cv-section {
+      margin-top: 30px;
     }
 
-    .cv-bottom-grid{
-      display:grid;
-      grid-template-columns:1.25fr .75fr;
-      gap:46px;
-    }
+    .cv-section-title {
+      margin-bottom: 12px;
 
-    .minimal-only{
-      display:none;
-    }
+      color: var(--accent);
 
-    .cv-minimal .minimal-only,
-    .cv-executive-dark .minimal-only,
-    .cv-engineering-pro .minimal-only,
-    .cv-sales-impact .minimal-only,
-    .cv-legal-classic .minimal-only,
-    .cv-teacher-soft .minimal-only,
-    .cv-data-matrix .minimal-only,
-    .cv-creative-split .minimal-only{
-      display:block;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
 
-    /* PRICING */
-    .pricing{
-      padding:120px 0;
-      background:linear-gradient(180deg, transparent, rgba(109,93,252,.05));
+    .cv-sidebar .cv-section-title {
+      color: #c1bbff;
     }
 
-    .pricing-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,440px));
-      justify-content:center;
-      gap:24px;
-    }
+    .cv-contact {
+      margin-bottom: 8px;
 
-    .price-card{
-      border:1px solid var(--line);
-      border-radius:34px;
-      background:rgba(255,255,255,.028);
-      padding:34px;
-      position:relative;
-    }
+      font-size: 12px;
+      line-height: 1.55;
 
-    .price-card.featured{
-      border-color:rgba(109,93,252,.48);
-      background:linear-gradient(145deg, rgba(109,93,252,.14), rgba(255,255,255,.025));
-      box-shadow:0 30px 90px rgba(79,65,218,.16);
+      overflow-wrap: anywhere;
     }
 
-    .badge{
-      position:absolute;
-      top:18px;
-      right:18px;
-      background:var(--primary);
-      color:white;
-      border-radius:999px;
-      padding:7px 10px;
-      font-size:11px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
+    .cv-inline-contact {
+      display: none;
+      flex-wrap: wrap;
+      gap: 9px 18px;
 
-    .price-card h3{
-      font-size:24px;
-    }
+      margin-top: 16px;
+      padding-bottom: 18px;
 
-    .price-card p{
-      margin-top:10px;
-      color:var(--muted);
-      line-height:1.6;
-    }
+      border-bottom: 1px solid #e6e9ef;
 
-    .price{
-      display:flex;
-      align-items:flex-end;
-      gap:8px;
-      margin:28px 0;
-    }
+      color: #667085;
 
-    .price strong{
-      font-size:52px;
-      line-height:1;
-      letter-spacing:-.06em;
+      font-size: 12px;
     }
 
-    .price span{
-      color:var(--muted-2);
-      font-size:13px;
+    .cv-document.single-column .cv-inline-contact {
+      display: flex;
     }
 
-    .check-list{
-      list-style:none;
-      display:grid;
-      gap:12px;
-      margin:25px 0;
+    .cv-entry {
+      margin-bottom: 22px;
     }
 
-    .check-list li{
-      color:#d8dced;
-      font-size:14px;
+    .cv-entry-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    /* CTA */
-    .cta{
-      padding:80px 0 120px;
+    .cv-entry h4 {
+      font-size: 16px;
     }
 
-    .cta-box{
-      border:1px solid rgba(109,93,252,.35);
-      background:
-        radial-gradient(circle at 80% 0, rgba(86,198,255,.16), transparent 30%),
-        linear-gradient(135deg, rgba(109,93,252,.18), rgba(255,255,255,.025));
-      border-radius:42px;
-      padding:62px;
-    }
+    .cv-company {
+      margin-top: 4px;
 
-    .cta-box h2{
-      max-width:760px;
-      font-size:clamp(38px,5vw,62px);
-      line-height:1;
-      letter-spacing:-.05em;
-    }
+      color: var(--accent);
 
-    .cta-box p{
-      max-width:650px;
-      margin-top:18px;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.7;
+      font-size: 13px;
+      font-weight: 800;
     }
 
-    .cta-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:30px;
-    }
+    .cv-date {
+      color: #7a8294;
 
-    footer{
-      border-top:1px solid var(--line);
-      background:#050812;
-    }
+      font-size: 11px;
+      font-weight: 800;
 
-    .footer-grid{
-      padding:58px 0 36px;
-      display:grid;
-      grid-template-columns:1.5fr repeat(3,1fr);
-      gap:44px;
+      text-align: right;
     }
 
-    .footer-brand p{
-      margin-top:16px;
-      max-width:340px;
-      color:var(--muted-2);
-      font-size:14px;
-      line-height:1.7;
-    }
+    .cv-entry p {
+      margin-top: 8px;
 
-    .footer-col h4{
-      margin-bottom:14px;
-      font-size:14px;
-    }
+      color: #646d80;
 
-    .footer-col a{
-      display:block;
-      margin-bottom:10px;
-      color:var(--muted-2);
-      font-size:13px;
-    }
+      font-size: 12px;
+      line-height: 1.65;
 
-    .footer-bottom{
-      border-top:1px solid var(--line);
-      padding:18px 0 32px;
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      color:var(--muted-2);
-      font-size:12px;
+      white-space: pre-line;
     }
 
-    .toast{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      z-index:200;
-      border:1px solid var(--line-2);
-      background:rgba(14,19,36,.92);
-      color:white;
-      border-radius:14px;
-      padding:14px 16px;
-      box-shadow:var(--shadow);
-      opacity:0;
-      pointer-events:none;
-      transform:translateY(12px);
-      transition:.25s ease;
-      font-size:13px;
-      font-weight:800;
-      max-width:360px;
-    }
+    .cv-skill {
+      margin-bottom: 9px;
 
-    .toast.show{
-      opacity:1;
-      transform:translateY(0);
+      font-size: 12px;
     }
 
-    .hidden{ display:none !important; }
+    /* Responsive */
 
-    @media(max-width:1100px){
-      .hero-grid{
-        gap:42px;
+    @media (max-width: 1050px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
       }
 
-      .editor-shell{
-        grid-template-columns:400px minmax(0,1fr);
+      .hero {
+        text-align: center;
+      }
+
+      .hero p {
+        margin-inline: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .editor-shell {
+        grid-template-columns: 380px minmax(0, 1fr);
       }
     }
 
-    @media(max-width:920px){
-      .nav-links,
-      .nav-actions .btn-secondary{
-        display:none;
+    @media (max-width: 820px) {
+      .catalog-toolbar {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .menu-btn{
-        display:grid;
-        place-items:center;
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .nav-links.open{
-        position:absolute;
-        top:76px;
-        left:20px;
-        right:20px;
-        display:flex;
-        flex-direction:column;
-        align-items:stretch;
-        gap:0;
-        background:rgba(12,17,31,.98);
-        border:1px solid var(--line);
-        border-radius:18px;
-        padding:12px;
-        box-shadow:var(--shadow);
+      .editor-shell {
+        grid-template-columns: 1fr;
       }
 
-      .nav-links.open a{
-        padding:14px;
-        border-radius:10px;
-      }
-
-      .hero-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-copy{
-        text-align:center;
-      }
-
-      .hero-copy p,
-      .hero-stats{
-        margin-inline:auto;
-      }
-
-      .hero-actions{
-        justify-content:center;
-      }
-
-      .feature-grid,
-      .template-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .catalog-controls{
-        grid-template-columns:1fr;
-      }
-
-      .editor-shell{
-        grid-template-columns:1fr;
-      }
-
-      .sidebar{
-        border-right:0;
-        border-bottom:1px solid var(--line);
-      }
-
-      .pricing-grid{
-        grid-template-columns:1fr;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .footer-brand{
-        grid-column:1 / -1;
+      .editor-sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
       }
     }
 
-    @media(max-width:680px){
-      .container{
-        width:calc(100% - 24px);
+    @media (max-width: 560px) {
+      .navigation-actions .button:first-child {
+        display: none;
       }
 
-      .hero{
-        padding:115px 0 78px;
+      .hero {
+        padding-top: 65px;
       }
 
-      .hero-copy h1{
-        font-size:clamp(48px,15vw,70px);
+      .hero h1 {
+        font-size: 48px;
       }
 
-      .hero-copy p{
-        font-size:17px;
+      .hero-actions {
+        flex-direction: column;
       }
 
-      .hero-actions{
-        flex-direction:column;
+      .hero-actions .button {
+        width: 100%;
       }
 
-      .hero-actions .btn{
-        width:100%;
+      .catalog-toolbar,
+      .catalog-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero-stats{
-        grid-template-columns:1fr;
-        max-width:280px;
+      .editor-tabs {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .hero-preview{
-        min-height:500px;
+      .editor-preview {
+        height: 760px;
+
+        padding: 20px 8px;
       }
 
-      .hero-card{
-        width:88%;
-        padding:22px;
+      .cv-stage {
+        justify-content: flex-start;
       }
 
-      .floating{
-        font-size:11px;
-        padding:10px 12px;
-      }
-
-      .feature-grid,
-      .template-grid{
-        grid-template-columns:1fr;
-      }
-
-      .editor,
-      .features,
-      .catalog,
-      .pricing{
-        padding:90px 0;
-      }
-
-      .tabs{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .grid-2{
-        grid-template-columns:1fr;
-      }
-
-      .preview-top{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .preview-actions{
-        width:100%;
-      }
-
-      .preview-actions .btn{
-        flex:1;
-      }
-
-      .stage{
-        padding:20px 8px;
-        justify-content:flex-start;
-      }
-
-      .cv-document{
-        transform:scale(.62) !important;
-        transform-origin:top left !important;
-      }
-
-      .cta-box{
-        padding:40px 24px;
-      }
-
-      .cta-actions{
-        flex-direction:column;
-      }
-
-      .cta-actions .btn{
-        width:100%;
-      }
-
-      .footer-bottom{
-        flex-direction:column;
-        align-items:flex-start;
+      .cv-document {
+        transform: scale(0.58);
+        transform-origin: top left;
       }
     }
 
-    @media print{
-      body{
-        background:white !important;
+    /* Impresión */
+
+    @media print {
+      body {
+        background: white !important;
       }
 
-      body *{
-        visibility:hidden !important;
+      body * {
+        visibility: hidden !important;
       }
 
       #cvDocument,
-      #cvDocument *{
-        visibility:visible !important;
+      #cvDocument * {
+        visibility: visible !important;
       }
 
-      #cvDocument{
-        position:absolute;
-        inset:0;
-        width:210mm !important;
-        min-height:297mm !important;
-        box-shadow:none !important;
-        transform:none !important;
+      #cvDocument {
+        position: absolute;
+        inset: 0;
+
+        width: 210mm !important;
+        min-height: 297mm !important;
+
+        box-shadow: none !important;
+
+        transform: none !important;
       }
 
-      @page{
-        size:A4;
-        margin:0;
+      @page {
+        size: A4;
+        margin: 0;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <header class="nav-wrap" id="navWrap">
-    <nav class="container">
-      <a href="#inicio" class="brand">
-        <span class="brand-icon">CV</span>
+  <header class="navigation">
+    <div class="container navigation-content">
+
+      <a class="brand" href="#">
         CV <span>Lab</span>
       </a>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#funciones">Funciones</a>
-        <a href="#plantillas">Plantillas</a>
-        <a href="#editor">Editor</a>
-        <a href="#precios">Premium</a>
+      <div class="navigation-actions">
+        <a class="button" href="#catalogo">
+          Plantillas
+        </a>
+
+        <a class="button button-primary" href="#editor">
+          Crear CV
+        </a>
       </div>
 
-      <div class="nav-actions">
-        <a href="#plantillas" class="btn btn-secondary">Ver plantillas</a>
-        <a href="#editor" class="btn btn-primary">Crear mi CV</a>
-        <button class="menu-btn" id="menuBtn">☰</button>
-      </div>
-    </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="pill">Crea un CV profesional en minutos</div>
 
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
           <h1>
-            Elegí el diseño ideal para el
-            <span class="gradient">trabajo que querés conseguir.</span>
+            Plantillas profesionales.
+
+            <span>
+              Diseños adaptados a cada perfil.
+            </span>
           </h1>
 
           <p>
-            CV Lab te recomienda plantillas según tu puesto objetivo. Completá tu información,
-            subí tu foto, elegí una plantilla profesional y exportá tu currículum en PDF.
+            Elegí el puesto al que querés postularte y CV Lab te
+            recomendará diseños adecuados para tu sector. Completá
+            tu información, subí una foto y exportá el currículum
+            en PDF.
           </p>
 
           <div class="hero-actions">
-            <a href="#editor" class="btn btn-primary">Crear mi CV gratis</a>
-            <a href="#plantillas" class="btn btn-secondary">Explorar plantillas</a>
-          </div>
+            <a
+              class="button button-primary"
+              href="#editor"
+            >
+              Crear mi CV
+            </a>
 
-          <div class="hero-note">
-            5 plantillas gratis • más plantillas premium • vista previa en tiempo real
-          </div>
-
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <strong>5</strong>
-              <span>plantillas gratis</span>
-            </div>
-            <div class="hero-stat">
-              <strong>+10</strong>
-              <span>plantillas premium</span>
-            </div>
-            <div class="hero-stat">
-              <strong>PDF</strong>
-              <span>listo para enviar</span>
-            </div>
+            <a
+              class="button"
+              href="#catalogo"
+            >
+              Explorar plantillas
+            </a>
           </div>
         </div>
 
         <div class="hero-preview">
-          <div class="hero-card">
-            <div class="hero-card-head">
-              <div class="hero-avatar">NA</div>
-              <div>
-                <div class="hero-name">Nombre Apellido</div>
-                <div class="hero-role">Puesto profesional</div>
+
+          <div class="hero-preview-header">
+
+            <div class="hero-preview-photo"></div>
+
+            <div>
+              <div class="hero-preview-name">
+                Nombre Apellido
+              </div>
+
+              <div class="hero-preview-role">
+                Puesto profesional
               </div>
             </div>
 
-            <div class="hero-card-grid">
-              <div>
-                <div class="mini-block">
-                  <div class="mini-title">Contacto</div>
-                  <div class="mini-line dark medium"></div>
-                  <div class="mini-line"></div>
-                  <div class="mini-line short"></div>
-                </div>
-
-                <div class="mini-block">
-                  <div class="mini-title">Habilidades</div>
-                  <div class="mini-pills">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="mini-block">
-                  <div class="mini-title">Perfil</div>
-                  <div class="mini-line dark"></div>
-                  <div class="mini-line"></div>
-                  <div class="mini-line medium"></div>
-                </div>
-
-                <div class="mini-block">
-                  <div class="mini-title">Experiencia</div>
-                  <div class="mini-line dark medium"></div>
-                  <div class="mini-line"></div>
-                  <div class="mini-line"></div>
-                  <div class="mini-line short"></div>
-                </div>
-
-                <div class="mini-block">
-                  <div class="mini-title">Educación</div>
-                  <div class="mini-line dark medium"></div>
-                  <div class="mini-line"></div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <div class="floating one">Diseños profesionales</div>
-          <div class="floating two">Exportación PDF</div>
-          <div class="floating three">Subida de foto</div>
+          <div class="hero-preview-grid">
+
+            <div>
+              <div class="preview-line dark medium"></div>
+              <div class="preview-line"></div>
+              <div class="preview-line short"></div>
+
+              <br>
+
+              <div class="preview-line short"></div>
+              <div class="preview-line medium"></div>
+            </div>
+
+            <div>
+              <div class="preview-line dark"></div>
+              <div class="preview-line"></div>
+              <div class="preview-line medium"></div>
+
+              <br>
+
+              <div class="preview-line dark medium"></div>
+              <div class="preview-line"></div>
+              <div class="preview-line"></div>
+              <div class="preview-line short"></div>
+            </div>
+
+          </div>
+
         </div>
+
       </div>
     </section>
 
-    <section class="features" id="funciones">
+    <section
+      class="catalog-section"
+      id="catalogo"
+    >
       <div class="container">
-        <div class="section-head">
-          <div class="pill">Herramientas profesionales</div>
-          <h2>Todo lo necesario para crear un CV <span class="gradient">realmente profesional.</span></h2>
+
+        <div class="section-heading">
+          <h2>
+            Encontrá el diseño adecuado para tu profesión
+          </h2>
+
           <p>
-            Diseños por puesto, catálogo de plantillas, foto de perfil, vista previa en tiempo real
-            y un modelo Premium para más personalización.
+            Filtrá las plantillas por sector, buscá estilos y
+            seleccioná el diseño que mejor represente tu perfil.
+            Algunas opciones requieren Premium.
           </p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature">
-            <div class="feature-icon">🎯</div>
-            <h3>Plantillas por puesto</h3>
-            <p>El sistema recomienda diseños según el área donde querés trabajar: software, diseño, marketing, salud, legal y más.</p>
-          </article>
+        <div class="catalog-toolbar">
 
-          <article class="feature">
-            <div class="feature-icon">🖼️</div>
-            <h3>Subida de foto</h3>
-            <p>Podés subir una imagen desde tu dispositivo. Se ve automáticamente en la vista previa del CV.</p>
-          </article>
+          <select
+            class="control"
+            id="roleFilter"
+          ></select>
 
-          <article class="feature">
-            <div class="feature-icon">💎</div>
-            <h3>Premium real</h3>
-            <p>Los usuarios Premium desbloquean todas las plantillas y pueden personalizar diseño, tipografía y espaciado.</p>
-          </article>
+          <select
+            class="control"
+            id="planFilter"
+          >
+            <option value="all">
+              Todas las opciones
+            </option>
 
-          <article class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Editor en vivo</h3>
-            <p>Todos los cambios se reflejan al instante para que el usuario vea cómo quedará su currículum.</p>
-          </article>
+            <option value="free">
+              Disponibles
+            </option>
 
-          <article class="feature">
-            <div class="feature-icon">📄</div>
-            <h3>PDF listo para enviar</h3>
-            <p>El currículum se exporta en formato A4 para postularse fácilmente a empresas.</p>
-          </article>
-
-          <article class="feature">
-            <div class="feature-icon">💾</div>
-            <h3>Guardado automático</h3>
-            <p>La información queda guardada localmente para seguir editando más tarde.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="catalog" id="plantillas">
-      <div class="container">
-        <div class="section-head center">
-          <div class="pill">Catálogo de plantillas</div>
-          <h2>Plantillas super profesionales, con <span class="gradient">5 gratis y muchas premium.</span></h2>
-          <p>
-            Elegí el puesto objetivo y explorá las planillas más adecuadas. Las gratuitas están disponibles
-            para todos; las premium se desbloquean con suscripción.
-          </p>
-        </div>
-
-        <div class="catalog-controls">
-          <select class="control" id="targetRoleSelect">
-            <option value="general">Puesto objetivo: General</option>
-            <option value="software">Software / Desarrollo</option>
-            <option value="data">Datos / BI / Analytics</option>
-            <option value="design">Diseño / UX / Creativo</option>
-            <option value="marketing">Marketing / Social Media</option>
-            <option value="finance">Finanzas / Administración</option>
-            <option value="sales">Ventas / Comercial</option>
-            <option value="engineering">Ingeniería / Técnica</option>
-            <option value="health">Salud</option>
-            <option value="legal">Legal</option>
-            <option value="education">Educación</option>
-            <option value="architecture">Arquitectura</option>
+            <option value="premium">
+              Premium
+            </option>
           </select>
 
-          <input class="control" id="templateSearch" placeholder="Buscar plantilla por nombre o estilo">
+          <input
+            class="control"
+            id="searchInput"
+            placeholder="Buscar plantilla"
+          >
 
-          <button class="btn btn-primary" id="premiumToggleBtn">Activar vista Premium demo</button>
+          <button
+            class="button button-primary"
+            id="premiumToggle"
+          >
+            Activar Premium demo
+          </button>
+
         </div>
 
-        <div class="catalog-note" id="catalogNote">
-          Mostrando 5 plantillas gratis y el resto premium.
-        </div>
+        <div
+          class="catalog-grid"
+          id="catalog"
+        ></div>
 
-        <div class="template-grid" id="templateGrid"></div>
       </div>
     </section>
 
-    <section class="editor" id="editor">
+    <section
+      class="editor-section"
+      id="editor"
+    >
       <div class="container">
-        <div class="section-head">
-          <div class="pill">Editor interactivo</div>
-          <h2>Completá tus datos, <span class="gradient">subí tu foto</span> y elegí el diseño ideal.</h2>
+
+        <div class="section-heading">
+          <h2>
+            Editor de currículum
+          </h2>
+
           <p>
-            Este editor está preparado para Gratis y Premium. Los usuarios gratis usan 5 plantillas;
-            los Premium desbloquean toda la biblioteca y mayor personalización.
+            Todos los cambios se reflejan automáticamente en la
+            vista previa.
           </p>
         </div>
 
         <div class="editor-shell">
-          <aside class="sidebar">
-            <div class="sidebar-top">
-              <div>
-                <strong>Editor de CV</strong>
-                <div class="save-status" id="saveStatus">Guardado automático</div>
-              </div>
 
-              <button class="icon-btn" id="resetBtn" title="Restablecer">↻</button>
+          <aside class="editor-sidebar">
+
+            <div class="editor-tabs">
+
+              <button
+                class="editor-tab active"
+                data-tab="info"
+              >
+                Información
+              </button>
+
+              <button
+                class="editor-tab"
+                data-tab="photo"
+              >
+                Foto
+              </button>
+
+              <button
+                class="editor-tab"
+                data-tab="content"
+              >
+                Contenido
+              </button>
+
+              <button
+                class="editor-tab"
+                data-tab="design"
+              >
+                Diseño
+              </button>
+
             </div>
 
-            <div class="tabs">
-              <button class="tab active" data-tab="personal">Info</button>
-              <button class="tab" data-tab="photo">Foto</button>
-              <button class="tab" data-tab="content">Contenido</button>
-              <button class="tab" data-tab="design">Diseño</button>
-            </div>
+            <div
+              class="editor-panel active"
+              id="panel-info"
+            >
 
-            <div class="panels">
-              <div class="panel active" id="panel-personal">
-                <div class="panel-title">
-                  <h3>Datos personales</h3>
-                  <p>Esta información aparece en el encabezado y el contacto del currículum.</p>
+              <div class="form-grid">
+
+                <div class="field full">
+                  <label for="name">
+                    Nombre completo
+                  </label>
+
+                  <input
+                    id="name"
+                    data-field="name"
+                  >
                 </div>
 
-                <div class="grid-2">
-                  <div class="field full">
-                    <label for="fullName">Nombre completo</label>
-                    <input class="input" id="fullName" data-field="fullName" placeholder="Ej. Nombre Apellido">
-                  </div>
+                <div class="field full">
+                  <label for="role">
+                    Puesto profesional
+                  </label>
 
-                  <div class="field full">
-                    <label for="profession">Puesto profesional</label>
-                    <input class="input" id="profession" data-field="profession" placeholder="Ej. Diseñador UX / Analista / Abogado">
-                  </div>
-
-                  <div class="field">
-                    <label for="email">Email</label>
-                    <input class="input" id="email" data-field="email" placeholder="nombre@email.com">
-                  </div>
-
-                  <div class="field">
-                    <label for="phone">Teléfono</label>
-                    <input class="input" id="phone" data-field="phone" placeholder="+54 351 000 0000">
-                  </div>
-
-                  <div class="field">
-                    <label for="city">Ciudad</label>
-                    <input class="input" id="city" data-field="city" placeholder="Córdoba, Argentina">
-                  </div>
-
-                  <div class="field">
-                    <label for="website">LinkedIn / Portfolio</label>
-                    <input class="input" id="website" data-field="website" placeholder="linkedin.com/in/usuario">
-                  </div>
-
-                  <div class="field full">
-                    <label for="summary">Perfil profesional</label>
-                    <textarea class="textarea" id="summary" data-field="summary" placeholder="Describí tu experiencia, fortalezas y objetivos."></textarea>
-                  </div>
+                  <input
+                    id="role"
+                    data-field="role"
+                  >
                 </div>
-              </div>
-
-              <div class="panel" id="panel-photo">
-                <div class="panel-title">
-                  <h3>Foto de perfil</h3>
-                  <p>Subí una foto profesional desde tu dispositivo. Si no subís una, se mostrarán tus iniciales.</p>
-                </div>
-
-                <div class="photo-uploader">
-                  <div class="photo-row">
-                    <div class="photo-preview-box" id="photoBox">NA</div>
-
-                    <div style="display:grid; gap:10px; flex:1;">
-                      <input type="file" id="photoInput" accept="image/*" class="input" style="padding:10px;">
-                      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <button class="btn btn-secondary" id="photoShapeBtn">Cambiar forma</button>
-                        <button class="btn btn-danger" id="removePhotoBtn">Quitar foto</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <label>Consejo</label>
-                    <p style="color:var(--muted); line-height:1.7; font-size:14px;">
-                      Lo ideal es usar una foto clara, recortada de hombros hacia arriba, con fondo simple
-                      y buena iluminación.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="panel" id="panel-content">
-                <div class="panel-title">
-                  <h3>Experiencia, educación y habilidades</h3>
-                  <p>Agregá múltiples experiencias laborales y formaciones académicas.</p>
-                </div>
-
-                <div id="experienceList"></div>
-                <button class="add-btn" id="addExperienceBtn">+ Agregar experiencia</button>
-
-                <div style="height:24px;"></div>
-
-                <div id="educationList"></div>
-                <button class="add-btn" id="addEducationBtn">+ Agregar educación</button>
-
-                <div style="height:24px;"></div>
 
                 <div class="field">
-                  <label for="skills">Habilidades</label>
-                  <textarea class="textarea" id="skills" data-field="skills" placeholder="Ej. Figma, liderazgo, Excel, negociación, atención al cliente"></textarea>
+                  <label for="email">
+                    Email
+                  </label>
+
+                  <input
+                    id="email"
+                    data-field="email"
+                  >
                 </div>
+
+                <div class="field">
+                  <label for="phone">
+                    Teléfono
+                  </label>
+
+                  <input
+                    id="phone"
+                    data-field="phone"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="city">
+                    Ciudad
+                  </label>
+
+                  <input
+                    id="city"
+                    data-field="city"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="website">
+                    Portfolio o LinkedIn
+                  </label>
+
+                  <input
+                    id="website"
+                    data-field="website"
+                  >
+                </div>
+
+                <div class="field full">
+                  <label for="summary">
+                    Perfil profesional
+                  </label>
+
+                  <textarea
+                    id="summary"
+                    data-field="summary"
+                  ></textarea>
+                </div>
+
               </div>
 
-              <div class="panel" id="panel-design">
-                <div class="panel-title">
-                  <h3>Diseño del documento</h3>
-                  <p>Los usuarios gratis pueden usar 5 plantillas. Premium desbloquea todas y más personalización.</p>
-                </div>
-
-                <div class="design-card">
-                  <div class="field">
-                    <label for="selectedTemplateName">Plantilla seleccionada</label>
-                    <input class="input" id="selectedTemplateName" readonly>
-                  </div>
-
-                  <div class="field">
-                    <label>Color principal</label>
-                    <div class="swatches" id="swatchContainer">
-                      <button class="swatch active" data-color="#6d5dfc" style="background:#6d5dfc"></button>
-                      <button class="swatch" data-color="#2563eb" style="background:#2563eb"></button>
-                      <button class="swatch" data-color="#0f9f7f" style="background:#0f9f7f"></button>
-                      <button class="swatch" data-color="#d15c39" style="background:#d15c39"></button>
-                      <button class="swatch" data-color="#c03d70" style="background:#c03d70"></button>
-                      <button class="swatch" data-color="#2f3442" style="background:#2f3442"></button>
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <label>Tipografía (Premium)</label>
-                    <div class="font-options">
-                      <button class="font-option active" data-font="Inter,Arial,sans-serif">Inter</button>
-                      <button class="font-option" data-font="Georgia,serif">Georgia</button>
-                      <button class="font-option" data-font="'Trebuchet MS',Arial,sans-serif">Trebuchet</button>
-                      <button class="font-option" data-font="'Times New Roman',serif">Times</button>
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <label>Espaciado (Premium)</label>
-                    <input type="range" min="0.92" max="1.08" step="0.01" value="1" class="range" id="spacingRange">
-                  </div>
-
-                  <div class="field">
-                    <label>Estado de cuenta</label>
-                    <p id="premiumStatusText" style="color:var(--muted); font-size:14px; line-height:1.7;">
-                      Estás en plan Gratis. Tenés 5 plantillas y color principal habilitado.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
+
+            <div
+              class="editor-panel"
+              id="panel-photo"
+            >
+
+              <div class="photo-settings">
+
+                <div
+                  class="photo-preview"
+                  id="photoPreview"
+                >
+                  NA
+                </div>
+
+                <div style="flex: 1;">
+
+                  <div class="field">
+                    <label for="photoInput">
+                      Subir fotografía
+                    </label>
+
+                    <input
+                      type="file"
+                      id="photoInput"
+                      accept="image/*"
+                    >
+                  </div>
+
+                  <button
+                    class="button button-small"
+                    id="removePhoto"
+                  >
+                    Quitar foto
+                  </button>
+
+                </div>
+
+              </div>
+
+              <div class="option-grid">
+
+                <button
+                  class="option-button active"
+                  data-photo-shape="rounded"
+                >
+                  Redondeada
+                </button>
+
+                <button
+                  class="option-button"
+                  data-photo-shape="circle"
+                >
+                  Circular
+                </button>
+
+              </div>
+
+            </div>
+
+            <div
+              class="editor-panel"
+              id="panel-content"
+            >
+
+              <div class="field">
+                <label for="experience">
+                  Experiencia
+                </label>
+
+                <textarea
+                  id="experience"
+                  data-field="experience"
+                ></textarea>
+              </div>
+
+              <div class="field">
+                <label for="education">
+                  Educación
+                </label>
+
+                <textarea
+                  id="education"
+                  data-field="education"
+                ></textarea>
+              </div>
+
+              <div class="field">
+                <label for="skills">
+                  Habilidades separadas por coma
+                </label>
+
+                <textarea
+                  id="skills"
+                  data-field="skills"
+                ></textarea>
+              </div>
+
+              <div class="plan-notice">
+                Para experiencia utilizá este formato:
+                Puesto | Empresa | Período | Descripción.
+                Para educación: Título | Institución | Período.
+              </div>
+
+            </div>
+
+            <div
+              class="editor-panel"
+              id="panel-design"
+            >
+
+              <div class="field">
+                <label for="selectedTemplate">
+                  Plantilla seleccionada
+                </label>
+
+                <input
+                  id="selectedTemplate"
+                  readonly
+                >
+              </div>
+
+              <div class="field">
+                <label>
+                  Color principal
+                </label>
+
+                <div
+                  class="color-options"
+                  id="colorOptions"
+                ></div>
+              </div>
+
+              <div class="field">
+                <label>
+                  Tipografía
+                </label>
+
+                <div
+                  class="option-grid"
+                  id="fontOptions"
+                ></div>
+              </div>
+
+              <div class="field">
+                <label for="density">
+                  Espaciado
+                </label>
+
+                <select id="density">
+                  <option value="compact">
+                    Compacto
+                  </option>
+
+                  <option value="normal">
+                    Normal
+                  </option>
+
+                  <option value="spacious">
+                    Amplio
+                  </option>
+                </select>
+              </div>
+
+              <div
+                class="plan-notice"
+                id="planNotice"
+              ></div>
+
+            </div>
+
           </aside>
 
-          <section class="preview-shell">
-            <div class="preview-top">
-              <div style="color:var(--muted); font-size:13px; font-weight:700;">Vista previa A4</div>
-              <div class="preview-actions">
-                <button class="btn btn-secondary" id="saveBtn">Guardar</button>
-                <button class="btn btn-primary" id="printBtn">Exportar PDF</button>
-              </div>
+          <section class="editor-preview">
+
+            <div class="preview-toolbar">
+              <span>
+                Vista previa A4
+              </span>
+
+              <button
+                class="button button-primary"
+                id="exportButton"
+              >
+                Exportar PDF
+              </button>
             </div>
 
-            <div class="stage">
-              <article class="cv-document cv-modern" id="cvDocument">
-                <aside class="cv-left" id="cvLeft">
-                  <div class="cv-photo" id="cvPhotoBox">NA</div>
+            <div class="cv-stage">
 
-                  <div class="cv-side-section">
-                    <div class="cv-side-title">Contacto</div>
-                    <div class="cv-contact-item" id="cvEmail">tu@email.com</div>
-                    <div class="cv-contact-item" id="cvPhone">Tu teléfono</div>
-                    <div class="cv-contact-item" id="cvCity">Tu ciudad</div>
-                    <div class="cv-contact-item" id="cvWebsite">Tu portfolio</div>
+              <article
+                class="cv-document"
+                id="cvDocument"
+              >
+
+                <aside class="cv-sidebar">
+
+                  <div
+                    class="cv-photo"
+                    id="cvPhoto"
+                  >
+                    NA
                   </div>
 
-                  <div class="cv-side-section">
-                    <div class="cv-side-title">Habilidades</div>
-                    <div id="cvSkillsSidebar"></div>
+                  <div class="cv-section">
+
+                    <div class="cv-section-title">
+                      Contacto
+                    </div>
+
+                    <div
+                      class="cv-contact"
+                      id="cvEmail"
+                    ></div>
+
+                    <div
+                      class="cv-contact"
+                      id="cvPhone"
+                    ></div>
+
+                    <div
+                      class="cv-contact"
+                      id="cvCity"
+                    ></div>
+
+                    <div
+                      class="cv-contact"
+                      id="cvWebsite"
+                    ></div>
+
                   </div>
+
+                  <div class="cv-section">
+
+                    <div class="cv-section-title">
+                      Habilidades
+                    </div>
+
+                    <div id="cvSkills"></div>
+
+                  </div>
+
                 </aside>
 
-                <div class="cv-right" id="cvRight">
-                  <header>
-                    <h1 class="cv-name" id="cvName">Nombre Apellido</h1>
-                    <div class="cv-role" id="cvProfession">Puesto profesional</div>
+                <div class="cv-main">
 
-                    <div class="contact-inline minimal-only" id="contactInline">
-                      <span id="cvEmailInline">tu@email.com</span>
-                      <span id="cvPhoneInline">Tu teléfono</span>
-                      <span id="cvCityInline">Tu ciudad</span>
-                      <span id="cvWebsiteInline">Tu portfolio</span>
+                  <h1
+                    class="cv-name"
+                    id="cvName"
+                  ></h1>
+
+                  <div
+                    class="cv-role"
+                    id="cvRole"
+                  ></div>
+
+                  <div class="cv-inline-contact">
+
+                    <span id="cvEmailInline"></span>
+                    <span id="cvPhoneInline"></span>
+                    <span id="cvCityInline"></span>
+                    <span id="cvWebsiteInline"></span>
+
+                  </div>
+
+                  <p
+                    class="cv-summary"
+                    id="cvSummary"
+                  ></p>
+
+                  <div class="cv-section">
+
+                    <div class="cv-section-title">
+                      Experiencia profesional
                     </div>
 
-                    <p class="cv-summary" id="cvSummary">
-                      Agregá un perfil profesional claro, breve y orientado al puesto que querés conseguir.
-                    </p>
-                  </header>
-
-                  <div class="cv-main-section">
-                    <div class="cv-main-title">Experiencia profesional</div>
                     <div id="cvExperience"></div>
+
                   </div>
 
-                  <div class="cv-bottom-grid">
-                    <div class="cv-main-section">
-                      <div class="cv-main-title">Educación</div>
-                      <div id="cvEducation"></div>
+                  <div class="cv-section">
+
+                    <div class="cv-section-title">
+                      Educación
                     </div>
 
-                    <div class="cv-main-section minimal-only">
-                      <div class="cv-main-title">Habilidades</div>
-                      <div id="cvSkillsMinimal"></div>
-                    </div>
+                    <div id="cvEducation"></div>
+
                   </div>
+
                 </div>
+
               </article>
+
             </div>
+
           </section>
+
         </div>
+
       </div>
     </section>
 
-    <section class="pricing" id="precios">
-      <div class="container">
-        <div class="section-head center">
-          <div class="pill">Plan Gratis y Premium</div>
-          <h2>El plan Premium desbloquea <span class="gradient">más diseños y edición avanzada.</span></h2>
-          <p>
-            La versión gratis permite crear un CV excelente. Premium está pensado para quienes
-            quieren más personalización y más variedad.
-          </p>
-        </div>
-
-        <div class="pricing-grid">
-          <article class="price-card">
-            <h3>Gratis</h3>
-            <p>Ideal para empezar y crear un currículum serio sin pagar.</p>
-
-            <div class="price">
-              <strong>$0</strong>
-              <span>para siempre</span>
-            </div>
-
-            <ul class="check-list">
-              <li>✔ 5 plantillas gratis</li>
-              <li>✔ editor en tiempo real</li>
-              <li>✔ subida de foto</li>
-              <li>✔ exportación PDF</li>
-              <li>✔ guardado local</li>
-            </ul>
-
-            <a href="#editor" class="btn btn-secondary" style="width:100%;">Crear gratis</a>
-          </article>
-
-          <article class="price-card featured">
-            <div class="badge">Más elegido</div>
-            <h3>Premium</h3>
-            <p>Desbloqueá toda la biblioteca y modificá el diseño a fondo.</p>
-
-            <div class="price">
-              <strong>US$ 9</strong>
-              <span>por mes</span>
-            </div>
-
-            <ul class="check-list">
-              <li>✔ todas las plantillas</li>
-              <li>✔ edición de colores, tipografía y espaciado</li>
-              <li>✔ plantillas recomendadas por puesto</li>
-              <li>✔ más estilos premium</li>
-              <li>✔ futuras secciones avanzadas</li>
-            </ul>
-
-            <button class="btn btn-primary" style="width:100%;" id="premiumToggleBtn2">Probar Premium demo</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box">
-          <h2>Elegí una plantilla profesional y hacé que tu perfil destaque.</h2>
-          <p>
-            El objetivo es que el usuario tenga muchas opciones, pero que la web recomiende
-            inteligentemente la mejor según el trabajo al que quiere postularse.
-          </p>
-
-          <div class="cta-actions">
-            <a href="#plantillas" class="btn btn-primary">Ver plantillas</a>
-            <a href="#editor" class="btn btn-secondary">Ir al editor</a>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="brand">
-            <span class="brand-icon">CV</span>
-            CV <span>Lab</span>
-          </div>
-          <p>Plataforma para crear currículums profesionales, con plantillas orientadas al puesto y modelo Gratis/Premium.</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Producto</h4>
-          <a href="#funciones">Funciones</a>
-          <a href="#plantillas">Plantillas</a>
-          <a href="#editor">Editor</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Recursos</h4>
-          <a href="#">Consejos para CV</a>
-          <a href="#">Centro de ayuda</a>
-          <a href="#">Preguntas frecuentes</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="#">Privacidad</a>
-          <a href="#">Términos</a>
-          <a href="#">Cookies</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 CV Lab</span>
-        <span>Diseñado para mejorar la forma de presentarte profesionalmente.</span>
-      </div>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast">Cambios guardados correctamente</div>
-
   <script>
-    const STORAGE_KEY = "cvLabProfessionalTemplatesV2";
+    const STORAGE_KEY = "cvLabModular";
 
-    const templates = [
-      // GRATIS (5)
-      { id:"modern", name:"Modern Pro", style:"cv-modern", role:["general","software","marketing"], premium:false, family:"modern", description:"Moderna, equilibrada y muy versátil.", accent:"#6d5dfc" },
-      { id:"minimal", name:"Minimal Corporate", style:"cv-minimal", role:["general","finance","legal","education"], premium:false, family:"minimal", description:"Clara y sobria para entornos corporativos.", accent:"#2563eb" },
-      { id:"tech-slate", name:"Tech Slate", style:"cv-tech-slate", role:["software","data","engineering"], premium:false, family:"side", description:"Ideal para perfiles tecnológicos.", accent:"#0f9f7f" },
-      { id:"analyst-clean", name:"Analyst Clean", style:"cv-analyst-clean", role:["finance","data","general"], premium:false, family:"minimal", description:"Limpia y estructurada para análisis y administración.", accent:"#2f3442" },
-      { id:"sales-impact", name:"Sales Impact", style:"cv-sales-impact", role:["sales","marketing","general"], premium:false, family:"minimal", description:"Diseño directo y enfocado en resultados.", accent:"#d15c39" },
-
-      // PREMIUM
-      { id:"executive-dark", name:"Executive Dark", style:"cv-executive-dark", role:["finance","legal","management","general"], premium:true, family:"minimal", description:"Elegante, premium y ejecutiva.", accent:"#d4ad4f" },
-      { id:"ux-portfolio", name:"UX Portfolio", style:"cv-ux-portfolio", role:["design","marketing","architecture"], premium:true, family:"side", description:"Perfecta para diseño, branding y UX.", accent:"#c03d70" },
-      { id:"marketing-bold", name:"Marketing Bold", style:"cv-marketing-bold", role:["marketing","sales","design"], premium:true, family:"side", description:"Visual, fuerte y con excelente jerarquía.", accent:"#ff6a79" },
-      { id:"engineering-pro", name:"Engineering Pro", style:"cv-engineering-pro", role:["engineering","software","architecture"], premium:true, family:"minimal", description:"Rigurosa, limpia y técnica.", accent:"#2563eb" },
-      { id:"legal-classic", name:"Legal Classic", style:"cv-legal-classic", role:["legal","finance","general"], premium:true, family:"minimal", description:"Clásica y formal para entornos legales.", accent:"#7c5a2d" },
-      { id:"health-trust", name:"Health Trust", style:"cv-health-trust", role:["health","education","general"], premium:true, family:"side", description:"Confiable, suave y profesional.", accent:"#0f9f7f" },
-      { id:"teacher-soft", name:"Teacher Soft", style:"cv-teacher-soft", role:["education","health","general"], premium:true, family:"minimal", description:"Cálida, ordenada y legible.", accent:"#6d5dfc" },
-      { id:"architecture-grid", name:"Architecture Grid", style:"cv-architecture-grid", role:["architecture","design","engineering"], premium:true, family:"side", description:"Estructurada y visualmente refinada.", accent:"#3e5c76" },
-      { id:"data-matrix", name:"Data Matrix", style:"cv-data-matrix", role:["data","software","finance"], premium:true, family:"minimal", description:"Ideal para ciencia de datos y BI.", accent:"#0f9f7f" },
-      { id:"creative-split", name:"Creative Split", style:"cv-creative-split", role:["design","marketing","general"], premium:true, family:"minimal", description:"Muy profesional y con identidad visual.", accent:"#c03d70" }
-    ];
-
-    const defaultState = {
-      fullName:"Nombre Apellido",
-      profession:"Puesto profesional",
-      email:"tu@email.com",
-      phone:"Tu teléfono",
-      city:"Tu ciudad",
-      website:"Tu portfolio",
-      summary:"Agregá un perfil profesional claro, breve y orientado al puesto que querés conseguir.",
-      skills:"Comunicación, Organización, Liderazgo, Trabajo en equipo",
-      targetRole:"general",
-      selectedTemplate:"modern",
-      premium:false,
-      color:"#6d5dfc",
-      font:"Inter,Arial,sans-serif",
-      spacing:1,
-      photoData:"",
-      photoCircle:false,
-      experiences:[
+    const modules = {
+      layouts: [
         {
-          role:"Puesto actual o reciente",
-          company:"Empresa",
-          period:"2024 — Actualidad",
-          description:"Describí tus responsabilidades, logros y el impacto de tu trabajo."
+          id: "sidebar-standard",
+          sidebarWidth: "250px",
+          singleColumn: false
+        },
+        {
+          id: "sidebar-narrow",
+          sidebarWidth: "215px",
+          singleColumn: false
+        },
+        {
+          id: "sidebar-wide",
+          sidebarWidth: "290px",
+          singleColumn: false
+        },
+        {
+          id: "single-clean",
+          sidebarWidth: "0",
+          singleColumn: true
+        },
+        {
+          id: "single-accent",
+          sidebarWidth: "0",
+          singleColumn: true
         }
       ],
-      education:[
+
+      headers: [
+        "photo-left",
+        "photo-circle",
+        "name-first",
+        "compact",
+        "executive"
+      ],
+
+      experienceStyles: [
+        "classic",
+        "timeline",
+        "compact",
+        "achievement",
+        "technical"
+      ],
+
+      skillStyles: [
+        "list",
+        "tags",
+        "bars",
+        "columns"
+      ],
+
+      palettes: [
         {
-          degree:"Título o carrera",
-          institution:"Institución",
-          period:"2020 — 2024"
+          accent: "#6d5dfc",
+          sidebar: "#19223b"
+        },
+        {
+          accent: "#2563eb",
+          sidebar: "#16213a"
+        },
+        {
+          accent: "#0f9f7f",
+          sidebar: "#16372f"
+        },
+        {
+          accent: "#c03d70",
+          sidebar: "#3b2030"
+        },
+        {
+          accent: "#d15c39",
+          sidebar: "#3c241d"
+        },
+        {
+          accent: "#2f3442",
+          sidebar: "#20242d"
+        },
+        {
+          accent: "#7c5a2d",
+          sidebar: "#302719"
+        },
+        {
+          accent: "#3e5c76",
+          sidebar: "#203044"
         }
+      ],
+
+      fonts: [
+        {
+          name: "Inter",
+          value: "Inter, Arial, sans-serif"
+        },
+        {
+          name: "Georgia",
+          value: "Georgia, serif"
+        },
+        {
+          name: "Trebuchet",
+          value: "'Trebuchet MS', Arial, sans-serif"
+        },
+        {
+          name: "Times",
+          value: "'Times New Roman', serif"
+        }
+      ],
+
+      densities: [
+        "compact",
+        "normal",
+        "spacious"
       ]
     };
 
-    let state = loadState();
-    let saveTimer;
+    const roles = [
+      {
+        id: "general",
+        label: "General"
+      },
+      {
+        id: "software",
+        label: "Software y tecnología"
+      },
+      {
+        id: "data",
+        label: "Datos y análisis"
+      },
+      {
+        id: "design",
+        label: "Diseño y creatividad"
+      },
+      {
+        id: "marketing",
+        label: "Marketing"
+      },
+      {
+        id: "sales",
+        label: "Ventas"
+      },
+      {
+        id: "finance",
+        label: "Finanzas y administración"
+      },
+      {
+        id: "engineering",
+        label: "Ingeniería"
+      },
+      {
+        id: "architecture",
+        label: "Arquitectura"
+      },
+      {
+        id: "health",
+        label: "Salud"
+      },
+      {
+        id: "education",
+        label: "Educación"
+      },
+      {
+        id: "legal",
+        label: "Legal"
+      },
+      {
+        id: "first-job",
+        label: "Primer empleo"
+      }
+    ];
 
-    const navWrap = document.getElementById("navWrap");
-    const navLinks = document.getElementById("navLinks");
-    const menuBtn = document.getElementById("menuBtn");
-    const toast = document.getElementById("toast");
-    const saveStatus = document.getElementById("saveStatus");
+    const templateNames = {
+      general: [
+        "Modern Professional",
+        "Corporate Clean",
+        "Balanced Resume",
+        "Professional Core",
+        "Essential Profile",
+        "Classic Modern",
+        "Career Focus",
+        "Clear Professional"
+      ],
 
-    function deepClone(obj){
-      return JSON.parse(JSON.stringify(obj));
+      software: [
+        "Tech Slate",
+        "Developer Grid",
+        "Code Professional",
+        "Software Core",
+        "Engineering Stack",
+        "Product Tech",
+        "Backend Clean",
+        "Frontend Modern"
+      ],
+
+      data: [
+        "Data Matrix",
+        "Analytics Pro",
+        "Business Intelligence",
+        "Insight Resume",
+        "Quant Clean",
+        "Data Executive",
+        "Research Grid",
+        "Metrics Professional"
+      ],
+
+      design: [
+        "UX Portfolio",
+        "Creative Split",
+        "Design System",
+        "Visual Profile",
+        "Studio Resume",
+        "Product Design",
+        "Creative Grid",
+        "Portfolio Professional"
+      ],
+
+      marketing: [
+        "Marketing Bold",
+        "Brand Strategy",
+        "Growth Resume",
+        "Campaign Professional",
+        "Content Studio",
+        "Digital Marketing",
+        "Social Impact",
+        "Communication Pro"
+      ],
+
+      sales: [
+        "Sales Impact",
+        "Commercial Professional",
+        "Revenue Focus",
+        "Account Executive",
+        "Negotiation Resume",
+        "Client Growth",
+        "Business Development",
+        "Sales Leadership"
+      ],
+
+      finance: [
+        "Analyst Clean",
+        "Finance Executive",
+        "Corporate Ledger",
+        "Audit Professional",
+        "Investment Resume",
+        "Accounting Core",
+        "Banking Professional",
+        "Administration Clean"
+      ],
+
+      engineering: [
+        "Engineering Professional",
+        "Technical Grid",
+        "Industrial Resume",
+        "Mechanical Core",
+        "Civil Professional",
+        "Process Engineer",
+        "Operations Professional",
+        "Technical Executive"
+      ],
+
+      architecture: [
+        "Architecture Grid",
+        "Studio Architect",
+        "Urban Professional",
+        "Project Architecture",
+        "Technical Portfolio",
+        "Design Build",
+        "Construction Professional",
+        "Spatial Resume"
+      ],
+
+      health: [
+        "Health Trust",
+        "Clinical Professional",
+        "Medical Clean",
+        "Care Resume",
+        "Healthcare Core",
+        "Therapy Profile",
+        "Nursing Professional",
+        "Wellness Resume"
+      ],
+
+      education: [
+        "Teacher Soft",
+        "Academic Resume",
+        "Education Professional",
+        "Learning Profile",
+        "University CV",
+        "Teaching Core",
+        "Research Educator",
+        "School Professional"
+      ],
+
+      legal: [
+        "Legal Classic",
+        "Law Executive",
+        "Corporate Counsel",
+        "Justice Resume",
+        "Legal Clean",
+        "Attorney Professional",
+        "Compliance Profile",
+        "Policy Professional"
+      ],
+
+      "first-job": [
+        "First Step",
+        "Graduate Clean",
+        "Junior Modern",
+        "Entry Career",
+        "Starter Professional",
+        "Young Talent",
+        "Internship Resume",
+        "Campus Professional"
+      ]
+    };
+
+    const freeTemplateIds = new Set([
+      "general-01",
+      "software-01",
+      "design-01",
+      "finance-01",
+      "first-job-01"
+    ]);
+
+    function createTemplates() {
+      const templates = [];
+
+      roles.forEach(function (role, roleIndex) {
+        const names =
+          templateNames[role.id] ||
+          templateNames.general;
+
+        names.forEach(function (name, index) {
+          const moduleIndex =
+            roleIndex * names.length + index;
+
+          const layout =
+            modules.layouts[
+              moduleIndex %
+              modules.layouts.length
+            ];
+
+          const palette =
+            modules.palettes[
+              moduleIndex %
+              modules.palettes.length
+            ];
+
+          const id =
+            role.id +
+            "-" +
+            String(index + 1).padStart(2, "0");
+
+          templates.push({
+            id: id,
+
+            name: name,
+
+            category: role.id,
+
+            premium: !freeTemplateIds.has(id),
+
+            layout: layout.id,
+
+            header:
+              modules.headers[
+                moduleIndex %
+                modules.headers.length
+              ],
+
+            experienceStyle:
+              modules.experienceStyles[
+                moduleIndex %
+                modules.experienceStyles.length
+              ],
+
+            skillStyle:
+              modules.skillStyles[
+                moduleIndex %
+                modules.skillStyles.length
+              ],
+
+            accent: palette.accent,
+
+            sidebar: palette.sidebar,
+
+            font:
+              modules.fonts[
+                moduleIndex %
+                modules.fonts.length
+              ].value,
+
+            density:
+              modules.densities[
+                moduleIndex %
+                modules.densities.length
+              ]
+          });
+        });
+      });
+
+      return templates;
     }
 
-    function loadState(){
-      try{
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? { ...deepClone(defaultState), ...JSON.parse(raw) } : deepClone(defaultState);
-      }catch{
-        return deepClone(defaultState);
+    const templates = createTemplates();
+
+    const defaultState = {
+      premium: false,
+
+      selectedTemplate: "general-01",
+
+      roleFilter: "general",
+
+      photo: "",
+
+      photoShape: "rounded",
+
+      name: "Nombre Apellido",
+
+      role: "Puesto profesional",
+
+      email: "tu@email.com",
+
+      phone: "Tu teléfono",
+
+      city: "Tu ciudad",
+
+      website: "Tu portfolio",
+
+      summary:
+        "Perfil profesional orientado al puesto, con fortalezas, experiencia y objetivos claros.",
+
+      experience:
+        "Puesto actual o reciente | Empresa | 2024 — Actualidad | Describí responsabilidades, resultados y logros relevantes.",
+
+      education:
+        "Título o carrera | Institución | 2020 — 2024",
+
+      skills:
+        "Comunicación, Organización, Liderazgo, Trabajo en equipo",
+
+      color: "#6d5dfc",
+
+      font: "Inter, Arial, sans-serif",
+
+      density: "normal"
+    };
+
+    let state = loadState();
+
+    function cloneObject(object) {
+      return JSON.parse(
+        JSON.stringify(object)
+      );
+    }
+
+    function loadState() {
+      try {
+        const saved =
+          localStorage.getItem(
+            STORAGE_KEY
+          );
+
+        if (!saved) {
+          return cloneObject(
+            defaultState
+          );
+        }
+
+        return {
+          ...cloneObject(defaultState),
+          ...JSON.parse(saved)
+        };
+      } catch (error) {
+        return cloneObject(
+          defaultState
+        );
       }
     }
 
-    function saveState(showMessage=false){
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      saveStatus.textContent = "Guardado automático";
-      if(showMessage) showToast("Cambios guardados correctamente");
+    function saveState() {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(state)
+      );
     }
 
-    function scheduleSave(){
-      saveStatus.textContent = "Guardando...";
-      clearTimeout(saveTimer);
-      saveTimer = setTimeout(() => saveState(false), 500);
-    }
-
-    function showToast(message){
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(showToast.timer);
-      showToast.timer = setTimeout(() => toast.classList.remove("show"), 2400);
-    }
-
-    function safeText(value, fallback){
-      return String(value || "").trim() || fallback;
-    }
-
-    function getInitials(name){
-      const parts = safeText(name, "NA").split(/\s+/).slice(0,2);
-      return parts.map(part => part[0]?.toUpperCase() || "").join("") || "NA";
-    }
-
-    function escapeHtml(value){
+    function escapeHtml(value) {
       return String(value || "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
-    function getSelectedTemplate(){
-      return templates.find(template => template.id === state.selectedTemplate) || templates[0];
+    function initials(name) {
+      const words = String(name || "")
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2);
+
+      return (
+        words
+          .map(function (word) {
+            return word[0]
+              ? word[0].toUpperCase()
+              : "";
+          })
+          .join("") || "NA"
+      );
     }
 
-    function currentRoleLabel(role){
-      const map = {
-        general:"General",
-        software:"Software / Desarrollo",
-        data:"Datos / BI / Analytics",
-        design:"Diseño / UX / Creativo",
-        marketing:"Marketing / Social Media",
-        finance:"Finanzas / Administración",
-        sales:"Ventas / Comercial",
-        engineering:"Ingeniería / Técnica",
-        health:"Salud",
-        legal:"Legal",
-        education:"Educación",
-        architecture:"Arquitectura"
-      };
-      return map[role] || "General";
+    function getSelectedTemplate() {
+      return (
+        templates.find(function (
+          template
+        ) {
+          return (
+            template.id ===
+            state.selectedTemplate
+          );
+        }) || templates[0]
+      );
     }
 
-    function isTemplateRecommended(template){
-      return template.role.includes(state.targetRole) && state.targetRole !== "general";
+    function getLayout(template) {
+      return modules.layouts.find(
+        function (layout) {
+          return (
+            layout.id ===
+            template.layout
+          );
+        }
+      );
     }
 
-    function canUseTemplate(template){
-      return !template.premium || state.premium;
+    function populateRoleFilter() {
+      const roleFilter =
+        document.getElementById(
+          "roleFilter"
+        );
+
+      roleFilter.innerHTML =
+        roles
+          .map(function (role) {
+            return `
+              <option value="${role.id}">
+                ${role.label}
+              </option>
+            `;
+          })
+          .join("");
+
+      roleFilter.value =
+        state.roleFilter;
     }
 
-    function renderTemplateThumb(template){
-      const premiumBadge = template.premium
-        ? `<div class="premium-badge">Premium</div>`
-        : `<div class="free-badge">Gratis</div>`;
+    function createTemplateThumbnail(
+      template
+    ) {
+      const layout =
+        getLayout(template);
 
-      const recommendedBadge = isTemplateRecommended(template)
-        ? `<div class="recommended-badge">Recomendada</div>`
-        : "";
+      const recommended =
+        template.category ===
+        state.roleFilter;
+
+      const photoContent =
+        state.photo
+          ? `
+            <img
+              src="${state.photo}"
+              alt="Foto"
+            >
+          `
+          : initials(state.name);
 
       return `
-        <div class="template-card">
-          <div class="template-top">
-            ${premiumBadge}
-            ${recommendedBadge}
-            ${template.family === "side"
-              ? `
-                <div class="thumb-head">
-                  <div class="thumb-photo ${state.photoCircle ? "circle" : ""}">
-                    ${state.photoData ? `<img src="${state.photoData}" alt="foto">` : ""}
-                  </div>
-                  <div>
-                    <div class="thumb-title">Nombre Apellido</div>
-                    <div class="thumb-sub">Puesto profesional</div>
-                  </div>
-                </div>
-                <div class="thumb-layout">
-                  <div class="thumb-side-dark">
-                    <div class="thumb-section">
-                      <div class="thumb-label">Contacto</div>
-                      <div class="thumb-line medium"></div>
-                      <div class="thumb-line"></div>
-                      <div class="thumb-line short"></div>
-                    </div>
-                    <div class="thumb-section">
-                      <div class="thumb-label">Skills</div>
-                      <div class="thumb-line short"></div>
-                      <div class="thumb-line"></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="thumb-section">
-                      <div class="thumb-label">Perfil</div>
-                      <div class="thumb-line"></div>
-                      <div class="thumb-line"></div>
-                      <div class="thumb-line short"></div>
-                    </div>
-                    <div class="thumb-section">
-                      <div class="thumb-label">Experiencia</div>
-                      <div class="thumb-line medium"></div>
-                      <div class="thumb-line"></div>
-                      <div class="thumb-line"></div>
-                    </div>
-                    <div class="thumb-section">
-                      <div class="thumb-label">Educación</div>
-                      <div class="thumb-line medium"></div>
-                      <div class="thumb-line short"></div>
-                    </div>
-                  </div>
-                </div>
-              `
-              : `
-                <div class="thumb-head">
-                  <div>
-                    <div class="thumb-title">Nombre Apellido</div>
-                    <div class="thumb-sub">Puesto profesional</div>
-                  </div>
-                </div>
-                <div class="thumb-layout single">
-                  <div class="thumb-section">
-                    <div class="thumb-label">Contacto</div>
-                    <div class="thumb-line"></div>
-                    <div class="thumb-line medium"></div>
-                    <div class="thumb-line short"></div>
-                  </div>
-                  <div class="thumb-section">
-                    <div class="thumb-label">Experiencia</div>
-                    <div class="thumb-line medium"></div>
-                    <div class="thumb-line"></div>
-                    <div class="thumb-line"></div>
-                    <div class="thumb-line short"></div>
-                  </div>
-                  <div class="thumb-section">
-                    <div class="thumb-label">Educación</div>
-                    <div class="thumb-line medium"></div>
-                    <div class="thumb-line short"></div>
-                  </div>
-                </div>
-              `
+        <article class="template-card">
+
+          <div
+            class="template-thumbnail"
+            style="
+              --thumbnail-sidebar:
+                ${template.sidebar};
+            "
+          >
+
+            <span
+              class="
+                template-badge
+                ${
+                  template.premium
+                    ? "premium"
+                    : "free"
+                }
+              "
+            >
+              ${
+                template.premium
+                  ? "Premium"
+                  : "Disponible"
+              }
+            </span>
+
+            ${
+              recommended
+                ? `
+                  <span class="recommended-badge">
+                    Recomendada
+                  </span>
+                `
+                : ""
             }
+
+            <div class="thumbnail-header">
+
+              <div
+                class="
+                  thumbnail-photo
+                  ${
+                    state.photoShape ===
+                    "circle"
+                      ? "circle"
+                      : ""
+                  }
+                "
+              >
+                ${photoContent}
+              </div>
+
+              <div>
+                <div class="thumbnail-name">
+                  Nombre Apellido
+                </div>
+
+                <div class="thumbnail-role">
+                  Puesto profesional
+                </div>
+              </div>
+
+            </div>
+
+            <div
+              class="
+                thumbnail-layout
+                ${
+                  layout.singleColumn
+                    ? "single"
+                    : ""
+                }
+              "
+            >
+
+              ${
+                layout.singleColumn
+                  ? ""
+                  : `
+                    <div class="thumbnail-sidebar">
+
+                      <div class="thumbnail-line medium"></div>
+                      <div class="thumbnail-line"></div>
+                      <div class="thumbnail-line short"></div>
+
+                      <br>
+
+                      <div class="thumbnail-line short"></div>
+                      <div class="thumbnail-line medium"></div>
+
+                    </div>
+                  `
+              }
+
+              <div>
+
+                <div class="thumbnail-line"></div>
+                <div class="thumbnail-line"></div>
+                <div class="thumbnail-line short"></div>
+
+                <br>
+
+                <div class="thumbnail-line medium"></div>
+                <div class="thumbnail-line"></div>
+                <div class="thumbnail-line"></div>
+
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="template-info">
-            <h3>${template.name}</h3>
-            <div class="template-meta">${template.description}</div>
+          <div class="template-body">
+
+            <h3>
+              ${template.name}
+            </h3>
+
+            <div class="template-description">
+              Diseño orientado a perfiles de
+              ${template.category}.
+            </div>
 
             <div class="template-tags">
-              <span class="tag">${template.premium ? "premium" : "gratis"}</span>
-              <span class="tag">${template.role[0]}</span>
-              <span class="tag">${template.family}</span>
+
+              <span class="template-tag">
+                ${template.layout}
+              </span>
+
+              <span class="template-tag">
+                ${template.experienceStyle}
+              </span>
+
+              <span class="template-tag">
+                ${template.skillStyle}
+              </span>
+
             </div>
 
             <div class="template-actions">
-              <button class="btn btn-secondary preview-template-btn" data-template="${template.id}">Vista previa</button>
-              <button class="btn btn-primary use-template-btn" data-template="${template.id}">
-                ${canUseTemplate(template) ? "Usar" : "Desbloquear"}
+
+              <button
+                class="button button-small"
+                data-preview-template="${template.id}"
+              >
+                Vista previa
               </button>
+
+              <button
+                class="button button-primary button-small"
+                data-use-template="${template.id}"
+              >
+                ${
+                  template.premium &&
+                  !state.premium
+                    ? "Desbloquear"
+                    : "Usar"
+                }
+              </button>
+
             </div>
+
           </div>
+
+        </article>
+      `;
+    }
+
+    function renderCatalog() {
+      const search =
+        document
+          .getElementById(
+            "searchInput"
+          )
+          .value
+          .trim()
+          .toLowerCase();
+
+      const plan =
+        document.getElementById(
+          "planFilter"
+        ).value;
+
+      const visibleTemplates =
+        templates
+          .filter(function (
+            template
+          ) {
+            return (
+              state.roleFilter ===
+                "general" ||
+              template.category ===
+                state.roleFilter ||
+              template.category ===
+                "general"
+            );
+          })
+          .filter(function (
+            template
+          ) {
+            if (plan === "free") {
+              return !template.premium;
+            }
+
+            if (
+              plan === "premium"
+            ) {
+              return template.premium;
+            }
+
+            return true;
+          })
+          .filter(function (
+            template
+          ) {
+            const searchableText = [
+              template.name,
+              template.category,
+              template.layout,
+              template.header,
+              template.experienceStyle,
+              template.skillStyle
+            ]
+              .join(" ")
+              .toLowerCase();
+
+            return searchableText.includes(
+              search
+            );
+          })
+          .sort(function (a, b) {
+            const aRecommended =
+              a.category ===
+              state.roleFilter;
+
+            const bRecommended =
+              b.category ===
+              state.roleFilter;
+
+            if (
+              aRecommended !==
+              bRecommended
+            ) {
+              return bRecommended -
+                aRecommended;
+            }
+
+            return (
+              Number(a.premium) -
+              Number(b.premium)
+            );
+          });
+
+      document.getElementById(
+        "catalog"
+      ).innerHTML =
+        visibleTemplates
+          .map(
+            createTemplateThumbnail
+          )
+          .join("");
+
+      document
+        .querySelectorAll(
+          "[data-use-template]"
+        )
+        .forEach(function (button) {
+          button.addEventListener(
+            "click",
+            function () {
+              const template =
+                templates.find(
+                  function (item) {
+                    return (
+                      item.id ===
+                      button.dataset
+                        .useTemplate
+                    );
+                  }
+                );
+
+              if (!template) {
+                return;
+              }
+
+              if (
+                template.premium &&
+                !state.premium
+              ) {
+                alert(
+                  "Esta plantilla requiere Premium."
+                );
+
+                return;
+              }
+
+              applyTemplate(
+                template
+              );
+
+              document
+                .getElementById(
+                  "editor"
+                )
+                .scrollIntoView({
+                  behavior: "smooth"
+                });
+            }
+          );
+        });
+
+      document
+        .querySelectorAll(
+          "[data-preview-template]"
+        )
+        .forEach(function (button) {
+          button.addEventListener(
+            "click",
+            function () {
+              const template =
+                templates.find(
+                  function (item) {
+                    return (
+                      item.id ===
+                      button.dataset
+                        .previewTemplate
+                    );
+                  }
+                );
+
+              applyTemplate(
+                template,
+                true
+              );
+            }
+          );
+        });
+    }
+
+    function applyTemplate(
+      template,
+      previewOnly = false
+    ) {
+      if (!template) {
+        return;
+      }
+
+      state.selectedTemplate =
+        template.id;
+
+      state.color =
+        template.accent;
+
+      state.font =
+        template.font;
+
+      state.density =
+        template.density;
+
+      renderCV();
+
+      syncDesignControls();
+
+      if (!previewOnly) {
+        saveState();
+      }
+    }
+
+    function parseExperience(value) {
+      const parts =
+        String(value || "")
+          .split("|");
+
+      return {
+        title:
+          parts[0]?.trim() ||
+          "Puesto",
+
+        company:
+          parts[1]?.trim() ||
+          "Empresa",
+
+        date:
+          parts[2]?.trim() ||
+          "",
+
+        description:
+          parts
+            .slice(3)
+            .join("|")
+            .trim()
+      };
+    }
+
+    function parseEducation(value) {
+      const parts =
+        String(value || "")
+          .split("|");
+
+      return {
+        title:
+          parts[0]?.trim() ||
+          "Título",
+
+        institution:
+          parts[1]?.trim() ||
+          "Institución",
+
+        date:
+          parts[2]?.trim() ||
+          ""
+      };
+    }
+
+    function renderCV() {
+      const template =
+        getSelectedTemplate();
+
+      const layout =
+        getLayout(template);
+
+      const cvDocument =
+        document.getElementById(
+          "cvDocument"
+        );
+
+      cvDocument.className =
+        "cv-document" +
+        (
+          layout.singleColumn
+            ? " single-column"
+            : ""
+        );
+
+      cvDocument.style.setProperty(
+        "--sidebar-width",
+        layout.sidebarWidth ||
+          "250px"
+      );
+
+      cvDocument.style.setProperty(
+        "--accent",
+        state.color
+      );
+
+      cvDocument.style.setProperty(
+        "--sidebar-color",
+        template.sidebar
+      );
+
+      cvDocument.style.setProperty(
+        "--document-font",
+        state.font
+      );
+
+      cvDocument.style.setProperty(
+        "--photo-radius",
+        state.photoShape ===
+          "circle"
+          ? "50%"
+          : "24px"
+      );
+
+      const padding =
+        state.density ===
+        "compact"
+          ? "40px"
+          : state.density ===
+            "spacious"
+          ? "60px"
+          : "50px";
+
+      document.querySelector(
+        ".cv-main"
+      ).style.padding = padding;
+
+      document.getElementById(
+        "cvName"
+      ).textContent = state.name;
+
+      document.getElementById(
+        "cvRole"
+      ).textContent = state.role;
+
+      document.getElementById(
+        "cvEmail"
+      ).textContent = state.email;
+
+      document.getElementById(
+        "cvPhone"
+      ).textContent = state.phone;
+
+      document.getElementById(
+        "cvCity"
+      ).textContent = state.city;
+
+      document.getElementById(
+        "cvWebsite"
+      ).textContent = state.website;
+
+      document.getElementById(
+        "cvEmailInline"
+      ).textContent = state.email;
+
+      document.getElementById(
+        "cvPhoneInline"
+      ).textContent = state.phone;
+
+      document.getElementById(
+        "cvCityInline"
+      ).textContent = state.city;
+
+      document.getElementById(
+        "cvWebsiteInline"
+      ).textContent =
+        state.website;
+
+      document.getElementById(
+        "cvSummary"
+      ).textContent =
+        state.summary;
+
+      const cvPhoto =
+        document.getElementById(
+          "cvPhoto"
+        );
+
+      cvPhoto.innerHTML =
+        state.photo
+          ? `
+            <img
+              src="${state.photo}"
+              alt="Foto de perfil"
+            >
+          `
+          : initials(state.name);
+
+      const skills =
+        String(state.skills || "")
+          .split(",")
+          .map(function (skill) {
+            return skill.trim();
+          })
+          .filter(Boolean);
+
+      document.getElementById(
+        "cvSkills"
+      ).innerHTML =
+        skills
+          .map(function (skill) {
+            return `
+              <div class="cv-skill">
+                ${escapeHtml(skill)}
+              </div>
+            `;
+          })
+          .join("");
+
+      const experience =
+        parseExperience(
+          state.experience
+        );
+
+      document.getElementById(
+        "cvExperience"
+      ).innerHTML = `
+        <div class="cv-entry">
+
+          <div class="cv-entry-header">
+
+            <div>
+              <h4>
+                ${escapeHtml(
+                  experience.title
+                )}
+              </h4>
+
+              <div class="cv-company">
+                ${escapeHtml(
+                  experience.company
+                )}
+              </div>
+            </div>
+
+            <div class="cv-date">
+              ${escapeHtml(
+                experience.date
+              )}
+            </div>
+
+          </div>
+
+          <p>
+            ${escapeHtml(
+              experience.description
+            )}
+          </p>
+
+        </div>
+      `;
+
+      const education =
+        parseEducation(
+          state.education
+        );
+
+      document.getElementById(
+        "cvEducation"
+      ).innerHTML = `
+        <div class="cv-entry">
+
+          <div class="cv-entry-header">
+
+            <div>
+              <h4>
+                ${escapeHtml(
+                  education.title
+                )}
+              </h4>
+
+              <div class="cv-company">
+                ${escapeHtml(
+                  education.institution
+                )}
+              </div>
+            </div>
+
+            <div class="cv-date">
+              ${escapeHtml(
+                education.date
+              )}
+            </div>
+
+          </div>
+
         </div>
       `;
     }
 
-    function renderTemplateCatalog(){
-      const grid = document.getElementById("templateGrid");
-      const search = document.getElementById("templateSearch").value.trim().toLowerCase();
-
-      let sorted = [...templates].sort((a,b) => {
-        const ar = isTemplateRecommended(a) ? 1 : 0;
-        const br = isTemplateRecommended(b) ? 1 : 0;
-        if(br !== ar) return br - ar;
-        if(a.premium !== b.premium) return Number(a.premium) - Number(b.premium);
-        return a.name.localeCompare(b.name);
-      });
-
-      sorted = sorted.filter(template => {
-        const text = `${template.name} ${template.description} ${template.role.join(" ")}`.toLowerCase();
-        return text.includes(search);
-      });
-
-      grid.innerHTML = sorted.map(renderTemplateThumb).join("");
-
-      document.getElementById("catalogNote").textContent = state.premium
-        ? `Modo Premium activo. Tenés acceso a ${sorted.length} plantillas visibles.`
-        : `Mostrando 5 plantillas gratis y plantillas premium bloqueadas. Puesto objetivo actual: ${currentRoleLabel(state.targetRole)}.`;
-
-      bindTemplateActions();
+    function populateFields() {
+      document
+        .querySelectorAll(
+          "[data-field]"
+        )
+        .forEach(function (field) {
+          field.value =
+            state[
+              field.dataset.field
+            ] || "";
+        });
     }
 
-    function bindTemplateActions(){
-      document.querySelectorAll(".use-template-btn").forEach(button => {
-        button.addEventListener("click", () => {
-          const templateId = button.dataset.template;
-          const template = templates.find(item => item.id === templateId);
-          if(!template) return;
+    function bindFields() {
+      document
+        .querySelectorAll(
+          "[data-field]"
+        )
+        .forEach(function (field) {
+          field.addEventListener(
+            "input",
+            function () {
+              state[
+                field.dataset.field
+              ] = field.value;
 
-          if(template.premium && !state.premium){
-            showToast("Esta plantilla es Premium. Activá Premium demo para probarla.");
-            return;
+              renderCV();
+
+              renderPhotoPreview();
+
+              saveState();
+            }
+          );
+        });
+    }
+
+    function renderPhotoPreview() {
+      const photoPreview =
+        document.getElementById(
+          "photoPreview"
+        );
+
+      photoPreview.classList.toggle(
+        "circle",
+        state.photoShape ===
+          "circle"
+      );
+
+      photoPreview.innerHTML =
+        state.photo
+          ? `
+            <img
+              src="${state.photo}"
+              alt="Foto"
+            >
+          `
+          : initials(state.name);
+    }
+
+    function renderColorOptions() {
+      const colors =
+        modules.palettes.map(
+          function (palette) {
+            return palette.accent;
           }
+        );
 
-          state.selectedTemplate = template.id;
-          if(!state.premium){
-            state.color = template.accent;
+      document.getElementById(
+        "colorOptions"
+      ).innerHTML =
+        colors
+          .map(function (color) {
+            return `
+              <button
+                class="color-option"
+                data-color="${color}"
+                style="background:${color};"
+                aria-label="Seleccionar color"
+              ></button>
+            `;
+          })
+          .join("");
+
+      document
+        .querySelectorAll(
+          "[data-color]"
+        )
+        .forEach(function (button) {
+          button.addEventListener(
+            "click",
+            function () {
+              state.color =
+                button.dataset.color;
+
+              renderCV();
+
+              syncDesignControls();
+
+              saveState();
+            }
+          );
+        });
+    }
+
+    function renderFontOptions() {
+      document.getElementById(
+        "fontOptions"
+      ).innerHTML =
+        modules.fonts
+          .map(function (font) {
+            return `
+              <button
+                class="option-button"
+                data-font="${font.value}"
+              >
+                ${font.name}
+              </button>
+            `;
+          })
+          .join("");
+
+      document
+        .querySelectorAll(
+          "[data-font]"
+        )
+        .forEach(function (button) {
+          button.addEventListener(
+            "click",
+            function () {
+              if (!state.premium) {
+                alert(
+                  "La tipografía personalizada requiere Premium."
+                );
+
+                return;
+              }
+
+              state.font =
+                button.dataset.font;
+
+              renderCV();
+
+              syncDesignControls();
+
+              saveState();
+            }
+          );
+        });
+    }
+
+    function syncDesignControls() {
+      const selectedTemplate =
+        getSelectedTemplate();
+
+      document.getElementById(
+        "selectedTemplate"
+      ).value =
+        selectedTemplate.name;
+
+      document.getElementById(
+        "density"
+      ).value =
+        state.density;
+
+      document.getElementById(
+        "planNotice"
+      ).textContent =
+        state.premium
+          ? "Premium demo activo. Todas las plantillas y controles avanzados están disponibles."
+          : "Plan gratuito activo. Las opciones avanzadas de tipografía y espaciado requieren Premium.";
+
+      document
+        .querySelectorAll(
+          "[data-color]"
+        )
+        .forEach(function (button) {
+          button.classList.toggle(
+            "active",
+            button.dataset.color ===
+              state.color
+          );
+        });
+
+      document
+        .querySelectorAll(
+          "[data-font]"
+        )
+        .forEach(function (button) {
+          button.classList.toggle(
+            "active",
+            button.dataset.font ===
+              state.font
+          );
+        });
+
+      document
+        .querySelectorAll(
+          "[data-photo-shape]"
+        )
+        .forEach(function (button) {
+          button.classList.toggle(
+            "active",
+            button.dataset.photoShape ===
+              state.photoShape
+          );
+        });
+    }
+
+    document
+      .querySelectorAll(
+        ".editor-tab"
+      )
+      .forEach(function (tab) {
+        tab.addEventListener(
+          "click",
+          function () {
+            document
+              .querySelectorAll(
+                ".editor-tab"
+              )
+              .forEach(function (
+                item
+              ) {
+                item.classList.remove(
+                  "active"
+                );
+              });
+
+            document
+              .querySelectorAll(
+                ".editor-panel"
+              )
+              .forEach(function (
+                panel
+              ) {
+                panel.classList.remove(
+                  "active"
+                );
+              });
+
+            tab.classList.add(
+              "active"
+            );
+
+            document
+              .getElementById(
+                "panel-" +
+                tab.dataset.tab
+              )
+              .classList.add(
+                "active"
+              );
           }
-          renderEverything();
-          scheduleSave();
-          document.getElementById("editor").scrollIntoView({ behavior:"smooth" });
-          showToast(`Plantilla ${template.name} seleccionada`);
-        });
+        );
       });
 
-      document.querySelectorAll(".preview-template-btn").forEach(button => {
-        button.addEventListener("click", () => {
-          const templateId = button.dataset.template;
-          const template = templates.find(item => item.id === templateId);
-          if(!template) return;
-          showToast(`Vista previa rápida: ${template.name}`);
-        });
-      });
-    }
+    document
+      .querySelectorAll(
+        "[data-photo-shape]"
+      )
+      .forEach(function (button) {
+        button.addEventListener(
+          "click",
+          function () {
+            state.photoShape =
+              button.dataset.photoShape;
 
-    function populateFields(){
-      document.querySelectorAll("[data-field]").forEach(field => {
-        const key = field.dataset.field;
-        field.value = state[key] ?? "";
-      });
+            renderPhotoPreview();
 
-      document.getElementById("targetRoleSelect").value = state.targetRole;
-      document.getElementById("selectedTemplateName").value = getSelectedTemplate().name;
-      document.getElementById("spacingRange").value = state.spacing;
-    }
+            renderCV();
 
-    function bindStaticFields(){
-      document.querySelectorAll("[data-field]").forEach(field => {
-        field.addEventListener("input", event => {
-          const key = event.target.dataset.field;
-          state[key] = event.target.value;
-          renderCV();
-          renderPhotoPreview();
-          scheduleSave();
-        });
+            renderCatalog();
+
+            syncDesignControls();
+
+            saveState();
+          }
+        );
       });
 
-      document.getElementById("targetRoleSelect").addEventListener("change", event => {
-        state.targetRole = event.target.value;
-        renderTemplateCatalog();
-        scheduleSave();
-      });
+    document.getElementById(
+      "photoInput"
+    ).addEventListener(
+      "change",
+      function (event) {
+        const file =
+          event.target.files[0];
 
-      document.getElementById("templateSearch").addEventListener("input", renderTemplateCatalog);
-    }
-
-    function renderExperienceForm(){
-      const container = document.getElementById("experienceList");
-      container.innerHTML = state.experiences.map((item,index) => `
-        <div class="repeat-card">
-          <div class="repeat-head">
-            <strong>Experiencia ${index + 1}</strong>
-            ${state.experiences.length > 1 ? `<button class="icon-btn" data-remove-exp="${index}">🗑</button>` : ""}
-          </div>
-
-          <div class="field">
-            <label>Cargo</label>
-            <input class="input" data-exp-field="role" data-index="${index}" value="${escapeHtml(item.role)}" placeholder="Ej. Analista / Diseñador / Vendedor">
-          </div>
-
-          <div class="field">
-            <label>Empresa</label>
-            <input class="input" data-exp-field="company" data-index="${index}" value="${escapeHtml(item.company)}" placeholder="Ej. Empresa">
-          </div>
-
-          <div class="field">
-            <label>Período</label>
-            <input class="input" data-exp-field="period" data-index="${index}" value="${escapeHtml(item.period)}" placeholder="2023 — 2025">
-          </div>
-
-          <div class="field">
-            <label>Descripción</label>
-            <textarea class="textarea" data-exp-field="description" data-index="${index}" placeholder="Responsabilidades y logros">${escapeHtml(item.description)}</textarea>
-          </div>
-        </div>
-      `).join("");
-
-      container.querySelectorAll("[data-exp-field]").forEach(field => {
-        field.addEventListener("input", event => {
-          const index = Number(event.target.dataset.index);
-          const key = event.target.dataset.expField;
-          state.experiences[index][key] = event.target.value;
-          renderCV();
-          scheduleSave();
-        });
-      });
-
-      container.querySelectorAll("[data-remove-exp]").forEach(button => {
-        button.addEventListener("click", () => {
-          state.experiences.splice(Number(button.dataset.removeExp),1);
-          renderExperienceForm();
-          renderCV();
-          scheduleSave();
-        });
-      });
-    }
-
-    function renderEducationForm(){
-      const container = document.getElementById("educationList");
-      container.innerHTML = state.education.map((item,index) => `
-        <div class="repeat-card">
-          <div class="repeat-head">
-            <strong>Educación ${index + 1}</strong>
-            ${state.education.length > 1 ? `<button class="icon-btn" data-remove-edu="${index}">🗑</button>` : ""}
-          </div>
-
-          <div class="field">
-            <label>Título o carrera</label>
-            <input class="input" data-edu-field="degree" data-index="${index}" value="${escapeHtml(item.degree)}" placeholder="Ej. Licenciatura en...">
-          </div>
-
-          <div class="field">
-            <label>Institución</label>
-            <input class="input" data-edu-field="institution" data-index="${index}" value="${escapeHtml(item.institution)}" placeholder="Ej. Universidad / Instituto">
-          </div>
-
-          <div class="field">
-            <label>Período</label>
-            <input class="input" data-edu-field="period" data-index="${index}" value="${escapeHtml(item.period)}" placeholder="2020 — 2024">
-          </div>
-        </div>
-      `).join("");
-
-      container.querySelectorAll("[data-edu-field]").forEach(field => {
-        field.addEventListener("input", event => {
-          const index = Number(event.target.dataset.index);
-          const key = event.target.dataset.eduField;
-          state.education[index][key] = event.target.value;
-          renderCV();
-          scheduleSave();
-        });
-      });
-
-      container.querySelectorAll("[data-remove-edu]").forEach(button => {
-        button.addEventListener("click", () => {
-          state.education.splice(Number(button.dataset.removeEdu),1);
-          renderEducationForm();
-          renderCV();
-          scheduleSave();
-        });
-      });
-    }
-
-    function renderPhotoPreview(){
-      const initials = getInitials(state.fullName);
-      const box = document.getElementById("photoBox");
-
-      box.classList.toggle("circle", state.photoCircle);
-      box.innerHTML = state.photoData
-        ? `<img src="${state.photoData}" alt="Foto de perfil">`
-        : initials;
-    }
-
-    function renderCV(){
-      const template = getSelectedTemplate();
-      const cv = document.getElementById("cvDocument");
-
-      cv.className = `cv-document ${template.style}`;
-      cv.style.setProperty("--cv-accent", state.color);
-      cv.style.setProperty("--accent", state.color);
-      cv.style.setProperty("--cv-font", state.font);
-
-      const sideVisible = !["cv-minimal","cv-executive-dark","cv-engineering-pro","cv-sales-impact","cv-legal-classic","cv-teacher-soft","cv-data-matrix","cv-creative-split"].includes(template.style);
-
-      document.getElementById("selectedTemplateName").value = template.name;
-      document.getElementById("premiumStatusText").textContent = state.premium
-        ? "Tenés Premium demo activo. Podés usar todas las plantillas y modificar tipografía y espaciado."
-        : "Estás en plan Gratis. Tenés 5 plantillas y color principal habilitado.";
-
-      const fullName = safeText(state.fullName, "Nombre Apellido");
-      const profession = safeText(state.profession, "Puesto profesional");
-      const email = safeText(state.email, "tu@email.com");
-      const phone = safeText(state.phone, "Tu teléfono");
-      const city = safeText(state.city, "Tu ciudad");
-      const website = safeText(state.website, "Tu portfolio");
-      const summary = safeText(state.summary, "Agregá un perfil profesional claro, breve y orientado al puesto que querés conseguir.");
-
-      document.getElementById("cvName").textContent = fullName;
-      document.getElementById("cvProfession").textContent = profession;
-      document.getElementById("cvSummary").textContent = summary;
-
-      document.getElementById("cvEmail").textContent = email;
-      document.getElementById("cvPhone").textContent = phone;
-      document.getElementById("cvCity").textContent = city;
-      document.getElementById("cvWebsite").textContent = website;
-
-      document.getElementById("cvEmailInline").textContent = email;
-      document.getElementById("cvPhoneInline").textContent = phone;
-      document.getElementById("cvCityInline").textContent = city;
-      document.getElementById("cvWebsiteInline").textContent = website;
-
-      const cvPhoto = document.getElementById("cvPhotoBox");
-      cvPhoto.classList.toggle("circle", state.photoCircle);
-      cvPhoto.innerHTML = state.photoData
-        ? `<img src="${state.photoData}" alt="Foto de perfil">`
-        : getInitials(fullName);
-
-      const skills = String(state.skills || "")
-        .split(",")
-        .map(skill => skill.trim())
-        .filter(Boolean);
-
-      document.getElementById("cvSkillsSidebar").innerHTML = skills.length
-        ? skills.map((skill,index) => `
-            <div class="cv-skill">
-              <div class="cv-skill-name">${escapeHtml(skill)}</div>
-              <div class="cv-skill-bar"><span style="width:${Math.max(58, 92 - index * 7)}%"></span></div>
-            </div>
-          `).join("")
-        : `<div class="cv-contact-item">Agregá tus habilidades</div>`;
-
-      document.getElementById("cvSkillsMinimal").innerHTML = skills.length
-        ? skills.map(skill => `<div class="cv-entry" style="margin-bottom:10px;"><h4 style="font-size:13px;">${escapeHtml(skill)}</h4></div>`).join("")
-        : `<div class="cv-entry"><p>Agregá tus habilidades</p></div>`;
-
-      document.getElementById("cvExperience").innerHTML = state.experiences
-        .filter(item => item.role || item.company || item.description)
-        .map(item => `
-          <div class="cv-entry">
-            <div class="cv-entry-head">
-              <div>
-                <h4>${escapeHtml(safeText(item.role, "Cargo"))}</h4>
-                <div class="cv-entry-company">${escapeHtml(safeText(item.company, "Empresa"))}</div>
-              </div>
-              <div class="cv-entry-date">${escapeHtml(item.period || "")}</div>
-            </div>
-            <p>${escapeHtml(item.description || "")}</p>
-          </div>
-        `).join("") || `<div class="cv-entry"><p>Agregá tu experiencia laboral.</p></div>`;
-
-      document.getElementById("cvEducation").innerHTML = state.education
-        .filter(item => item.degree || item.institution)
-        .map(item => `
-          <div class="cv-entry">
-            <div class="cv-entry-head">
-              <div>
-                <h4>${escapeHtml(safeText(item.degree, "Título"))}</h4>
-                <div class="cv-entry-company">${escapeHtml(safeText(item.institution, "Institución"))}</div>
-              </div>
-              <div class="cv-entry-date">${escapeHtml(item.period || "")}</div>
-            </div>
-          </div>
-        `).join("") || `<div class="cv-entry"><p>Agregá tu formación académica.</p></div>`;
-
-      cv.style.letterSpacing = "normal";
-      cv.style.lineHeight = String(state.spacing);
-
-      syncControls();
-      fitCV();
-    }
-
-    function syncControls(){
-      document.querySelectorAll(".swatch").forEach(button => {
-        button.classList.toggle("active", button.dataset.color.toLowerCase() === state.color.toLowerCase());
-      });
-
-      document.querySelectorAll(".font-option").forEach(button => {
-        button.classList.toggle("active", button.dataset.font === state.font);
-      });
-
-      document.getElementById("premiumToggleBtn").textContent = state.premium
-        ? "Desactivar Premium demo"
-        : "Activar vista Premium demo";
-
-      document.getElementById("premiumToggleBtn2").textContent = state.premium
-        ? "Desactivar Premium demo"
-        : "Probar Premium demo";
-    }
-
-    function fitCV(){
-      const stage = document.querySelector(".stage");
-      const cv = document.getElementById("cvDocument");
-
-      if(window.innerWidth <= 680) return;
-
-      const available = stage.clientWidth - 40;
-      const scale = Math.min(1, available / 794);
-      cv.style.transform = `scale(${scale})`;
-      stage.style.minHeight = `${1123 * scale + 80}px`;
-    }
-
-    function renderEverything(){
-      populateFields();
-      renderTemplateCatalog();
-      renderExperienceForm();
-      renderEducationForm();
-      renderPhotoPreview();
-      renderCV();
-    }
-
-    function switchTab(tabName){
-      document.querySelectorAll(".tab").forEach(tab => {
-        tab.classList.toggle("active", tab.dataset.tab === tabName);
-      });
-
-      document.querySelectorAll(".panel").forEach(panel => {
-        panel.classList.toggle("active", panel.id === `panel-${tabName}`);
-      });
-    }
-
-    // tabs
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.addEventListener("click", () => switchTab(tab.dataset.tab));
-    });
-
-    // buttons
-    document.getElementById("addExperienceBtn").addEventListener("click", () => {
-      state.experiences.push({ role:"", company:"", period:"", description:"" });
-      renderExperienceForm();
-      renderCV();
-      scheduleSave();
-    });
-
-    document.getElementById("addEducationBtn").addEventListener("click", () => {
-      state.education.push({ degree:"", institution:"", period:"" });
-      renderEducationForm();
-      renderCV();
-      scheduleSave();
-    });
-
-    document.getElementById("saveBtn").addEventListener("click", () => saveState(true));
-    document.getElementById("printBtn").addEventListener("click", () => { saveState(false); window.print(); });
-
-    document.getElementById("resetBtn").addEventListener("click", () => {
-      if(!confirm("¿Querés restablecer todos los datos?")) return;
-      state = deepClone(defaultState);
-      renderEverything();
-      saveState(false);
-      showToast("Datos restablecidos");
-    });
-
-    // premium toggle
-    function togglePremium(){
-      state.premium = !state.premium;
-      if(!state.premium){
-        const selected = getSelectedTemplate();
-        if(selected.premium){
-          state.selectedTemplate = "modern";
-        }
-        state.font = defaultState.font;
-        state.spacing = 1;
-      }
-      renderEverything();
-      scheduleSave();
-      showToast(state.premium ? "Premium demo activado" : "Premium demo desactivado");
-    }
-
-    document.getElementById("premiumToggleBtn").addEventListener("click", togglePremium);
-    document.getElementById("premiumToggleBtn2").addEventListener("click", togglePremium);
-
-    // design controls
-    document.querySelectorAll(".swatch").forEach(button => {
-      button.addEventListener("click", () => {
-        state.color = button.dataset.color;
-        renderCV();
-        scheduleSave();
-      });
-    });
-
-    document.querySelectorAll(".font-option").forEach(button => {
-      button.addEventListener("click", () => {
-        if(!state.premium){
-          showToast("La tipografía personalizada es una función Premium.");
+        if (!file) {
           return;
         }
-        state.font = button.dataset.font;
-        renderCV();
-        scheduleSave();
-      });
-    });
 
-    document.getElementById("spacingRange").addEventListener("input", event => {
-      if(!state.premium){
-        event.target.value = 1;
-        showToast("El espaciado personalizado es una función Premium.");
-        return;
+        const reader =
+          new FileReader();
+
+        reader.onload =
+          function () {
+            state.photo =
+              reader.result;
+
+            renderPhotoPreview();
+
+            renderCatalog();
+
+            renderCV();
+
+            saveState();
+          };
+
+        reader.readAsDataURL(
+          file
+        );
       }
-      state.spacing = Number(event.target.value);
-      renderCV();
-      scheduleSave();
-    });
+    );
 
-    // photo upload
-    document.getElementById("photoInput").addEventListener("change", event => {
-      const file = event.target.files?.[0];
-      if(!file) return;
+    document.getElementById(
+      "removePhoto"
+    ).addEventListener(
+      "click",
+      function () {
+        state.photo = "";
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        state.photoData = reader.result;
+        document.getElementById(
+          "photoInput"
+        ).value = "";
+
         renderPhotoPreview();
-        renderTemplateCatalog();
+
+        renderCatalog();
+
         renderCV();
-        scheduleSave();
-        showToast("Foto subida correctamente");
-      };
-      reader.readAsDataURL(file);
-    });
 
-    document.getElementById("removePhotoBtn").addEventListener("click", () => {
-      state.photoData = "";
-      document.getElementById("photoInput").value = "";
-      renderPhotoPreview();
-      renderTemplateCatalog();
-      renderCV();
-      scheduleSave();
-      showToast("Foto eliminada");
-    });
+        saveState();
+      }
+    );
 
-    document.getElementById("photoShapeBtn").addEventListener("click", () => {
-      state.photoCircle = !state.photoCircle;
-      renderPhotoPreview();
-      renderTemplateCatalog();
-      renderCV();
-      scheduleSave();
-      showToast(state.photoCircle ? "Foto circular" : "Foto cuadrada redondeada");
-    });
+    document.getElementById(
+      "roleFilter"
+    ).addEventListener(
+      "change",
+      function (event) {
+        state.roleFilter =
+          event.target.value;
 
-    // nav
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-    });
+        renderCatalog();
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => navLinks.classList.remove("open"));
-    });
+        saveState();
+      }
+    );
 
-    window.addEventListener("scroll", () => {
-      navWrap.classList.toggle("scrolled", window.scrollY > 20);
-    });
+    document.getElementById(
+      "planFilter"
+    ).addEventListener(
+      "change",
+      renderCatalog
+    );
 
-    window.addEventListener("resize", fitCV);
+    document.getElementById(
+      "searchInput"
+    ).addEventListener(
+      "input",
+      renderCatalog
+    );
 
-    bindStaticFields();
-    renderEverything();
+    document.getElementById(
+      "premiumToggle"
+    ).addEventListener(
+      "click",
+      function () {
+        state.premium =
+          !state.premium;
+
+        document.getElementById(
+          "premiumToggle"
+        ).textContent =
+          state.premium
+            ? "Desactivar Premium demo"
+            : "Activar Premium demo";
+
+        renderCatalog();
+
+        syncDesignControls();
+
+        saveState();
+      }
+    );
+
+    document.getElementById(
+      "density"
+    ).addEventListener(
+      "change",
+      function (event) {
+        if (!state.premium) {
+          event.target.value =
+            state.density;
+
+          alert(
+            "El espaciado personalizado requiere Premium."
+          );
+
+          return;
+        }
+
+        state.density =
+          event.target.value;
+
+        renderCV();
+
+        saveState();
+      }
+    );
+
+    document.getElementById(
+      "exportButton"
+    ).addEventListener(
+      "click",
+      function () {
+        window.print();
+      }
+    );
+
+    populateRoleFilter();
+
+    populateFields();
+
+    bindFields();
+
+    renderColorOptions();
+
+    renderFontOptions();
+
+    renderPhotoPreview();
+
+    renderCatalog();
+
+    renderCV();
+
+    syncDesignControls();
   </script>
+
 </body>
 </html>
