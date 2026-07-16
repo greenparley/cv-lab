@@ -1,3477 +1,535 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta
-    name="description"
-    content="Crea un currículum profesional con plantillas recomendadas según tu perfil."
-  >
-
-  <title>CV Lab | Currículums profesionales</title>
-
-  <style>
-    :root {
-      --background: #070a14;
-      --surface: #10172a;
-      --surface-light: #17213a;
-      --border: rgba(255, 255, 255, 0.09);
-      --border-strong: rgba(255, 255, 255, 0.16);
-
-      --text: #f8f9ff;
-      --muted: #aab2c9;
-      --muted-dark: #7f88a2;
-
-      --primary: #6d5dfc;
-      --primary-dark: #4f41da;
-      --success: #42cf91;
-      --premium: #d9b45d;
-
-      --shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
-      --container: 1220px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(109, 93, 252, 0.15),
-          transparent 24%
-        ),
-        radial-gradient(
-          circle at 90% 15%,
-          rgba(66, 180, 255, 0.1),
-          transparent 22%
-        ),
-        var(--background);
-
-      color: var(--text);
-
-      font-family:
-        Inter,
-        Arial,
-        sans-serif;
-
-      overflow-x: hidden;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(
-        var(--container),
-        calc(100% - 32px)
-      );
-
-      margin-inline: auto;
-    }
-
-    .button {
-      min-height: 46px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-
-      padding: 0 19px;
-
-      border: 1px solid var(--border);
-      border-radius: 999px;
-
-      background: rgba(255, 255, 255, 0.04);
-      color: white;
-
-      font-weight: 800;
-
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-
-      border-color: rgba(109, 93, 252, 0.5);
-    }
-
-    .button-primary {
-      border-color: transparent;
-
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary-dark)
-      );
-
-      box-shadow:
-        0 15px 34px rgba(79, 65, 218, 0.28);
-    }
-
-    .button-small {
-      min-height: 40px;
-
-      padding-inline: 14px;
-
-      font-size: 12px;
-    }
-
-    .section-heading {
-      max-width: 760px;
-
-      margin-bottom: 36px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(36px, 5vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-    }
-
-    .section-heading p {
-      margin-top: 15px;
-
-      color: var(--muted);
-
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    /* Navegación */
-
-    .navigation {
-      position: sticky;
-      top: 0;
-
-      z-index: 100;
-
-      border-bottom: 1px solid var(--border);
-
-      background: rgba(7, 10, 20, 0.86);
-
-      backdrop-filter: blur(17px);
-    }
-
-    .navigation-content {
-      min-height: 74px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
-
-    .brand span {
-      color: var(--primary);
-    }
-
-    .navigation-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    /* Portada */
-
-    .hero {
-      padding: 90px 0 75px;
-    }
-
-    .hero-grid {
-      display: grid;
-
-      grid-template-columns: 1.05fr 0.95fr;
-
-      align-items: center;
-
-      gap: 60px;
-    }
-
-    .hero h1 {
-      max-width: 780px;
-
-      font-size: clamp(50px, 7vw, 86px);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      max-width: 650px;
-
-      margin-top: 24px;
-
-      color: var(--muted);
-
-      font-size: 19px;
-      line-height: 1.75;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-
-      margin-top: 30px;
-    }
-
-    .hero-preview {
-      max-width: 430px;
-
-      margin-inline: auto;
-      padding: 32px;
-
-      aspect-ratio: 210 / 297;
-
-      border-radius: 26px;
-
-      background: white;
-      color: #1d2332;
-
-      box-shadow: var(--shadow);
-
-      transform: rotate(2deg);
-    }
-
-    .hero-preview-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-
-      padding-bottom: 20px;
-
-      border-bottom: 2px solid #eceef5;
-    }
-
-    .hero-preview-photo {
-      width: 70px;
-      height: 70px;
-
-      border-radius: 20px;
-
-      background: var(--primary);
-    }
-
-    .hero-preview-name {
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
-
-    .hero-preview-role {
-      margin-top: 7px;
-
-      color: var(--primary);
-
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .hero-preview-grid {
-      display: grid;
-
-      grid-template-columns: 0.8fr 1.2fr;
-
-      gap: 24px;
-
-      margin-top: 24px;
-    }
-
-    .preview-line {
-      height: 7px;
-
-      margin-bottom: 8px;
-
-      border-radius: 999px;
-
-      background: #e5e8f0;
-    }
-
-    .preview-line.dark {
-      background: #b9bfce;
-    }
-
-    .preview-line.medium {
-      width: 78%;
-    }
-
-    .preview-line.short {
-      width: 58%;
-    }
-
-    /* Catálogo */
-
-    .catalog-section {
-      padding: 95px 0;
-
-      background: rgba(255, 255, 255, 0.012);
-    }
-
-    .catalog-toolbar {
-      display: grid;
-
-      grid-template-columns:
-        minmax(180px, 1fr)
-        minmax(180px, 1fr)
-        minmax(190px, 1fr)
-        auto;
-
-      gap: 12px;
-
-      margin-bottom: 26px;
-    }
-
-    .control {
-      width: 100%;
-      height: 48px;
-
-      border: 1px solid var(--border);
-      border-radius: 14px;
-
-      outline: none;
-
-      background: var(--surface);
-      color: white;
-
-      padding: 0 14px;
-    }
-
-    .catalog-grid {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 18px;
-    }
-
-    .template-card {
-      border: 1px solid var(--border);
-      border-radius: 22px;
-
-      background: rgba(255, 255, 255, 0.025);
-
-      overflow: hidden;
-
-      transition:
-        transform 0.22s ease,
-        border-color 0.22s ease;
-    }
-
-    .template-card:hover {
-      transform: translateY(-5px);
-
-      border-color: rgba(109, 93, 252, 0.46);
-    }
-
-    .template-thumbnail {
-      position: relative;
-
-      aspect-ratio: 210 / 250;
-
-      padding: 18px;
-
-      background: white;
-      color: #202736;
-
-      overflow: hidden;
-    }
-
-    .template-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-
-      z-index: 3;
-
-      padding: 6px 9px;
-
-      border-radius: 999px;
-
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .template-badge.free {
-      background: var(--success);
-      color: #062516;
-    }
-
-    .template-badge.premium {
-      background: var(--premium);
-      color: #2a1d00;
-    }
-
-    .recommended-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-
-      z-index: 3;
-
-      padding: 6px 9px;
-
-      border-radius: 999px;
-
-      background: var(--primary);
-      color: white;
-
-      font-size: 10px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .thumbnail-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      margin-top: 27px;
-    }
-
-    .thumbnail-photo {
-      width: 52px;
-      height: 52px;
-
-      flex: 0 0 auto;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 16px;
-
-      background: #d9deeb;
-
-      font-size: 13px;
-      font-weight: 900;
-
-      overflow: hidden;
-    }
-
-    .thumbnail-photo.circle {
-      border-radius: 50%;
-    }
-
-    .thumbnail-photo img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .thumbnail-name {
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    .thumbnail-role {
-      margin-top: 5px;
-
-      color: var(--primary);
-
-      font-size: 8px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .thumbnail-layout {
-      display: grid;
-
-      grid-template-columns: 35% 1fr;
-
-      gap: 14px;
-
-      margin-top: 18px;
-    }
-
-    .thumbnail-layout.single {
-      grid-template-columns: 1fr;
-    }
-
-    .thumbnail-sidebar {
-      padding: 12px;
-
-      border-radius: 12px;
-
-      background: var(--thumbnail-sidebar);
-    }
-
-    .thumbnail-line {
-      height: 5px;
-
-      margin: 6px 0;
-
-      border-radius: 999px;
-
-      background: #dfe3ed;
-    }
-
-    .thumbnail-sidebar .thumbnail-line {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    .thumbnail-line.medium {
-      width: 80%;
-    }
-
-    .thumbnail-line.short {
-      width: 60%;
-    }
-
-    .template-body {
-      padding: 16px;
-    }
-
-    .template-body h3 {
-      font-size: 16px;
-    }
-
-    .template-description {
-      min-height: 38px;
-
-      margin-top: 7px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .template-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-
-      margin-top: 11px;
-    }
-
-    .template-tag {
-      padding: 5px 8px;
-
-      border: 1px solid var(--border);
-      border-radius: 999px;
-
-      color: #d8dced;
-
-      font-size: 10px;
-    }
-
-    .template-actions {
-      display: flex;
-      gap: 8px;
-
-      margin-top: 14px;
-    }
-
-    .template-actions .button {
-      flex: 1;
-    }
-
-    /* Editor */
-
-    .editor-section {
-      padding: 95px 0;
-    }
-
-    .editor-shell {
-      min-height: 860px;
-
-      display: grid;
-
-      grid-template-columns: 430px minmax(0, 1fr);
-
-      border: 1px solid var(--border);
-      border-radius: 28px;
-
-      background: var(--surface);
-
-      box-shadow: var(--shadow);
-
-      overflow: hidden;
-    }
-
-    .editor-sidebar {
-      padding: 18px;
-
-      border-right: 1px solid var(--border);
-
-      background: #0d1425;
-
-      overflow: auto;
-    }
-
-    .editor-tabs {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 8px;
-
-      margin-bottom: 18px;
-    }
-
-    .editor-tab {
-      min-height: 40px;
-
-      border: 1px solid transparent;
-      border-radius: 12px;
-
-      background: transparent;
-      color: var(--muted);
-
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .editor-tab.active {
-      border-color: rgba(109, 93, 252, 0.26);
-
-      background: rgba(109, 93, 252, 0.13);
-      color: white;
-    }
-
-    .editor-panel {
-      display: none;
-    }
-
-    .editor-panel.active {
-      display: block;
-    }
-
-    .form-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 11px;
-    }
-
-    .field {
-      margin-bottom: 14px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      display: block;
-
-      margin-bottom: 7px;
-
-      color: #cbd1e5;
-
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .field input,
-    .field textarea,
-    .field select {
-      width: 100%;
-
-      border: 1px solid var(--border);
-      border-radius: 12px;
-
-      outline: none;
-
-      background: var(--surface-light);
-      color: white;
-
-      padding: 12px;
-    }
-
-    .field textarea {
-      min-height: 105px;
-
-      resize: vertical;
-
-      line-height: 1.5;
-    }
-
-    .photo-settings {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-
-      margin-bottom: 18px;
-    }
-
-    .photo-preview {
-      width: 90px;
-      height: 90px;
-
-      flex: 0 0 auto;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid var(--border);
-      border-radius: 20px;
-
-      background: #202a46;
-
-      font-size: 24px;
-      font-weight: 900;
-
-      overflow: hidden;
-    }
-
-    .photo-preview.circle {
-      border-radius: 50%;
-    }
-
-    .photo-preview img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .option-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 10px;
-    }
-
-    .option-button {
-      min-height: 44px;
-
-      border: 1px solid var(--border);
-      border-radius: 12px;
-
-      background: var(--surface-light);
-      color: white;
-
-      font-weight: 700;
-    }
-
-    .option-button.active {
-      border-color: var(--primary);
-
-      box-shadow:
-        0 0 0 3px rgba(109, 93, 252, 0.12);
-    }
-
-    .color-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .color-option {
-      width: 35px;
-      height: 35px;
-
-      border: 3px solid transparent;
-      border-radius: 50%;
-    }
-
-    .color-option.active {
-      border-color: white;
-    }
-
-    .plan-notice {
-      padding: 13px 14px;
-
-      border: 1px solid var(--border);
-      border-radius: 12px;
-
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--muted);
-
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .editor-preview {
-      padding: 22px;
-
-      background:
-        linear-gradient(
-          45deg,
-          rgba(255, 255, 255, 0.018) 25%,
-          transparent 25%
-        ),
-        linear-gradient(
-          -45deg,
-          rgba(255, 255, 255, 0.018) 25%,
-          transparent 25%
-        ),
-        #0a1020;
-
-      background-size: 24px 24px;
-
-      overflow: auto;
-    }
-
-    .preview-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-
-      margin-bottom: 18px;
-    }
-
-    .preview-toolbar span {
-      color: var(--muted);
-
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .cv-stage {
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Documento */
-
-    .cv-document {
-      --accent: #6d5dfc;
-      --sidebar-color: #19223b;
-      --sidebar-width: 250px;
-      --photo-radius: 24px;
-      --document-font: Inter, Arial, sans-serif;
-
-      width: 794px;
-      min-height: 1123px;
-
-      display: grid;
-
-      grid-template-columns:
-        var(--sidebar-width)
-        1fr;
-
-      background: white;
-      color: #1f2532;
-
-      box-shadow:
-        0 20px 70px rgba(0, 0, 0, 0.4);
-
-      font-family: var(--document-font);
-    }
-
-    .cv-document.single-column {
-      display: block;
-
-      border-top: 12px solid var(--accent);
-    }
-
-    .cv-document.single-column .cv-sidebar {
-      display: none;
-    }
-
-    .cv-sidebar {
-      padding: 48px 30px;
-
-      background: var(--sidebar-color);
-      color: white;
-    }
-
-    .cv-main {
-      padding: 50px 46px;
-    }
-
-    .cv-photo {
-      width: 108px;
-      height: 108px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: var(--photo-radius);
-
-      background: var(--accent);
-      color: white;
-
-      font-size: 34px;
-      font-weight: 900;
-
-      overflow: hidden;
-    }
-
-    .cv-photo img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .cv-name {
-      font-size: 42px;
-      line-height: 0.96;
-      letter-spacing: -0.05em;
-    }
-
-    .cv-role {
-      margin-top: 12px;
-
-      color: var(--accent);
-
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .cv-summary {
-      margin-top: 22px;
-
-      color: #5b6377;
-
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .cv-section {
-      margin-top: 30px;
-    }
-
-    .cv-section-title {
-      margin-bottom: 12px;
-
-      color: var(--accent);
-
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .cv-sidebar .cv-section-title {
-      color: #c1bbff;
-    }
-
-    .cv-contact {
-      margin-bottom: 8px;
-
-      font-size: 12px;
-      line-height: 1.55;
-
-      overflow-wrap: anywhere;
-    }
-
-    .cv-inline-contact {
-      display: none;
-      flex-wrap: wrap;
-      gap: 9px 18px;
-
-      margin-top: 16px;
-      padding-bottom: 18px;
-
-      border-bottom: 1px solid #e6e9ef;
-
-      color: #667085;
-
-      font-size: 12px;
-    }
-
-    .cv-document.single-column .cv-inline-contact {
-      display: flex;
-    }
-
-    .cv-entry {
-      margin-bottom: 22px;
-    }
-
-    .cv-entry-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .cv-entry h4 {
-      font-size: 16px;
-    }
-
-    .cv-company {
-      margin-top: 4px;
-
-      color: var(--accent);
-
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .cv-date {
-      color: #7a8294;
-
-      font-size: 11px;
-      font-weight: 800;
-
-      text-align: right;
-    }
-
-    .cv-entry p {
-      margin-top: 8px;
-
-      color: #646d80;
-
-      font-size: 12px;
-      line-height: 1.65;
-
-      white-space: pre-line;
-    }
-
-    .cv-skill {
-      margin-bottom: 9px;
-
-      font-size: 12px;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 1050px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        text-align: center;
-      }
-
-      .hero p {
-        margin-inline: auto;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .catalog-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .editor-shell {
-        grid-template-columns: 380px minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 820px) {
-      .catalog-toolbar {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .catalog-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .editor-shell {
-        grid-template-columns: 1fr;
-      }
-
-      .editor-sidebar {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .navigation-actions .button:first-child {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 65px;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .button {
-        width: 100%;
-      }
-
-      .catalog-toolbar,
-      .catalog-grid,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .editor-tabs {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .editor-preview {
-        height: 760px;
-
-        padding: 20px 8px;
-      }
-
-      .cv-stage {
-        justify-content: flex-start;
-      }
-
-      .cv-document {
-        transform: scale(0.58);
-        transform-origin: top left;
-      }
-    }
-
-    /* Impresión */
-
-    @media print {
-      body {
-        background: white !important;
-      }
-
-      body * {
-        visibility: hidden !important;
-      }
-
-      #cvDocument,
-      #cvDocument * {
-        visibility: visible !important;
-      }
-
-      #cvDocument {
-        position: absolute;
-        inset: 0;
-
-        width: 210mm !important;
-        min-height: 297mm !important;
-
-        box-shadow: none !important;
-
-        transform: none !important;
-      }
-
-      @page {
-        size: A4;
-        margin: 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Crea un currículum profesional con diseños adaptados a tu perfil y al puesto que buscas.">
+<title>CV Lab | Currículums profesionales</title>
+<style>
+:root{
+  --bg:#060914;--bg2:#0a1020;--panel:#10172a;--panel2:#17213a;
+  --line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);
+  --text:#f8f9ff;--muted:#aab3ca;--muted2:#7f89a3;
+  --primary:#715cff;--primary2:#4f42d8;--success:#42cf91;--gold:#d9b45d;
+  --danger:#ff6b7c;--shadow:0 32px 90px rgba(0,0,0,.38);--container:1220px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:
+radial-gradient(circle at 12% 5%,rgba(113,92,255,.18),transparent 25%),
+radial-gradient(circle at 88% 13%,rgba(54,190,255,.10),transparent 22%),
+var(--bg);color:var(--text);overflow-x:hidden}
+button,input,textarea,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.container{width:min(var(--container),calc(100% - 32px));margin:auto}
+.btn{min-height:48px;border:1px solid var(--line);border-radius:999px;padding:0 21px;background:rgba(255,255,255,.04);color:white;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:.22s}
+.btn:hover{transform:translateY(-2px);border-color:rgba(113,92,255,.5)}
+.btn.primary{background:linear-gradient(135deg,var(--primary),var(--primary2));border-color:transparent;box-shadow:0 16px 38px rgba(79,66,216,.3)}
+.btn.small{min-height:40px;padding:0 14px;font-size:12px}
+.btn.ghost{background:transparent}
+.pill{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(113,92,255,.32);background:rgba(113,92,255,.11);padding:8px 13px;border-radius:999px;color:#ddd9ff;font-size:13px;font-weight:850}
+.pill:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 6px rgba(66,207,145,.1)}
+.section-head{max-width:780px;margin-bottom:38px}.section-head.center{text-align:center;margin-inline:auto}
+.section-head h2{font-size:clamp(38px,5vw,62px);line-height:1.01;letter-spacing:-.052em}
+.section-head p{margin-top:16px;color:var(--muted);font-size:18px;line-height:1.72}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);background:rgba(6,9,20,.84);backdrop-filter:blur(17px)}
+.nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-size:24px;font-weight:950;letter-spacing:-.04em}.brand span{color:var(--primary)}
+.nav-links{display:flex;align-items:center;gap:25px}.nav-links a{color:#cbd1e5;font-size:14px;font-weight:760}
+.nav-actions{display:flex;gap:10px}.menu-btn{display:none}
+
+/* HERO */
+.hero{padding:105px 0 80px;min-height:calc(100vh - 74px);display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero h1{font-size:clamp(55px,7vw,91px);line-height:.94;letter-spacing:-.065em;max-width:800px}
+.hero h1 span{background:linear-gradient(90deg,#8c7fff,#5bcaff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin-top:24px;max-width:650px;color:var(--muted);font-size:20px;line-height:1.75}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:31px}
+.hero-proof{display:flex;gap:24px;flex-wrap:wrap;margin-top:28px;color:var(--muted2);font-size:13px;font-weight:750}
+.hero-visual{position:relative;min-height:610px;display:grid;place-items:center}
+.hero-sheet{width:min(420px,90%);aspect-ratio:210/297;background:#fff;color:#202738;border-radius:26px;box-shadow:0 45px 120px rgba(0,0,0,.48);padding:33px;transform:rotate(2deg);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px) rotate(.8deg)}}
+.sheet-head{display:flex;gap:16px;align-items:center;border-bottom:2px solid #eceef5;padding-bottom:20px}
+.sheet-avatar{width:70px;height:70px;border-radius:20px;background:linear-gradient(135deg,#8c7fff,#5b49ef)}
+.sheet-name{font-size:24px;font-weight:950;letter-spacing:-.04em}.sheet-role{margin-top:7px;color:#6d5dfc;font-size:10px;font-weight:950;letter-spacing:.11em;text-transform:uppercase}
+.sheet-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:23px;margin-top:23px}.sheet-line{height:7px;background:#e4e7ef;border-radius:999px;margin:8px 0}.sheet-line.dark{background:#bbc2d1}.sheet-line.short{width:58%}.sheet-line.mid{width:78%}
+.floating{position:absolute;border:1px solid var(--line2);background:rgba(14,20,38,.86);backdrop-filter:blur(15px);border-radius:15px;padding:12px 15px;font-size:13px;font-weight:850;box-shadow:var(--shadow)}
+.floating.one{left:-5px;top:100px}.floating.two{right:-8px;bottom:95px}.floating.three{right:10px;top:38px}
+
+/* TRUST */
+.trust{padding:25px 0 75px}.trust-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.trust-item{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:14px;padding:15px;text-align:center;color:#c9cfe1;font-size:13px;font-weight:800}
+
+/* FEATURED CAROUSEL */
+.featured{padding:105px 0;background:linear-gradient(180deg,rgba(255,255,255,.012),transparent)}
+.carousel-wrap{position:relative;max-width:1080px;margin:auto}
+.carousel-stage{height:650px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.carousel-card{position:absolute;width:360px;transition:transform .65s cubic-bezier(.22,.61,.36,1),opacity .65s ease,filter .65s ease;opacity:0;pointer-events:none}
+.carousel-card .preview-sheet{aspect-ratio:210/297;background:white;color:#202738;border-radius:23px;padding:26px;box-shadow:var(--shadow);overflow:hidden}
+.carousel-card.active{transform:translateX(0) scale(1);opacity:1;z-index:4;pointer-events:auto;filter:none}
+.carousel-card.prev{transform:translateX(-315px) scale(.82) rotate(-5deg);opacity:.48;z-index:2;filter:saturate(.7)}
+.carousel-card.next{transform:translateX(315px) scale(.82) rotate(5deg);opacity:.48;z-index:2;filter:saturate(.7)}
+.carousel-card.far-prev{transform:translateX(-550px) scale(.68);opacity:.12;z-index:1}
+.carousel-card.far-next{transform:translateX(550px) scale(.68);opacity:.12;z-index:1}
+.preview-top{display:flex;align-items:center;gap:13px;border-bottom:2px solid #eceef5;padding-bottom:17px}.preview-avatar{width:58px;height:58px;border-radius:17px;background:var(--card-accent)}.preview-title{font-size:19px;font-weight:950}.preview-role{font-size:8px;color:var(--card-accent);text-transform:uppercase;letter-spacing:.11em;font-weight:950;margin-top:5px}
+.preview-body{display:grid;grid-template-columns:34% 1fr;gap:16px;margin-top:17px}.preview-side{background:var(--card-side);border-radius:13px;padding:13px}.mini-line{height:5px;border-radius:999px;background:#dfe3ed;margin:6px 0}.preview-side .mini-line{background:rgba(255,255,255,.25)}.mini-line.short{width:58%}.mini-line.mid{width:78%}
+.carousel-info{text-align:center;margin-top:22px;min-height:116px}.carousel-info .category{color:#9b90ff;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.carousel-info h3{font-size:26px;margin-top:7px}.carousel-info p{color:var(--muted);font-size:14px;line-height:1.6;margin:9px auto 0;max-width:520px}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:22px}.round-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;font-size:20px}
+.dots{display:flex;gap:8px}.dot{width:8px;height:8px;border:0;border-radius:99px;background:#3a4258;transition:.25s}.dot.active{width:28px;background:var(--primary)}
+.catalog-cta{text-align:center;margin-top:35px}.catalog-cta p{color:var(--muted);font-size:18px;margin-bottom:18px}.catalog-cta strong{color:white}
+
+/* HOW IT WORKS */
+.steps{padding:105px 0}.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));padding:29px;min-height:240px}
+.step-number{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(113,92,255,.14);color:#bbb4ff;font-weight:950}.step h3{font-size:22px;margin-top:22px}.step p{margin-top:11px;color:var(--muted);line-height:1.7}
+
+/* BENEFITS */
+.benefits{padding:105px 0;background:var(--bg2)}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.benefit{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.025);padding:27px}.benefit-icon{font-size:25px}.benefit h3{font-size:20px;margin-top:16px}.benefit p{margin-top:10px;color:var(--muted);line-height:1.65;font-size:14px}
+
+/* PRICING */
+.pricing{padding:105px 0}.pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,440px));gap:23px;justify-content:center}
+.price-card{position:relative;border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.025);padding:32px}
+.price-card.featured{border-color:rgba(113,92,255,.46);background:linear-gradient(145deg,rgba(113,92,255,.14),rgba(255,255,255,.025));box-shadow:0 30px 90px rgba(79,66,216,.16)}
+.price-card h3{font-size:24px}.price-card>p{color:var(--muted);margin-top:9px;line-height:1.6}.price{font-size:46px;font-weight:950;letter-spacing:-.05em;margin:26px 0}.price small{font-size:13px;color:var(--muted2);letter-spacing:0}
+.checks{list-style:none;display:grid;gap:12px;margin-bottom:25px}.checks li{color:#d9ddec;font-size:14px}
+
+/* FAQ */
+.faq{padding:105px 0;background:rgba(255,255,255,.012)}.faq-list{max-width:850px;margin:auto;display:grid;gap:12px}.faq-item{border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.025);overflow:hidden}.faq-q{width:100%;border:0;background:transparent;color:white;padding:19px 21px;text-align:left;display:flex;justify-content:space-between;font-weight:850}.faq-a{max-height:0;overflow:hidden;color:var(--muted);line-height:1.7;padding:0 21px;transition:.3s}.faq-item.open .faq-a{max-height:180px;padding-bottom:19px}
+
+/* FOOTER */
+.footer{padding:60px 0 28px;border-top:1px solid var(--line);background:#050812}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px}.footer p{color:var(--muted2);margin-top:14px;line-height:1.7;font-size:14px}.footer h4{font-size:14px;margin-bottom:13px}.footer a{display:block;color:var(--muted2);font-size:13px;margin-bottom:9px}.copyright{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted2);font-size:12px}
+
+/* MODAL CATALOG */
+.modal{position:fixed;inset:0;z-index:300;background:rgba(3,5,12,.82);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:.25s}
+.modal.open{opacity:1;pointer-events:auto}.modal-panel{position:absolute;inset:0;border:0;border-radius:0;background:#0b1120;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transform:translateY(20px) scale(.99);transition:.3s}
+.modal.open .modal-panel{transform:none}.modal-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 24px;border-bottom:1px solid var(--line)}.modal-header h2{font-size:26px}.close-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;font-size:22px}
+.role-question{padding:20px 24px 0}.role-question h3{font-size:18px}.role-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.role-chip{border:1px solid var(--line);background:rgba(255,255,255,.035);color:#d4d8e7;border-radius:999px;padding:9px 13px;font-size:12px;font-weight:800}.role-chip.active{background:rgba(113,92,255,.16);border-color:rgba(113,92,255,.45);color:white}
+.catalog-toolbar{display:grid;grid-template-columns:1fr 190px 190px auto;gap:11px;padding:19px 24px}.control{height:47px;border:1px solid var(--line);border-radius:13px;background:var(--panel);color:white;padding:0 13px;outline:none}
+.catalog-scroll{overflow:auto;padding:0 24px 26px}.catalog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.template-card{border:1px solid var(--line);border-radius:21px;background:rgba(255,255,255,.025);overflow:hidden;transition:.22s}.template-card:hover{transform:translateY(-5px);border-color:rgba(113,92,255,.43)}
+.template-thumb{position:relative;aspect-ratio:210/250;background:white;color:#202738;padding:17px;overflow:hidden}.badge{position:absolute;top:11px;right:11px;padding:6px 9px;border-radius:999px;font-size:9px;font-weight:950;text-transform:uppercase}.badge.free{background:var(--success);color:#062516}.badge.premium{background:var(--gold);color:#2a1d00}.recommended{position:absolute;top:11px;left:11px;padding:6px 9px;border-radius:999px;background:var(--primary);color:white;font-size:9px;font-weight:950;text-transform:uppercase}
+.thumb-head{display:flex;align-items:center;gap:11px;margin-top:26px}.thumb-photo{width:50px;height:50px;border-radius:15px;background:#d9deeb;display:grid;place-items:center;font-weight:900;overflow:hidden}.thumb-photo.circle{border-radius:50%}.thumb-photo img{width:100%;height:100%;object-fit:cover}.thumb-name{font-size:16px;font-weight:950}.thumb-role{font-size:8px;color:var(--accent);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.thumb-layout{display:grid;grid-template-columns:34% 1fr;gap:13px;margin-top:16px}.thumb-layout.single{grid-template-columns:1fr}.thumb-side{background:var(--side);padding:11px;border-radius:11px}.thumb-line{height:5px;border-radius:99px;background:#dfe3ed;margin:6px 0}.thumb-side .thumb-line{background:rgba(255,255,255,.25)}.thumb-line.short{width:58%}.thumb-line.mid{width:78%}
+.template-body{padding:15px}.template-body h3{font-size:16px}.template-meta{color:var(--muted);font-size:12px;line-height:1.5;margin-top:6px;min-height:35px}.template-actions{display:flex;gap:8px;margin-top:13px}.template-actions .btn{flex:1}
+
+/* EDITOR DRAWER */
+.editor-overlay{position:fixed;inset:0;z-index:400;background:rgba(3,5,12,.86);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:.25s}.editor-overlay.open{opacity:1;pointer-events:auto}
+.editor-shell{position:absolute;inset:0;border:0;border-radius:0;background:var(--panel);display:grid;grid-template-columns:430px 1fr;overflow:hidden;box-shadow:var(--shadow);transform:translateY(20px);transition:.3s}.editor-overlay.open .editor-shell{transform:none}
+.editor-sidebar{background:#0c1324;border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}.editor-top{display:flex;align-items:center;justify-content:space-between;padding:17px 19px;border-bottom:1px solid var(--line)}.editor-top h3{font-size:17px}.editor-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:12px;border-bottom:1px solid var(--line)}.tab{border:1px solid transparent;background:transparent;color:var(--muted);border-radius:11px;padding:10px 5px;font-size:11px;font-weight:850}.tab.active{background:rgba(113,92,255,.14);border-color:rgba(113,92,255,.26);color:white}
+.panels{padding:18px;overflow:auto}.panel{display:none}.panel.active{display:block}.field{margin-bottom:13px}.field label{display:block;color:#cbd1e5;font-size:11px;font-weight:850;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:white;padding:11px;outline:none}.field textarea{min-height:95px;resize:vertical;line-height:1.5}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.photo-row{display:flex;gap:14px;align-items:center}.photo-box{width:86px;height:86px;border-radius:20px;background:#202a46;display:grid;place-items:center;font-size:23px;font-weight:950;overflow:hidden}.photo-box.circle{border-radius:50%}.photo-box img{width:100%;height:100%;object-fit:cover}.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.option{border:1px solid var(--line);background:var(--panel2);color:white;border-radius:11px;padding:11px;font-weight:750}.option.active{border-color:var(--primary);box-shadow:0 0 0 3px rgba(113,92,255,.12)}.swatches{display:flex;gap:9px;flex-wrap:wrap}.swatch{width:34px;height:34px;border-radius:50%;border:3px solid transparent}.swatch.active{border-color:white}.notice{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:11px;padding:12px;color:var(--muted);font-size:12px;line-height:1.55}
+.editor-preview{background:#091020;overflow:auto;padding:20px}.editor-preview-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.editor-preview-top span{color:var(--muted);font-size:12px;font-weight:800}.preview-actions{display:flex;gap:9px}
+.cv-stage{display:flex;justify-content:center}.cv{--accent:#715cff;--side:#19223b;--left:250px;--font:Inter,Arial,sans-serif;--photo-radius:24px;width:794px;min-height:1123px;background:white;color:#202634;box-shadow:0 20px 70px rgba(0,0,0,.45);display:grid;grid-template-columns:var(--left) 1fr;font-family:var(--font)}
+.cv.single{display:block;border-top:12px solid var(--accent)}.cv.single .cv-left{display:none}.cv-left{background:var(--side);color:white;padding:48px 30px}.cv-main{padding:50px 46px}.cv-photo{width:108px;height:108px;border-radius:var(--photo-radius);background:var(--accent);display:grid;place-items:center;overflow:hidden;color:white;font-size:34px;font-weight:950}.cv-photo img{width:100%;height:100%;object-fit:cover}.cv h1{font-size:42px;line-height:.96;letter-spacing:-.05em}.cv-role{margin-top:12px;color:var(--accent);font-size:14px;font-weight:950;text-transform:uppercase;letter-spacing:.1em}.cv-summary{margin-top:22px;color:#5c6478;font-size:14px;line-height:1.72}.cv-section{margin-top:30px}.cv-title{margin-bottom:12px;color:var(--accent);font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.13em}.cv-left .cv-title{color:#c1bbff}.contact{font-size:12px;line-height:1.55;margin-bottom:8px;overflow-wrap:anywhere}.inline-contact{display:none;flex-wrap:wrap;gap:9px 18px;margin-top:16px;padding-bottom:18px;border-bottom:1px solid #e6e9ef;color:#677085;font-size:12px}.cv.single .inline-contact{display:flex}.entry{margin-bottom:22px}.entry-head{display:flex;justify-content:space-between;gap:16px}.entry h4{font-size:16px}.company{margin-top:4px;color:var(--accent);font-size:13px;font-weight:850}.date{color:#7b8395;font-size:11px;font-weight:850}.entry p{margin-top:8px;color:#646d80;font-size:12px;line-height:1.65;white-space:pre-line}.skill{font-size:12px;margin-bottom:9px}
+
+/* RESPONSIVE */
+@media(max-width:1080px){.hero-grid{grid-template-columns:1fr}.hero{text-align:center}.hero p{margin-inline:auto}.hero-actions,.hero-proof{justify-content:center}.catalog-grid{grid-template-columns:repeat(3,1fr)}.editor-shell{grid-template-columns:390px 1fr}}
+@media(max-width:850px){.nav-links{display:none}.menu-btn{display:block}.trust-row{grid-template-columns:repeat(2,1fr)}.steps-grid,.benefit-grid{grid-template-columns:1fr}.pricing-grid{grid-template-columns:1fr}.catalog-toolbar{grid-template-columns:1fr 1fr}.catalog-grid{grid-template-columns:repeat(2,1fr)}.editor-shell{grid-template-columns:1fr;overflow:auto}.editor-sidebar{border-right:0;border-bottom:1px solid var(--line);max-height:650px}.carousel-card.prev{transform:translateX(-220px) scale(.75)}.carousel-card.next{transform:translateX(220px) scale(.75)}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.container{width:calc(100% - 22px)}.hero{padding-top:70px}.hero h1{font-size:49px}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%}.hero-visual{min-height:500px}.floating{display:none}.carousel-stage{height:560px}.carousel-card{width:300px}.carousel-card.prev{transform:translateX(-180px) scale(.72);opacity:.2}.carousel-card.next{transform:translateX(180px) scale(.72);opacity:.2}.catalog-toolbar,.catalog-grid,.grid2{grid-template-columns:1fr}.modal-panel{inset:0;border-radius:0}.modal-header,.role-question,.catalog-toolbar,.catalog-scroll{padding-left:14px;padding-right:14px}.footer-grid{grid-template-columns:1fr}.editor-shell{inset:0;border-radius:0}.editor-tabs{grid-template-columns:repeat(2,1fr)}.editor-preview{height:720px;padding:12px}.cv-stage{justify-content:flex-start}.cv{transform:scale(.57);transform-origin:top left}.nav-actions .btn:first-child{display:none}}
+@media print{body *{visibility:hidden!important}#cvDocument,#cvDocument *{visibility:visible!important}#cvDocument{position:absolute;inset:0;width:210mm!important;min-height:297mm!important;box-shadow:none!important;transform:none!important}@page{size:A4;margin:0}}
+</style>
 </head>
-
 <body>
 
-  <header class="navigation">
-    <div class="container navigation-content">
-
-      <a class="brand" href="#">
-        CV <span>Lab</span>
-      </a>
-
-      <div class="navigation-actions">
-        <a class="button" href="#catalogo">
-          Plantillas
-        </a>
-
-        <a class="button button-primary" href="#editor">
-          Crear CV
-        </a>
-      </div>
-
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="brand">CV <span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="#plantillas">Plantillas</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#beneficios">Funciones</a>
+      <a href="#precios">Premium</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn ghost" data-open-catalog>Explorar diseños</button>
+      <button class="btn primary" data-start>Crear mi CV</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-
-    <section class="hero">
-      <div class="container hero-grid">
-
-        <div>
-          <h1>
-            Plantillas profesionales.
-
-            <span>
-              Diseños adaptados a cada perfil.
-            </span>
-          </h1>
-
-          <p>
-            Elegí el puesto al que querés postularte y CV Lab te
-            recomendará diseños adecuados para tu sector. Completá
-            tu información, subí una foto y exportá el currículum
-            en PDF.
-          </p>
-
-          <div class="hero-actions">
-            <a
-              class="button button-primary"
-              href="#editor"
-            >
-              Crear mi CV
-            </a>
-
-            <a
-              class="button"
-              href="#catalogo"
-            >
-              Explorar plantillas
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-preview">
-
-          <div class="hero-preview-header">
-
-            <div class="hero-preview-photo"></div>
-
-            <div>
-              <div class="hero-preview-name">
-                Nombre Apellido
-              </div>
-
-              <div class="hero-preview-role">
-                Puesto profesional
-              </div>
-            </div>
-
-          </div>
-
-          <div class="hero-preview-grid">
-
-            <div>
-              <div class="preview-line dark medium"></div>
-              <div class="preview-line"></div>
-              <div class="preview-line short"></div>
-
-              <br>
-
-              <div class="preview-line short"></div>
-              <div class="preview-line medium"></div>
-            </div>
-
-            <div>
-              <div class="preview-line dark"></div>
-              <div class="preview-line"></div>
-              <div class="preview-line medium"></div>
-
-              <br>
-
-              <div class="preview-line dark medium"></div>
-              <div class="preview-line"></div>
-              <div class="preview-line"></div>
-              <div class="preview-line short"></div>
-            </div>
-
-          </div>
-
-        </div>
-
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="pill">Diseños orientados al trabajo que buscás</div>
+      <h1>Un currículum que se vea tan profesional como <span>tu próximo paso.</span></h1>
+      <p>Elegí tu área profesional, encontrá un diseño recomendado y creá un CV claro, moderno y listo para enviar. Sin configuraciones complicadas.</p>
+      <div class="hero-actions">
+        <button class="btn primary" data-start>Crear mi CV</button>
+        <button class="btn" data-open-catalog>Explorar plantillas</button>
       </div>
-    </section>
-
-    <section
-      class="catalog-section"
-      id="catalogo"
-    >
-      <div class="container">
-
-        <div class="section-heading">
-          <h2>
-            Encontrá el diseño adecuado para tu profesión
-          </h2>
-
-          <p>
-            Filtrá las plantillas por sector, buscá estilos y
-            seleccioná el diseño que mejor represente tu perfil.
-            Algunas opciones requieren Premium.
-          </p>
-        </div>
-
-        <div class="catalog-toolbar">
-
-          <select
-            class="control"
-            id="roleFilter"
-          ></select>
-
-          <select
-            class="control"
-            id="planFilter"
-          >
-            <option value="all">
-              Todas las opciones
-            </option>
-
-            <option value="free">
-              Disponibles
-            </option>
-
-            <option value="premium">
-              Premium
-            </option>
-          </select>
-
-          <input
-            class="control"
-            id="searchInput"
-            placeholder="Buscar plantilla"
-          >
-
-          <button
-            class="button button-primary"
-            id="premiumToggle"
-          >
-            Activar Premium demo
-          </button>
-
-        </div>
-
-        <div
-          class="catalog-grid"
-          id="catalog"
-        ></div>
-
+      <div class="hero-proof">
+        <span>✓ Vista previa en tiempo real</span>
+        <span>✓ Foto opcional</span>
+        <span>✓ Exportación PDF A4</span>
       </div>
-    </section>
-
-    <section
-      class="editor-section"
-      id="editor"
-    >
-      <div class="container">
-
-        <div class="section-heading">
-          <h2>
-            Editor de currículum
-          </h2>
-
-          <p>
-            Todos los cambios se reflejan automáticamente en la
-            vista previa.
-          </p>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-sheet">
+        <div class="sheet-head"><div class="sheet-avatar"></div><div><div class="sheet-name">Nombre Apellido</div><div class="sheet-role">Puesto profesional</div></div></div>
+        <div class="sheet-grid">
+          <div><div class="sheet-line dark mid"></div><div class="sheet-line"></div><div class="sheet-line short"></div><br><div class="sheet-line short"></div><div class="sheet-line mid"></div></div>
+          <div><div class="sheet-line dark"></div><div class="sheet-line"></div><div class="sheet-line mid"></div><br><div class="sheet-line dark mid"></div><div class="sheet-line"></div><div class="sheet-line"></div><div class="sheet-line short"></div></div>
         </div>
+      </div>
+      <div class="floating one">Diseños por profesión</div>
+      <div class="floating two">Exportación en PDF</div>
+      <div class="floating three">Edición en tiempo real</div>
+    </div>
+  </div>
+</section>
 
-        <div class="editor-shell">
+<section class="trust">
+  <div class="container trust-row">
+    <div class="trust-item">Tecnología</div><div class="trust-item">Administración</div><div class="trust-item">Diseño</div><div class="trust-item">Salud</div><div class="trust-item">Primer empleo</div>
+  </div>
+</section>
 
-          <aside class="editor-sidebar">
+<section class="featured" id="plantillas">
+  <div class="container">
+    <div class="section-head center">
+      <div class="pill">Plantillas destacadas</div>
+      <h2>Diseños creados para distintos perfiles profesionales.</h2>
+      <p>Explorá una selección de estilos. El catálogo completo se abre únicamente cuando decidís buscar tu plantilla.</p>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-stage" id="carouselStage"></div>
+      <div class="carousel-info">
+        <div class="category" id="carouselCategory"></div>
+        <h3 id="carouselName"></h3>
+        <p id="carouselDescription"></p>
+      </div>
+      <div class="carousel-controls">
+        <button class="round-btn" id="carouselPrev" aria-label="Anterior">‹</button>
+        <div class="dots" id="carouselDots"></div>
+        <button class="round-btn" id="carouselNext" aria-label="Siguiente">›</button>
+      </div>
+      <div class="catalog-cta">
+        <p><strong>Una colección completa de diseños profesionales</strong> adaptados a puestos, industrias y niveles de experiencia.</p>
+        <button class="btn primary" data-open-catalog>Explorar todas las plantillas</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="editor-tabs">
+<section class="steps" id="como-funciona">
+  <div class="container">
+    <div class="section-head"><div class="pill">Proceso simple</div><h2>De tu información a un CV listo para postularte.</h2></div>
+    <div class="steps-grid">
+      <article class="step"><div class="step-number">1</div><h3>Elegí tu puesto objetivo</h3><p>El sistema ordena los diseños que mejor funcionan para el sector y tipo de perfil que seleccionás.</p></article>
+      <article class="step"><div class="step-number">2</div><h3>Seleccioná una plantilla</h3><p>Compará estilos profesionales y elegí una opción gratuita o una plantilla Premium.</p></article>
+      <article class="step"><div class="step-number">3</div><h3>Editá y exportá</h3><p>Completá tu información, subí una foto opcional y descargá el resultado en formato PDF.</p></article>
+    </div>
+  </div>
+</section>
 
-              <button
-                class="editor-tab active"
-                data-tab="info"
-              >
-                Información
-              </button>
+<section class="benefits" id="beneficios">
+  <div class="container">
+    <div class="section-head center"><div class="pill">Diseñado para conseguir oportunidades</div><h2>Una experiencia limpia, rápida y profesional.</h2></div>
+    <div class="benefit-grid">
+      <article class="benefit"><div class="benefit-icon">🎯</div><h3>Recomendación por puesto</h3><p>Los diseños más adecuados aparecen primero según la profesión elegida.</p></article>
+      <article class="benefit"><div class="benefit-icon">⚡</div><h3>Edición inmediata</h3><p>Cada cambio se refleja de forma instantánea en la vista previa A4.</p></article>
+      <article class="benefit"><div class="benefit-icon">🖼️</div><h3>Fotografía opcional</h3><p>Subí una foto profesional y elegí entre formato circular o redondeado.</p></article>
+      <article class="benefit"><div class="benefit-icon">📄</div><h3>PDF listo para enviar</h3><p>Exportá un documento limpio, preparado para postulaciones y entrevistas.</p></article>
+      <article class="benefit"><div class="benefit-icon">💾</div><h3>Guardado automático</h3><p>La información queda almacenada en el navegador mientras trabajás.</p></article>
+      <article class="benefit"><div class="benefit-icon">💎</div><h3>Personalización Premium</h3><p>Desbloqueá diseños, tipografías y controles visuales adicionales.</p></article>
+    </div>
+  </div>
+</section>
 
-              <button
-                class="editor-tab"
-                data-tab="photo"
-              >
-                Foto
-              </button>
+<section class="pricing" id="precios">
+  <div class="container">
+    <div class="section-head center"><div class="pill">Planes simples</div><h2>Empezá gratis. Personalizá más con Premium.</h2></div>
+    <div class="pricing-grid">
+      <article class="price-card"><h3>Gratis</h3><p>Para crear un CV profesional con las funciones esenciales.</p><div class="price">$0 <small>sin vencimiento</small></div><ul class="checks"><li>✓ Diseños gratuitos seleccionados</li><li>✓ Editor en tiempo real</li><li>✓ Subida de fotografía</li><li>✓ Exportación PDF</li><li>✓ Guardado local</li></ul><button class="btn" style="width:100%" data-start>Crear gratis</button></article>
+      <article class="price-card featured"><h3>Premium</h3><p>Para acceder a más diseños y personalizar el documento a fondo.</p><div class="price">US$ 9 <small>por mes</small></div><ul class="checks"><li>✓ Catálogo completo</li><li>✓ Tipografías adicionales</li><li>✓ Espaciado personalizado</li><li>✓ Diseños exclusivos por puesto</li><li>✓ Nuevas funciones futuras</li></ul><button class="btn primary" style="width:100%" id="pricingPremium">Probar Premium demo</button></article>
+    </div>
+  </div>
+</section>
 
-              <button
-                class="editor-tab"
-                data-tab="content"
-              >
-                Contenido
-              </button>
+<section class="faq">
+  <div class="container">
+    <div class="section-head center"><div class="pill">Preguntas frecuentes</div><h2>Lo esencial antes de crear tu CV.</h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q">¿Puedo crear un CV sin pagar?<span>+</span></button><div class="faq-a">Sí. Las plantillas disponibles permiten editar información, agregar fotografía y exportar el resultado en PDF.</div></div>
+      <div class="faq-item"><button class="faq-q">¿Cómo se recomiendan los diseños?<span>+</span></button><div class="faq-a">El catálogo prioriza plantillas adecuadas para la profesión o sector que seleccionaste.</div></div>
+      <div class="faq-item"><button class="faq-q">¿La fotografía es obligatoria?<span>+</span></button><div class="faq-a">No. Podés crear un currículum sin fotografía y el sistema mostrará tus iniciales.</div></div>
+      <div class="faq-item"><button class="faq-q">¿Qué incluye Premium?<span>+</span></button><div class="faq-a">Premium desbloquea el catálogo completo y los controles avanzados de tipografía y espaciado.</div></div>
+    </div>
+  </div>
+</section>
+</main>
 
-              <button
-                class="editor-tab"
-                data-tab="design"
-              >
-                Diseño
-              </button>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="brand">CV <span>Lab</span></div><p>Currículums profesionales diseñados para cada etapa de tu carrera.</p></div>
+      <div><h4>Producto</h4><a href="#plantillas">Plantillas</a><a href="#como-funciona">Cómo funciona</a><a href="#precios">Premium</a></div>
+      <div><h4>Recursos</h4><a href="#">Consejos para CV</a><a href="#">Preguntas frecuentes</a><a href="#">Ayuda</a></div>
+      <div><h4>Legal</h4><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Cookies</a></div>
+    </div>
+    <div class="copyright">© 2026 CV Lab. Todos los derechos reservados.</div>
+  </div>
+</footer>
 
-            </div>
+<!-- CATÁLOGO -->
+<div class="modal" id="catalogModal" aria-hidden="true">
+  <div class="modal-panel">
+    <div class="modal-header"><div><h2>Elegí tu plantilla</h2><p style="color:var(--muted);margin-top:5px;font-size:13px">Seleccioná tu área para ver primero los diseños recomendados.</p></div><button class="close-btn" id="closeCatalog">×</button></div>
+    <div class="role-question"><h3>¿A qué área querés postularte?</h3><div class="role-chips" id="roleChips"></div></div>
+    <div class="catalog-toolbar">
+      <input class="control" id="catalogSearch" placeholder="Buscar por nombre o estilo">
+      <select class="control" id="planFilter"><option value="all">Todas</option><option value="free">Disponibles</option><option value="premium">Premium</option></select>
+      <select class="control" id="layoutFilter"><option value="all">Todos los formatos</option><option value="sidebar">Dos columnas</option><option value="single">Una columna</option></select>
+      <button class="btn primary" id="catalogPremium">Activar Premium demo</button>
+    </div>
+    <div class="catalog-scroll"><div class="catalog-grid" id="catalogGrid"></div></div>
+  </div>
+</div>
 
-            <div
-              class="editor-panel active"
-              id="panel-info"
-            >
-
-              <div class="form-grid">
-
-                <div class="field full">
-                  <label for="name">
-                    Nombre completo
-                  </label>
-
-                  <input
-                    id="name"
-                    data-field="name"
-                  >
-                </div>
-
-                <div class="field full">
-                  <label for="role">
-                    Puesto profesional
-                  </label>
-
-                  <input
-                    id="role"
-                    data-field="role"
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="email">
-                    Email
-                  </label>
-
-                  <input
-                    id="email"
-                    data-field="email"
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="phone">
-                    Teléfono
-                  </label>
-
-                  <input
-                    id="phone"
-                    data-field="phone"
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="city">
-                    Ciudad
-                  </label>
-
-                  <input
-                    id="city"
-                    data-field="city"
-                  >
-                </div>
-
-                <div class="field">
-                  <label for="website">
-                    Portfolio o LinkedIn
-                  </label>
-
-                  <input
-                    id="website"
-                    data-field="website"
-                  >
-                </div>
-
-                <div class="field full">
-                  <label for="summary">
-                    Perfil profesional
-                  </label>
-
-                  <textarea
-                    id="summary"
-                    data-field="summary"
-                  ></textarea>
-                </div>
-
-              </div>
-
-            </div>
-
-            <div
-              class="editor-panel"
-              id="panel-photo"
-            >
-
-              <div class="photo-settings">
-
-                <div
-                  class="photo-preview"
-                  id="photoPreview"
-                >
-                  NA
-                </div>
-
-                <div style="flex: 1;">
-
-                  <div class="field">
-                    <label for="photoInput">
-                      Subir fotografía
-                    </label>
-
-                    <input
-                      type="file"
-                      id="photoInput"
-                      accept="image/*"
-                    >
-                  </div>
-
-                  <button
-                    class="button button-small"
-                    id="removePhoto"
-                  >
-                    Quitar foto
-                  </button>
-
-                </div>
-
-              </div>
-
-              <div class="option-grid">
-
-                <button
-                  class="option-button active"
-                  data-photo-shape="rounded"
-                >
-                  Redondeada
-                </button>
-
-                <button
-                  class="option-button"
-                  data-photo-shape="circle"
-                >
-                  Circular
-                </button>
-
-              </div>
-
-            </div>
-
-            <div
-              class="editor-panel"
-              id="panel-content"
-            >
-
-              <div class="field">
-                <label for="experience">
-                  Experiencia
-                </label>
-
-                <textarea
-                  id="experience"
-                  data-field="experience"
-                ></textarea>
-              </div>
-
-              <div class="field">
-                <label for="education">
-                  Educación
-                </label>
-
-                <textarea
-                  id="education"
-                  data-field="education"
-                ></textarea>
-              </div>
-
-              <div class="field">
-                <label for="skills">
-                  Habilidades separadas por coma
-                </label>
-
-                <textarea
-                  id="skills"
-                  data-field="skills"
-                ></textarea>
-              </div>
-
-              <div class="plan-notice">
-                Para experiencia utilizá este formato:
-                Puesto | Empresa | Período | Descripción.
-                Para educación: Título | Institución | Período.
-              </div>
-
-            </div>
-
-            <div
-              class="editor-panel"
-              id="panel-design"
-            >
-
-              <div class="field">
-                <label for="selectedTemplate">
-                  Plantilla seleccionada
-                </label>
-
-                <input
-                  id="selectedTemplate"
-                  readonly
-                >
-              </div>
-
-              <div class="field">
-                <label>
-                  Color principal
-                </label>
-
-                <div
-                  class="color-options"
-                  id="colorOptions"
-                ></div>
-              </div>
-
-              <div class="field">
-                <label>
-                  Tipografía
-                </label>
-
-                <div
-                  class="option-grid"
-                  id="fontOptions"
-                ></div>
-              </div>
-
-              <div class="field">
-                <label for="density">
-                  Espaciado
-                </label>
-
-                <select id="density">
-                  <option value="compact">
-                    Compacto
-                  </option>
-
-                  <option value="normal">
-                    Normal
-                  </option>
-
-                  <option value="spacious">
-                    Amplio
-                  </option>
-                </select>
-              </div>
-
-              <div
-                class="plan-notice"
-                id="planNotice"
-              ></div>
-
-            </div>
-
+<!-- EDITOR -->
+<div class="editor-overlay" id="editorOverlay" aria-hidden="true">
+  <div class="editor-shell">
+    <aside class="editor-sidebar">
+      <div class="editor-top"><div><h3>Editor de CV</h3><div id="templateLabel" style="color:var(--muted2);font-size:11px;margin-top:4px"></div></div><button class="close-btn" id="closeEditor">×</button></div>
+      <div class="editor-tabs">
+        <button class="tab active" data-tab="info">Información</button><button class="tab" data-tab="photo">Foto</button><button class="tab" data-tab="content">Contenido</button><button class="tab" data-tab="design">Diseño</button>
+      </div>
+      <div class="panels">
+        <div class="panel active" id="panel-info">
+          <div class="field"><label>Nombre completo</label><input data-field="name"></div>
+          <div class="field"><label>Puesto profesional</label><input data-field="role"></div>
+          <div class="grid2"><div class="field"><label>Email</label><input data-field="email"></div><div class="field"><label>Teléfono</label><input data-field="phone"></div></div>
+          <div class="grid2"><div class="field"><label>Ciudad</label><input data-field="city"></div><div class="field"><label>Portfolio o LinkedIn</label><input data-field="website"></div></div>
+          <div class="field"><label>Perfil profesional</label><textarea data-field="summary"></textarea></div>
+        </div>
+        <div class="panel" id="panel-photo">
+          <div class="photo-row"><div class="photo-box" id="photoPreview">NA</div><div style="flex:1"><div class="field"><label>Subir fotografía</label><input type="file" id="photoInput" accept="image/*"></div><button class="btn small" id="removePhoto">Quitar foto</button></div></div>
+          <div class="option-grid" style="margin-top:16px"><button class="option active" data-shape="rounded">Redondeada</button><button class="option" data-shape="circle">Circular</button></div>
+        </div>
+        <div class="panel" id="panel-content">
+          <div class="field"><label>Experiencia: Puesto | Empresa | Período | Descripción</label><textarea data-field="experience"></textarea></div>
+          <div class="field"><label>Educación: Título | Institución | Período</label><textarea data-field="education"></textarea></div>
+          <div class="field"><label>Habilidades separadas por coma</label><textarea data-field="skills"></textarea></div>
+        </div>
+        <div class="panel" id="panel-design">
+          <div class="field"><label>Color principal</label><div class="swatches" id="swatches"></div></div>
+          <div class="field"><label>Tipografía</label><div class="option-grid" id="fontOptions"></div></div>
+          <div class="field"><label>Espaciado</label><select id="density"><option value="compact">Compacto</option><option value="normal">Normal</option><option value="spacious">Amplio</option></select></div>
+          <div class="notice" id="planNotice"></div>
+        </div>
+      </div>
+    </aside>
+    <section class="editor-preview">
+      <div class="editor-preview-top"><span>Vista previa A4</span><div class="preview-actions"><button class="btn small" id="changeTemplate">Cambiar plantilla</button><button class="btn primary small" id="exportPdf">Exportar PDF</button></div></div>
+      <div class="cv-stage">
+        <article class="cv" id="cvDocument">
+          <aside class="cv-left">
+            <div class="cv-photo" id="cvPhoto">NA</div>
+            <div class="cv-section"><div class="cv-title">Contacto</div><div class="contact" id="cvEmail"></div><div class="contact" id="cvPhone"></div><div class="contact" id="cvCity"></div><div class="contact" id="cvWebsite"></div></div>
+            <div class="cv-section"><div class="cv-title">Habilidades</div><div id="cvSkills"></div></div>
           </aside>
-
-          <section class="editor-preview">
-
-            <div class="preview-toolbar">
-              <span>
-                Vista previa A4
-              </span>
-
-              <button
-                class="button button-primary"
-                id="exportButton"
-              >
-                Exportar PDF
-              </button>
-            </div>
-
-            <div class="cv-stage">
-
-              <article
-                class="cv-document"
-                id="cvDocument"
-              >
-
-                <aside class="cv-sidebar">
-
-                  <div
-                    class="cv-photo"
-                    id="cvPhoto"
-                  >
-                    NA
-                  </div>
-
-                  <div class="cv-section">
-
-                    <div class="cv-section-title">
-                      Contacto
-                    </div>
-
-                    <div
-                      class="cv-contact"
-                      id="cvEmail"
-                    ></div>
-
-                    <div
-                      class="cv-contact"
-                      id="cvPhone"
-                    ></div>
-
-                    <div
-                      class="cv-contact"
-                      id="cvCity"
-                    ></div>
-
-                    <div
-                      class="cv-contact"
-                      id="cvWebsite"
-                    ></div>
-
-                  </div>
-
-                  <div class="cv-section">
-
-                    <div class="cv-section-title">
-                      Habilidades
-                    </div>
-
-                    <div id="cvSkills"></div>
-
-                  </div>
-
-                </aside>
-
-                <div class="cv-main">
-
-                  <h1
-                    class="cv-name"
-                    id="cvName"
-                  ></h1>
-
-                  <div
-                    class="cv-role"
-                    id="cvRole"
-                  ></div>
-
-                  <div class="cv-inline-contact">
-
-                    <span id="cvEmailInline"></span>
-                    <span id="cvPhoneInline"></span>
-                    <span id="cvCityInline"></span>
-                    <span id="cvWebsiteInline"></span>
-
-                  </div>
-
-                  <p
-                    class="cv-summary"
-                    id="cvSummary"
-                  ></p>
-
-                  <div class="cv-section">
-
-                    <div class="cv-section-title">
-                      Experiencia profesional
-                    </div>
-
-                    <div id="cvExperience"></div>
-
-                  </div>
-
-                  <div class="cv-section">
-
-                    <div class="cv-section-title">
-                      Educación
-                    </div>
-
-                    <div id="cvEducation"></div>
-
-                  </div>
-
-                </div>
-
-              </article>
-
-            </div>
-
-          </section>
-
-        </div>
-
+          <div class="cv-main">
+            <h1 id="cvName"></h1><div class="cv-role" id="cvRole"></div>
+            <div class="inline-contact"><span id="cvEmailInline"></span><span id="cvPhoneInline"></span><span id="cvCityInline"></span><span id="cvWebsiteInline"></span></div>
+            <p class="cv-summary" id="cvSummary"></p>
+            <div class="cv-section"><div class="cv-title">Experiencia profesional</div><div id="cvExperience"></div></div>
+            <div class="cv-section"><div class="cv-title">Educación</div><div id="cvEducation"></div></div>
+          </div>
+        </article>
       </div>
     </section>
-
-  </main>
-
-  <script>
-    const STORAGE_KEY = "cvLabModular";
-
-    const modules = {
-      layouts: [
-        {
-          id: "sidebar-standard",
-          sidebarWidth: "250px",
-          singleColumn: false
-        },
-        {
-          id: "sidebar-narrow",
-          sidebarWidth: "215px",
-          singleColumn: false
-        },
-        {
-          id: "sidebar-wide",
-          sidebarWidth: "290px",
-          singleColumn: false
-        },
-        {
-          id: "single-clean",
-          sidebarWidth: "0",
-          singleColumn: true
-        },
-        {
-          id: "single-accent",
-          sidebarWidth: "0",
-          singleColumn: true
-        }
-      ],
-
-      headers: [
-        "photo-left",
-        "photo-circle",
-        "name-first",
-        "compact",
-        "executive"
-      ],
-
-      experienceStyles: [
-        "classic",
-        "timeline",
-        "compact",
-        "achievement",
-        "technical"
-      ],
-
-      skillStyles: [
-        "list",
-        "tags",
-        "bars",
-        "columns"
-      ],
-
-      palettes: [
-        {
-          accent: "#6d5dfc",
-          sidebar: "#19223b"
-        },
-        {
-          accent: "#2563eb",
-          sidebar: "#16213a"
-        },
-        {
-          accent: "#0f9f7f",
-          sidebar: "#16372f"
-        },
-        {
-          accent: "#c03d70",
-          sidebar: "#3b2030"
-        },
-        {
-          accent: "#d15c39",
-          sidebar: "#3c241d"
-        },
-        {
-          accent: "#2f3442",
-          sidebar: "#20242d"
-        },
-        {
-          accent: "#7c5a2d",
-          sidebar: "#302719"
-        },
-        {
-          accent: "#3e5c76",
-          sidebar: "#203044"
-        }
-      ],
-
-      fonts: [
-        {
-          name: "Inter",
-          value: "Inter, Arial, sans-serif"
-        },
-        {
-          name: "Georgia",
-          value: "Georgia, serif"
-        },
-        {
-          name: "Trebuchet",
-          value: "'Trebuchet MS', Arial, sans-serif"
-        },
-        {
-          name: "Times",
-          value: "'Times New Roman', serif"
-        }
-      ],
-
-      densities: [
-        "compact",
-        "normal",
-        "spacious"
-      ]
-    };
-
-    const roles = [
-      {
-        id: "general",
-        label: "General"
-      },
-      {
-        id: "software",
-        label: "Software y tecnología"
-      },
-      {
-        id: "data",
-        label: "Datos y análisis"
-      },
-      {
-        id: "design",
-        label: "Diseño y creatividad"
-      },
-      {
-        id: "marketing",
-        label: "Marketing"
-      },
-      {
-        id: "sales",
-        label: "Ventas"
-      },
-      {
-        id: "finance",
-        label: "Finanzas y administración"
-      },
-      {
-        id: "engineering",
-        label: "Ingeniería"
-      },
-      {
-        id: "architecture",
-        label: "Arquitectura"
-      },
-      {
-        id: "health",
-        label: "Salud"
-      },
-      {
-        id: "education",
-        label: "Educación"
-      },
-      {
-        id: "legal",
-        label: "Legal"
-      },
-      {
-        id: "first-job",
-        label: "Primer empleo"
-      }
-    ];
-
-    const templateNames = {
-      general: [
-        "Modern Professional",
-        "Corporate Clean",
-        "Balanced Resume",
-        "Professional Core",
-        "Essential Profile",
-        "Classic Modern",
-        "Career Focus",
-        "Clear Professional"
-      ],
-
-      software: [
-        "Tech Slate",
-        "Developer Grid",
-        "Code Professional",
-        "Software Core",
-        "Engineering Stack",
-        "Product Tech",
-        "Backend Clean",
-        "Frontend Modern"
-      ],
-
-      data: [
-        "Data Matrix",
-        "Analytics Pro",
-        "Business Intelligence",
-        "Insight Resume",
-        "Quant Clean",
-        "Data Executive",
-        "Research Grid",
-        "Metrics Professional"
-      ],
-
-      design: [
-        "UX Portfolio",
-        "Creative Split",
-        "Design System",
-        "Visual Profile",
-        "Studio Resume",
-        "Product Design",
-        "Creative Grid",
-        "Portfolio Professional"
-      ],
-
-      marketing: [
-        "Marketing Bold",
-        "Brand Strategy",
-        "Growth Resume",
-        "Campaign Professional",
-        "Content Studio",
-        "Digital Marketing",
-        "Social Impact",
-        "Communication Pro"
-      ],
-
-      sales: [
-        "Sales Impact",
-        "Commercial Professional",
-        "Revenue Focus",
-        "Account Executive",
-        "Negotiation Resume",
-        "Client Growth",
-        "Business Development",
-        "Sales Leadership"
-      ],
-
-      finance: [
-        "Analyst Clean",
-        "Finance Executive",
-        "Corporate Ledger",
-        "Audit Professional",
-        "Investment Resume",
-        "Accounting Core",
-        "Banking Professional",
-        "Administration Clean"
-      ],
-
-      engineering: [
-        "Engineering Professional",
-        "Technical Grid",
-        "Industrial Resume",
-        "Mechanical Core",
-        "Civil Professional",
-        "Process Engineer",
-        "Operations Professional",
-        "Technical Executive"
-      ],
-
-      architecture: [
-        "Architecture Grid",
-        "Studio Architect",
-        "Urban Professional",
-        "Project Architecture",
-        "Technical Portfolio",
-        "Design Build",
-        "Construction Professional",
-        "Spatial Resume"
-      ],
-
-      health: [
-        "Health Trust",
-        "Clinical Professional",
-        "Medical Clean",
-        "Care Resume",
-        "Healthcare Core",
-        "Therapy Profile",
-        "Nursing Professional",
-        "Wellness Resume"
-      ],
-
-      education: [
-        "Teacher Soft",
-        "Academic Resume",
-        "Education Professional",
-        "Learning Profile",
-        "University CV",
-        "Teaching Core",
-        "Research Educator",
-        "School Professional"
-      ],
-
-      legal: [
-        "Legal Classic",
-        "Law Executive",
-        "Corporate Counsel",
-        "Justice Resume",
-        "Legal Clean",
-        "Attorney Professional",
-        "Compliance Profile",
-        "Policy Professional"
-      ],
-
-      "first-job": [
-        "First Step",
-        "Graduate Clean",
-        "Junior Modern",
-        "Entry Career",
-        "Starter Professional",
-        "Young Talent",
-        "Internship Resume",
-        "Campus Professional"
-      ]
-    };
-
-    const freeTemplateIds = new Set([
-      "general-01",
-      "software-01",
-      "design-01",
-      "finance-01",
-      "first-job-01"
-    ]);
-
-    function createTemplates() {
-      const templates = [];
-
-      roles.forEach(function (role, roleIndex) {
-        const names =
-          templateNames[role.id] ||
-          templateNames.general;
-
-        names.forEach(function (name, index) {
-          const moduleIndex =
-            roleIndex * names.length + index;
-
-          const layout =
-            modules.layouts[
-              moduleIndex %
-              modules.layouts.length
-            ];
-
-          const palette =
-            modules.palettes[
-              moduleIndex %
-              modules.palettes.length
-            ];
-
-          const id =
-            role.id +
-            "-" +
-            String(index + 1).padStart(2, "0");
-
-          templates.push({
-            id: id,
-
-            name: name,
-
-            category: role.id,
-
-            premium: !freeTemplateIds.has(id),
-
-            layout: layout.id,
-
-            header:
-              modules.headers[
-                moduleIndex %
-                modules.headers.length
-              ],
-
-            experienceStyle:
-              modules.experienceStyles[
-                moduleIndex %
-                modules.experienceStyles.length
-              ],
-
-            skillStyle:
-              modules.skillStyles[
-                moduleIndex %
-                modules.skillStyles.length
-              ],
-
-            accent: palette.accent,
-
-            sidebar: palette.sidebar,
-
-            font:
-              modules.fonts[
-                moduleIndex %
-                modules.fonts.length
-              ].value,
-
-            density:
-              modules.densities[
-                moduleIndex %
-                modules.densities.length
-              ]
-          });
-        });
-      });
-
-      return templates;
-    }
-
-    const templates = createTemplates();
-
-    const defaultState = {
-      premium: false,
-
-      selectedTemplate: "general-01",
-
-      roleFilter: "general",
-
-      photo: "",
-
-      photoShape: "rounded",
-
-      name: "Nombre Apellido",
-
-      role: "Puesto profesional",
-
-      email: "tu@email.com",
-
-      phone: "Tu teléfono",
-
-      city: "Tu ciudad",
-
-      website: "Tu portfolio",
-
-      summary:
-        "Perfil profesional orientado al puesto, con fortalezas, experiencia y objetivos claros.",
-
-      experience:
-        "Puesto actual o reciente | Empresa | 2024 — Actualidad | Describí responsabilidades, resultados y logros relevantes.",
-
-      education:
-        "Título o carrera | Institución | 2020 — 2024",
-
-      skills:
-        "Comunicación, Organización, Liderazgo, Trabajo en equipo",
-
-      color: "#6d5dfc",
-
-      font: "Inter, Arial, sans-serif",
-
-      density: "normal"
-    };
-
-    let state = loadState();
-
-    function cloneObject(object) {
-      return JSON.parse(
-        JSON.stringify(object)
-      );
-    }
-
-    function loadState() {
-      try {
-        const saved =
-          localStorage.getItem(
-            STORAGE_KEY
-          );
-
-        if (!saved) {
-          return cloneObject(
-            defaultState
-          );
-        }
-
-        return {
-          ...cloneObject(defaultState),
-          ...JSON.parse(saved)
-        };
-      } catch (error) {
-        return cloneObject(
-          defaultState
-        );
-      }
-    }
-
-    function saveState() {
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(state)
-      );
-    }
-
-    function escapeHtml(value) {
-      return String(value || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    function initials(name) {
-      const words = String(name || "")
-        .trim()
-        .split(/\s+/)
-        .slice(0, 2);
-
-      return (
-        words
-          .map(function (word) {
-            return word[0]
-              ? word[0].toUpperCase()
-              : "";
-          })
-          .join("") || "NA"
-      );
-    }
-
-    function getSelectedTemplate() {
-      return (
-        templates.find(function (
-          template
-        ) {
-          return (
-            template.id ===
-            state.selectedTemplate
-          );
-        }) || templates[0]
-      );
-    }
-
-    function getLayout(template) {
-      return modules.layouts.find(
-        function (layout) {
-          return (
-            layout.id ===
-            template.layout
-          );
-        }
-      );
-    }
-
-    function populateRoleFilter() {
-      const roleFilter =
-        document.getElementById(
-          "roleFilter"
-        );
-
-      roleFilter.innerHTML =
-        roles
-          .map(function (role) {
-            return `
-              <option value="${role.id}">
-                ${role.label}
-              </option>
-            `;
-          })
-          .join("");
-
-      roleFilter.value =
-        state.roleFilter;
-    }
-
-    function createTemplateThumbnail(
-      template
-    ) {
-      const layout =
-        getLayout(template);
-
-      const recommended =
-        template.category ===
-        state.roleFilter;
-
-      const photoContent =
-        state.photo
-          ? `
-            <img
-              src="${state.photo}"
-              alt="Foto"
-            >
-          `
-          : initials(state.name);
-
-      return `
-        <article class="template-card">
-
-          <div
-            class="template-thumbnail"
-            style="
-              --thumbnail-sidebar:
-                ${template.sidebar};
-            "
-          >
-
-            <span
-              class="
-                template-badge
-                ${
-                  template.premium
-                    ? "premium"
-                    : "free"
-                }
-              "
-            >
-              ${
-                template.premium
-                  ? "Premium"
-                  : "Disponible"
-              }
-            </span>
-
-            ${
-              recommended
-                ? `
-                  <span class="recommended-badge">
-                    Recomendada
-                  </span>
-                `
-                : ""
-            }
-
-            <div class="thumbnail-header">
-
-              <div
-                class="
-                  thumbnail-photo
-                  ${
-                    state.photoShape ===
-                    "circle"
-                      ? "circle"
-                      : ""
-                  }
-                "
-              >
-                ${photoContent}
-              </div>
-
-              <div>
-                <div class="thumbnail-name">
-                  Nombre Apellido
-                </div>
-
-                <div class="thumbnail-role">
-                  Puesto profesional
-                </div>
-              </div>
-
-            </div>
-
-            <div
-              class="
-                thumbnail-layout
-                ${
-                  layout.singleColumn
-                    ? "single"
-                    : ""
-                }
-              "
-            >
-
-              ${
-                layout.singleColumn
-                  ? ""
-                  : `
-                    <div class="thumbnail-sidebar">
-
-                      <div class="thumbnail-line medium"></div>
-                      <div class="thumbnail-line"></div>
-                      <div class="thumbnail-line short"></div>
-
-                      <br>
-
-                      <div class="thumbnail-line short"></div>
-                      <div class="thumbnail-line medium"></div>
-
-                    </div>
-                  `
-              }
-
-              <div>
-
-                <div class="thumbnail-line"></div>
-                <div class="thumbnail-line"></div>
-                <div class="thumbnail-line short"></div>
-
-                <br>
-
-                <div class="thumbnail-line medium"></div>
-                <div class="thumbnail-line"></div>
-                <div class="thumbnail-line"></div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="template-body">
-
-            <h3>
-              ${template.name}
-            </h3>
-
-            <div class="template-description">
-              Diseño orientado a perfiles de
-              ${template.category}.
-            </div>
-
-            <div class="template-tags">
-
-              <span class="template-tag">
-                ${template.layout}
-              </span>
-
-              <span class="template-tag">
-                ${template.experienceStyle}
-              </span>
-
-              <span class="template-tag">
-                ${template.skillStyle}
-              </span>
-
-            </div>
-
-            <div class="template-actions">
-
-              <button
-                class="button button-small"
-                data-preview-template="${template.id}"
-              >
-                Vista previa
-              </button>
-
-              <button
-                class="button button-primary button-small"
-                data-use-template="${template.id}"
-              >
-                ${
-                  template.premium &&
-                  !state.premium
-                    ? "Desbloquear"
-                    : "Usar"
-                }
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-      `;
-    }
-
-    function renderCatalog() {
-      const search =
-        document
-          .getElementById(
-            "searchInput"
-          )
-          .value
-          .trim()
-          .toLowerCase();
-
-      const plan =
-        document.getElementById(
-          "planFilter"
-        ).value;
-
-      const visibleTemplates =
-        templates
-          .filter(function (
-            template
-          ) {
-            return (
-              state.roleFilter ===
-                "general" ||
-              template.category ===
-                state.roleFilter ||
-              template.category ===
-                "general"
-            );
-          })
-          .filter(function (
-            template
-          ) {
-            if (plan === "free") {
-              return !template.premium;
-            }
-
-            if (
-              plan === "premium"
-            ) {
-              return template.premium;
-            }
-
-            return true;
-          })
-          .filter(function (
-            template
-          ) {
-            const searchableText = [
-              template.name,
-              template.category,
-              template.layout,
-              template.header,
-              template.experienceStyle,
-              template.skillStyle
-            ]
-              .join(" ")
-              .toLowerCase();
-
-            return searchableText.includes(
-              search
-            );
-          })
-          .sort(function (a, b) {
-            const aRecommended =
-              a.category ===
-              state.roleFilter;
-
-            const bRecommended =
-              b.category ===
-              state.roleFilter;
-
-            if (
-              aRecommended !==
-              bRecommended
-            ) {
-              return bRecommended -
-                aRecommended;
-            }
-
-            return (
-              Number(a.premium) -
-              Number(b.premium)
-            );
-          });
-
-      document.getElementById(
-        "catalog"
-      ).innerHTML =
-        visibleTemplates
-          .map(
-            createTemplateThumbnail
-          )
-          .join("");
-
-      document
-        .querySelectorAll(
-          "[data-use-template]"
-        )
-        .forEach(function (button) {
-          button.addEventListener(
-            "click",
-            function () {
-              const template =
-                templates.find(
-                  function (item) {
-                    return (
-                      item.id ===
-                      button.dataset
-                        .useTemplate
-                    );
-                  }
-                );
-
-              if (!template) {
-                return;
-              }
-
-              if (
-                template.premium &&
-                !state.premium
-              ) {
-                alert(
-                  "Esta plantilla requiere Premium."
-                );
-
-                return;
-              }
-
-              applyTemplate(
-                template
-              );
-
-              document
-                .getElementById(
-                  "editor"
-                )
-                .scrollIntoView({
-                  behavior: "smooth"
-                });
-            }
-          );
-        });
-
-      document
-        .querySelectorAll(
-          "[data-preview-template]"
-        )
-        .forEach(function (button) {
-          button.addEventListener(
-            "click",
-            function () {
-              const template =
-                templates.find(
-                  function (item) {
-                    return (
-                      item.id ===
-                      button.dataset
-                        .previewTemplate
-                    );
-                  }
-                );
-
-              applyTemplate(
-                template,
-                true
-              );
-            }
-          );
-        });
-    }
-
-    function applyTemplate(
-      template,
-      previewOnly = false
-    ) {
-      if (!template) {
-        return;
-      }
-
-      state.selectedTemplate =
-        template.id;
-
-      state.color =
-        template.accent;
-
-      state.font =
-        template.font;
-
-      state.density =
-        template.density;
-
-      renderCV();
-
-      syncDesignControls();
-
-      if (!previewOnly) {
-        saveState();
-      }
-    }
-
-    function parseExperience(value) {
-      const parts =
-        String(value || "")
-          .split("|");
-
-      return {
-        title:
-          parts[0]?.trim() ||
-          "Puesto",
-
-        company:
-          parts[1]?.trim() ||
-          "Empresa",
-
-        date:
-          parts[2]?.trim() ||
-          "",
-
-        description:
-          parts
-            .slice(3)
-            .join("|")
-            .trim()
-      };
-    }
-
-    function parseEducation(value) {
-      const parts =
-        String(value || "")
-          .split("|");
-
-      return {
-        title:
-          parts[0]?.trim() ||
-          "Título",
-
-        institution:
-          parts[1]?.trim() ||
-          "Institución",
-
-        date:
-          parts[2]?.trim() ||
-          ""
-      };
-    }
-
-    function renderCV() {
-      const template =
-        getSelectedTemplate();
-
-      const layout =
-        getLayout(template);
-
-      const cvDocument =
-        document.getElementById(
-          "cvDocument"
-        );
-
-      cvDocument.className =
-        "cv-document" +
-        (
-          layout.singleColumn
-            ? " single-column"
-            : ""
-        );
-
-      cvDocument.style.setProperty(
-        "--sidebar-width",
-        layout.sidebarWidth ||
-          "250px"
-      );
-
-      cvDocument.style.setProperty(
-        "--accent",
-        state.color
-      );
-
-      cvDocument.style.setProperty(
-        "--sidebar-color",
-        template.sidebar
-      );
-
-      cvDocument.style.setProperty(
-        "--document-font",
-        state.font
-      );
-
-      cvDocument.style.setProperty(
-        "--photo-radius",
-        state.photoShape ===
-          "circle"
-          ? "50%"
-          : "24px"
-      );
-
-      const padding =
-        state.density ===
-        "compact"
-          ? "40px"
-          : state.density ===
-            "spacious"
-          ? "60px"
-          : "50px";
-
-      document.querySelector(
-        ".cv-main"
-      ).style.padding = padding;
-
-      document.getElementById(
-        "cvName"
-      ).textContent = state.name;
-
-      document.getElementById(
-        "cvRole"
-      ).textContent = state.role;
-
-      document.getElementById(
-        "cvEmail"
-      ).textContent = state.email;
-
-      document.getElementById(
-        "cvPhone"
-      ).textContent = state.phone;
-
-      document.getElementById(
-        "cvCity"
-      ).textContent = state.city;
-
-      document.getElementById(
-        "cvWebsite"
-      ).textContent = state.website;
-
-      document.getElementById(
-        "cvEmailInline"
-      ).textContent = state.email;
-
-      document.getElementById(
-        "cvPhoneInline"
-      ).textContent = state.phone;
-
-      document.getElementById(
-        "cvCityInline"
-      ).textContent = state.city;
-
-      document.getElementById(
-        "cvWebsiteInline"
-      ).textContent =
-        state.website;
-
-      document.getElementById(
-        "cvSummary"
-      ).textContent =
-        state.summary;
-
-      const cvPhoto =
-        document.getElementById(
-          "cvPhoto"
-        );
-
-      cvPhoto.innerHTML =
-        state.photo
-          ? `
-            <img
-              src="${state.photo}"
-              alt="Foto de perfil"
-            >
-          `
-          : initials(state.name);
-
-      const skills =
-        String(state.skills || "")
-          .split(",")
-          .map(function (skill) {
-            return skill.trim();
-          })
-          .filter(Boolean);
-
-      document.getElementById(
-        "cvSkills"
-      ).innerHTML =
-        skills
-          .map(function (skill) {
-            return `
-              <div class="cv-skill">
-                ${escapeHtml(skill)}
-              </div>
-            `;
-          })
-          .join("");
-
-      const experience =
-        parseExperience(
-          state.experience
-        );
-
-      document.getElementById(
-        "cvExperience"
-      ).innerHTML = `
-        <div class="cv-entry">
-
-          <div class="cv-entry-header">
-
-            <div>
-              <h4>
-                ${escapeHtml(
-                  experience.title
-                )}
-              </h4>
-
-              <div class="cv-company">
-                ${escapeHtml(
-                  experience.company
-                )}
-              </div>
-            </div>
-
-            <div class="cv-date">
-              ${escapeHtml(
-                experience.date
-              )}
-            </div>
-
-          </div>
-
-          <p>
-            ${escapeHtml(
-              experience.description
-            )}
-          </p>
-
-        </div>
-      `;
-
-      const education =
-        parseEducation(
-          state.education
-        );
-
-      document.getElementById(
-        "cvEducation"
-      ).innerHTML = `
-        <div class="cv-entry">
-
-          <div class="cv-entry-header">
-
-            <div>
-              <h4>
-                ${escapeHtml(
-                  education.title
-                )}
-              </h4>
-
-              <div class="cv-company">
-                ${escapeHtml(
-                  education.institution
-                )}
-              </div>
-            </div>
-
-            <div class="cv-date">
-              ${escapeHtml(
-                education.date
-              )}
-            </div>
-
-          </div>
-
-        </div>
-      `;
-    }
-
-    function populateFields() {
-      document
-        .querySelectorAll(
-          "[data-field]"
-        )
-        .forEach(function (field) {
-          field.value =
-            state[
-              field.dataset.field
-            ] || "";
-        });
-    }
-
-    function bindFields() {
-      document
-        .querySelectorAll(
-          "[data-field]"
-        )
-        .forEach(function (field) {
-          field.addEventListener(
-            "input",
-            function () {
-              state[
-                field.dataset.field
-              ] = field.value;
-
-              renderCV();
-
-              renderPhotoPreview();
-
-              saveState();
-            }
-          );
-        });
-    }
-
-    function renderPhotoPreview() {
-      const photoPreview =
-        document.getElementById(
-          "photoPreview"
-        );
-
-      photoPreview.classList.toggle(
-        "circle",
-        state.photoShape ===
-          "circle"
-      );
-
-      photoPreview.innerHTML =
-        state.photo
-          ? `
-            <img
-              src="${state.photo}"
-              alt="Foto"
-            >
-          `
-          : initials(state.name);
-    }
-
-    function renderColorOptions() {
-      const colors =
-        modules.palettes.map(
-          function (palette) {
-            return palette.accent;
-          }
-        );
-
-      document.getElementById(
-        "colorOptions"
-      ).innerHTML =
-        colors
-          .map(function (color) {
-            return `
-              <button
-                class="color-option"
-                data-color="${color}"
-                style="background:${color};"
-                aria-label="Seleccionar color"
-              ></button>
-            `;
-          })
-          .join("");
-
-      document
-        .querySelectorAll(
-          "[data-color]"
-        )
-        .forEach(function (button) {
-          button.addEventListener(
-            "click",
-            function () {
-              state.color =
-                button.dataset.color;
-
-              renderCV();
-
-              syncDesignControls();
-
-              saveState();
-            }
-          );
-        });
-    }
-
-    function renderFontOptions() {
-      document.getElementById(
-        "fontOptions"
-      ).innerHTML =
-        modules.fonts
-          .map(function (font) {
-            return `
-              <button
-                class="option-button"
-                data-font="${font.value}"
-              >
-                ${font.name}
-              </button>
-            `;
-          })
-          .join("");
-
-      document
-        .querySelectorAll(
-          "[data-font]"
-        )
-        .forEach(function (button) {
-          button.addEventListener(
-            "click",
-            function () {
-              if (!state.premium) {
-                alert(
-                  "La tipografía personalizada requiere Premium."
-                );
-
-                return;
-              }
-
-              state.font =
-                button.dataset.font;
-
-              renderCV();
-
-              syncDesignControls();
-
-              saveState();
-            }
-          );
-        });
-    }
-
-    function syncDesignControls() {
-      const selectedTemplate =
-        getSelectedTemplate();
-
-      document.getElementById(
-        "selectedTemplate"
-      ).value =
-        selectedTemplate.name;
-
-      document.getElementById(
-        "density"
-      ).value =
-        state.density;
-
-      document.getElementById(
-        "planNotice"
-      ).textContent =
-        state.premium
-          ? "Premium demo activo. Todas las plantillas y controles avanzados están disponibles."
-          : "Plan gratuito activo. Las opciones avanzadas de tipografía y espaciado requieren Premium.";
-
-      document
-        .querySelectorAll(
-          "[data-color]"
-        )
-        .forEach(function (button) {
-          button.classList.toggle(
-            "active",
-            button.dataset.color ===
-              state.color
-          );
-        });
-
-      document
-        .querySelectorAll(
-          "[data-font]"
-        )
-        .forEach(function (button) {
-          button.classList.toggle(
-            "active",
-            button.dataset.font ===
-              state.font
-          );
-        });
-
-      document
-        .querySelectorAll(
-          "[data-photo-shape]"
-        )
-        .forEach(function (button) {
-          button.classList.toggle(
-            "active",
-            button.dataset.photoShape ===
-              state.photoShape
-          );
-        });
-    }
-
-    document
-      .querySelectorAll(
-        ".editor-tab"
-      )
-      .forEach(function (tab) {
-        tab.addEventListener(
-          "click",
-          function () {
-            document
-              .querySelectorAll(
-                ".editor-tab"
-              )
-              .forEach(function (
-                item
-              ) {
-                item.classList.remove(
-                  "active"
-                );
-              });
-
-            document
-              .querySelectorAll(
-                ".editor-panel"
-              )
-              .forEach(function (
-                panel
-              ) {
-                panel.classList.remove(
-                  "active"
-                );
-              });
-
-            tab.classList.add(
-              "active"
-            );
-
-            document
-              .getElementById(
-                "panel-" +
-                tab.dataset.tab
-              )
-              .classList.add(
-                "active"
-              );
-          }
-        );
-      });
-
-    document
-      .querySelectorAll(
-        "[data-photo-shape]"
-      )
-      .forEach(function (button) {
-        button.addEventListener(
-          "click",
-          function () {
-            state.photoShape =
-              button.dataset.photoShape;
-
-            renderPhotoPreview();
-
-            renderCV();
-
-            renderCatalog();
-
-            syncDesignControls();
-
-            saveState();
-          }
-        );
-      });
-
-    document.getElementById(
-      "photoInput"
-    ).addEventListener(
-      "change",
-      function (event) {
-        const file =
-          event.target.files[0];
-
-        if (!file) {
-          return;
-        }
-
-        const reader =
-          new FileReader();
-
-        reader.onload =
-          function () {
-            state.photo =
-              reader.result;
-
-            renderPhotoPreview();
-
-            renderCatalog();
-
-            renderCV();
-
-            saveState();
-          };
-
-        reader.readAsDataURL(
-          file
-        );
-      }
-    );
-
-    document.getElementById(
-      "removePhoto"
-    ).addEventListener(
-      "click",
-      function () {
-        state.photo = "";
-
-        document.getElementById(
-          "photoInput"
-        ).value = "";
-
-        renderPhotoPreview();
-
-        renderCatalog();
-
-        renderCV();
-
-        saveState();
-      }
-    );
-
-    document.getElementById(
-      "roleFilter"
-    ).addEventListener(
-      "change",
-      function (event) {
-        state.roleFilter =
-          event.target.value;
-
-        renderCatalog();
-
-        saveState();
-      }
-    );
-
-    document.getElementById(
-      "planFilter"
-    ).addEventListener(
-      "change",
-      renderCatalog
-    );
-
-    document.getElementById(
-      "searchInput"
-    ).addEventListener(
-      "input",
-      renderCatalog
-    );
-
-    document.getElementById(
-      "premiumToggle"
-    ).addEventListener(
-      "click",
-      function () {
-        state.premium =
-          !state.premium;
-
-        document.getElementById(
-          "premiumToggle"
-        ).textContent =
-          state.premium
-            ? "Desactivar Premium demo"
-            : "Activar Premium demo";
-
-        renderCatalog();
-
-        syncDesignControls();
-
-        saveState();
-      }
-    );
-
-    document.getElementById(
-      "density"
-    ).addEventListener(
-      "change",
-      function (event) {
-        if (!state.premium) {
-          event.target.value =
-            state.density;
-
-          alert(
-            "El espaciado personalizado requiere Premium."
-          );
-
-          return;
-        }
-
-        state.density =
-          event.target.value;
-
-        renderCV();
-
-        saveState();
-      }
-    );
-
-    document.getElementById(
-      "exportButton"
-    ).addEventListener(
-      "click",
-      function () {
-        window.print();
-      }
-    );
-
-    populateRoleFilter();
-
-    populateFields();
-
-    bindFields();
-
-    renderColorOptions();
-
-    renderFontOptions();
-
-    renderPhotoPreview();
-
-    renderCatalog();
-
-    renderCV();
-
-    syncDesignControls();
-  </script>
-
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY="cvlab-professional-v4";
+const MODULES={
+  layouts:[
+    {id:"sidebar-standard",label:"Dos columnas",left:"250px",single:false},
+    {id:"sidebar-narrow",label:"Lateral compacto",left:"215px",single:false},
+    {id:"sidebar-wide",label:"Lateral amplio",left:"290px",single:false},
+    {id:"single-clean",label:"Una columna",single:true},
+    {id:"single-accent",label:"Una columna destacada",single:true}
+  ],
+  palettes:[
+    ["#715cff","#19223b"],["#2563eb","#16213a"],["#0f9f7f","#16372f"],["#c03d70","#3b2030"],
+    ["#d15c39","#3c241d"],["#2f3442","#20242d"],["#7c5a2d","#302719"],["#3e5c76","#203044"]
+  ],
+  fonts:[
+    {name:"Inter",value:"Inter,Arial,sans-serif"},{name:"Georgia",value:"Georgia,serif"},
+    {name:"Trebuchet",value:"'Trebuchet MS',Arial,sans-serif"},{name:"Times",value:"'Times New Roman',serif"}
+  ],
+  densities:["compact","normal","spacious"]
+};
+const ROLES=[
+  ["general","General"],["software","Software y tecnología"],["data","Datos y análisis"],["design","Diseño y creatividad"],
+  ["marketing","Marketing"],["sales","Ventas"],["finance","Finanzas y administración"],["engineering","Ingeniería"],
+  ["architecture","Arquitectura"],["health","Salud"],["education","Educación"],["legal","Legal"],["first-job","Primer empleo"]
+];
+const NAMES={
+  general:["Modern Professional","Corporate Clean","Balanced Resume","Professional Core","Essential Profile","Classic Modern","Career Focus","Clear Professional"],
+  software:["Tech Slate","Developer Grid","Code Professional","Software Core","Engineering Stack","Product Tech","Backend Clean","Frontend Modern"],
+  data:["Data Matrix","Analytics Pro","Business Intelligence","Insight Resume","Quant Clean","Data Executive","Research Grid","Metrics Professional"],
+  design:["UX Portfolio","Creative Split","Design System","Visual Profile","Studio Resume","Product Design","Creative Grid","Portfolio Professional"],
+  marketing:["Marketing Bold","Brand Strategy","Growth Resume","Campaign Professional","Content Studio","Digital Marketing","Social Impact","Communication Pro"],
+  sales:["Sales Impact","Commercial Professional","Revenue Focus","Account Executive","Negotiation Resume","Client Growth","Business Development","Sales Leadership"],
+  finance:["Analyst Clean","Finance Executive","Corporate Ledger","Audit Professional","Investment Resume","Accounting Core","Banking Professional","Administration Clean"],
+  engineering:["Engineering Professional","Technical Grid","Industrial Resume","Mechanical Core","Civil Professional","Process Engineer","Operations Professional","Technical Executive"],
+  architecture:["Architecture Grid","Studio Architect","Urban Professional","Project Architecture","Technical Portfolio","Design Build","Construction Professional","Spatial Resume"],
+  health:["Health Trust","Clinical Professional","Medical Clean","Care Resume","Healthcare Core","Therapy Profile","Nursing Professional","Wellness Resume"],
+  education:["Teacher Soft","Academic Resume","Education Professional","Learning Profile","University CV","Teaching Core","Research Educator","School Professional"],
+  legal:["Legal Classic","Law Executive","Corporate Counsel","Justice Resume","Legal Clean","Attorney Professional","Compliance Profile","Policy Professional"],
+  "first-job":["First Step","Graduate Clean","Junior Modern","Entry Career","Starter Professional","Young Talent","Internship Resume","Campus Professional"]
+};
+const FREE=new Set(["general-01","software-01","design-01","finance-01","first-job-01"]);
+function buildTemplates(){
+  const arr=[];
+  ROLES.forEach(([category],ci)=>{
+    NAMES[category].forEach((name,i)=>{
+      const n=ci*8+i,layout=MODULES.layouts[n%MODULES.layouts.length],palette=MODULES.palettes[n%MODULES.palettes.length];
+      const id=`${category}-${String(i+1).padStart(2,"0")}`;
+      arr.push({id,name,category,premium:!FREE.has(id),layout:layout.id,accent:palette[0],side:palette[1],font:MODULES.fonts[n%MODULES.fonts.length].value,density:MODULES.densities[n%3]});
+    });
+  });
+  return arr;
+}
+const TEMPLATES=buildTemplates();
+const FEATURED=["general-01","software-01","finance-02","design-02","first-job-01","legal-01"].map(id=>TEMPLATES.find(t=>t.id===id));
+const descriptions={
+  general:"Equilibrada, clara y versátil para perfiles profesionales de distintos sectores.",
+  software:"Estructura moderna para desarrolladores, producto digital y perfiles tecnológicos.",
+  finance:"Diseño sobrio y ordenado para administración, análisis, banca y finanzas.",
+  design:"Una propuesta visual cuidada para portfolios, creatividad y experiencia de usuario.",
+  "first-job":"Presenta formación, habilidades y potencial cuando todavía hay poca experiencia.",
+  legal:"Estilo formal y elegante para estudios jurídicos, compliance y puestos institucionales."
+};
+const defaults={premium:false,selected:"general-01",roleFilter:"general",photo:"",photoShape:"rounded",name:"Nombre Apellido",role:"Puesto profesional",email:"tu@email.com",phone:"Tu teléfono",city:"Tu ciudad",website:"Tu portfolio",summary:"Perfil profesional orientado al puesto, con fortalezas, experiencia y objetivos claros.",experience:"Puesto actual o reciente | Empresa | 2024 — Actualidad | Describí responsabilidades, resultados y logros relevantes.",education:"Título o carrera | Institución | 2020 — 2024",skills:"Comunicación, Organización, Liderazgo, Trabajo en equipo",color:"#715cff",font:"Inter,Arial,sans-serif",density:"normal"};
+let state=load(),carouselIndex=0,carouselTimer;
+function load(){try{return {...defaults,...JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")}}catch{return {...defaults}}}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+function esc(v){return String(v||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function initials(v){return String(v||"").trim().split(/\s+/).slice(0,2).map(x=>x[0]?.toUpperCase()||"").join("")||"NA"}
+function roleLabel(id){return ROLES.find(r=>r[0]===id)?.[1]||"General"}
+function layoutOf(t){return MODULES.layouts.find(l=>l.id===t.layout)}
+function selected(){return TEMPLATES.find(t=>t.id===state.selected)||TEMPLATES[0]}
+
+/* CAROUSEL */
+function featuredCard(t,i){
+  return `<article class="carousel-card" data-carousel="${i}" style="--card-accent:${t.accent};--card-side:${t.side}">
+  <div class="preview-sheet"><div class="preview-top"><div class="preview-avatar"></div><div><div class="preview-title">Nombre Apellido</div><div class="preview-role">Puesto profesional</div></div></div>
+  <div class="preview-body">${layoutOf(t).single?"":`<div class="preview-side"><div class="mini-line mid"></div><div class="mini-line"></div><div class="mini-line short"></div><br><div class="mini-line short"></div><div class="mini-line mid"></div></div>`}<div><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line short"></div><br><div class="mini-line mid"></div><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line short"></div></div></div></div></article>`;
+}
+function renderCarousel(){
+  carouselStage.innerHTML=FEATURED.map(featuredCard).join("");
+  carouselDots.innerHTML=FEATURED.map((_,i)=>`<button class="dot" data-dot="${i}"></button>`).join("");
+  updateCarousel();
+  document.querySelectorAll("[data-dot]").forEach(b=>b.onclick=()=>{carouselIndex=+b.dataset.dot;updateCarousel();restartCarousel()});
+}
+function updateCarousel(){
+  const total=FEATURED.length;
+  document.querySelectorAll("[data-carousel]").forEach((el,i)=>{
+    el.className="carousel-card";
+    const d=(i-carouselIndex+total)%total;
+    if(d===0)el.classList.add("active");
+    else if(d===1)el.classList.add("next");
+    else if(d===total-1)el.classList.add("prev");
+    else if(d===2)el.classList.add("far-next");
+    else if(d===total-2)el.classList.add("far-prev");
+  });
+  document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===carouselIndex));
+  const t=FEATURED[carouselIndex];carouselCategory.textContent=roleLabel(t.category);carouselName.textContent=t.name;carouselDescription.textContent=descriptions[t.category]||descriptions.general;
+}
+function moveCarousel(dir){carouselIndex=(carouselIndex+dir+FEATURED.length)%FEATURED.length;updateCarousel();restartCarousel()}
+function restartCarousel(){clearInterval(carouselTimer);carouselTimer=setInterval(()=>moveCarousel(1),4800)}
+carouselPrev.onclick=()=>moveCarousel(-1);carouselNext.onclick=()=>moveCarousel(1);
+
+/* MODALS */
+function openCatalog(){catalogModal.classList.add("open");document.body.style.overflow="hidden";catalogModal.setAttribute("aria-hidden","false");renderCatalog()}
+function closeCatalogModal(){catalogModal.classList.remove("open");catalogModal.setAttribute("aria-hidden","true");if(!editorOverlay.classList.contains("open"))document.body.style.overflow=""}
+function openEditor(){editorOverlay.classList.add("open");editorOverlay.setAttribute("aria-hidden","false");catalogModal.classList.remove("open");catalogModal.setAttribute("aria-hidden","true");document.body.style.overflow="hidden";populateFields();renderPhoto();renderCV();syncDesign()}
+function closeEditorModal(){editorOverlay.classList.remove("open");editorOverlay.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+document.querySelectorAll("[data-open-catalog]").forEach(b=>b.onclick=openCatalog);
+document.querySelectorAll("[data-start]").forEach(b=>b.onclick=()=>{state.roleFilter="general";openCatalog()});
+closeCatalog.onclick=closeCatalogModal;closeEditor.onclick=closeEditorModal;
+catalogModal.onclick=e=>{if(e.target===catalogModal)closeCatalogModal()};
+editorOverlay.onclick=e=>{if(e.target===editorOverlay)closeEditorModal()};
+changeTemplate.onclick=()=>{editorOverlay.classList.remove("open");openCatalog()};
+
+/* ROLE CHIPS + CATALOG */
+function renderRoles(){
+  roleChips.innerHTML=ROLES.map(([id,label])=>`<button class="role-chip ${id===state.roleFilter?"active":""}" data-role="${id}">${label}</button>`).join("");
+  document.querySelectorAll("[data-role]").forEach(b=>b.onclick=()=>{state.roleFilter=b.dataset.role;renderRoles();renderCatalog();save()});
+}
+function thumb(t){
+  const layout=layoutOf(t),photo=state.photo?`<img src="${state.photo}">`:initials(state.name);
+  return `<article class="template-card"><div class="template-thumb" style="--accent:${t.accent};--side:${t.side}">
+  <span class="badge ${t.premium?"premium":"free"}">${t.premium?"Premium":"Disponible"}</span>${t.category===state.roleFilter?'<span class="recommended">Recomendada</span>':""}
+  <div class="thumb-head"><div class="thumb-photo ${state.photoShape==="circle"?"circle":""}">${photo}</div><div><div class="thumb-name">Nombre Apellido</div><div class="thumb-role">Puesto profesional</div></div></div>
+  <div class="thumb-layout ${layout.single?"single":""}">${layout.single?"":`<div class="thumb-side"><div class="thumb-line mid"></div><div class="thumb-line"></div><div class="thumb-line short"></div><br><div class="thumb-line short"></div><div class="thumb-line mid"></div></div>`}<div><div class="thumb-line"></div><div class="thumb-line"></div><div class="thumb-line short"></div><br><div class="thumb-line mid"></div><div class="thumb-line"></div><div class="thumb-line"></div></div></div></div>
+  <div class="template-body"><h3>${t.name}</h3><div class="template-meta">${roleLabel(t.category)} · ${layout.label}</div><div class="template-actions"><button class="btn small" data-preview="${t.id}">Vista previa</button><button class="btn primary small" data-use="${t.id}">${t.premium&&!state.premium?"Desbloquear":"Usar diseño"}</button></div></div></article>`;
+}
+function renderCatalog(){
+  renderRoles();
+  const q=catalogSearch.value.toLowerCase(),plan=planFilter.value,layout=layoutFilter.value;
+  const list=TEMPLATES.filter(t=>state.roleFilter==="general"||t.category===state.roleFilter||t.category==="general")
+    .filter(t=>plan==="all"||(plan==="free"&&!t.premium)||(plan==="premium"&&t.premium))
+    .filter(t=>layout==="all"||(layout==="single"&&layoutOf(t).single)||(layout==="sidebar"&&!layoutOf(t).single))
+    .filter(t=>`${t.name} ${roleLabel(t.category)} ${layoutOf(t).label}`.toLowerCase().includes(q))
+    .sort((a,b)=>Number(a.category!==state.roleFilter)-Number(b.category!==state.roleFilter)||Number(a.premium)-Number(b.premium));
+  catalogGrid.innerHTML=list.map(thumb).join("");
+  document.querySelectorAll("[data-use]").forEach(b=>b.onclick=()=>{
+    const t=TEMPLATES.find(x=>x.id===b.dataset.use);
+    if(t.premium&&!state.premium){alert("Esta plantilla requiere Premium.");return}
+    applyTemplate(t);openEditor();
+  });
+  document.querySelectorAll("[data-preview]").forEach(b=>b.onclick=()=>{const t=TEMPLATES.find(x=>x.id===b.dataset.preview);applyTemplate(t,true);openEditor()});
+  catalogPremium.textContent=state.premium?"Desactivar Premium demo":"Activar Premium demo";
+}
+catalogSearch.oninput=renderCatalog;planFilter.onchange=renderCatalog;layoutFilter.onchange=renderCatalog;
+function togglePremium(){state.premium=!state.premium;catalogPremium.textContent=state.premium?"Desactivar Premium demo":"Activar Premium demo";pricingPremium.textContent=state.premium?"Desactivar Premium demo":"Probar Premium demo";renderCatalog();syncDesign();save()}
+catalogPremium.onclick=togglePremium;pricingPremium.onclick=togglePremium;
+
+/* EDITOR */
+function applyTemplate(t,preview=false){if(!t)return;state.selected=t.id;state.color=t.accent;state.font=t.font;state.density=t.density;if(!preview)save()}
+function populateFields(){document.querySelectorAll("[data-field]").forEach(i=>i.value=state[i.dataset.field]||"")}
+document.querySelectorAll("[data-field]").forEach(i=>i.oninput=()=>{state[i.dataset.field]=i.value;renderCV();renderPhoto();save()});
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));t.classList.add("active");document.getElementById("panel-"+t.dataset.tab).classList.add("active")});
+function renderPhoto(){
+  photoPreview.classList.toggle("circle",state.photoShape==="circle");
+  photoPreview.innerHTML=state.photo?`<img src="${state.photo}">`:initials(state.name);
+}
+photoInput.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{state.photo=r.result;renderPhoto();renderCV();save()};r.readAsDataURL(f)};
+removePhoto.onclick=()=>{state.photo="";photoInput.value="";renderPhoto();renderCV();save()};
+document.querySelectorAll("[data-shape]").forEach(b=>b.onclick=()=>{state.photoShape=b.dataset.shape;document.querySelectorAll("[data-shape]").forEach(x=>x.classList.toggle("active",x===b));renderPhoto();renderCV();save()});
+function parse(v,type){const p=String(v||"").split("|").map(x=>x.trim());return type==="exp"?{title:p[0]||"Puesto",company:p[1]||"Empresa",date:p[2]||"",desc:p.slice(3).join(" | ")}:{title:p[0]||"Título",company:p[1]||"Institución",date:p[2]||""}}
+function renderCV(){
+  const t=selected(),layout=layoutOf(t),cv=cvDocument;
+  cv.className="cv"+(layout.single?" single":"");cv.style.setProperty("--left",layout.left||"250px");cv.style.setProperty("--accent",state.color);cv.style.setProperty("--side",t.side);cv.style.setProperty("--font",state.font);cv.style.setProperty("--photo-radius",state.photoShape==="circle"?"50%":"24px");
+  document.querySelector(".cv-main").style.padding=state.density==="compact"?"40px":state.density==="spacious"?"60px":"50px";
+  cvName.textContent=state.name;cvRole.textContent=state.role;cvSummary.textContent=state.summary;
+  [["Email","email"],["Phone","phone"],["City","city"],["Website","website"]].forEach(([id,key])=>{document.getElementById("cv"+id).textContent=state[key];document.getElementById("cv"+id+"Inline").textContent=state[key]});
+  cvPhoto.innerHTML=state.photo?`<img src="${state.photo}">`:initials(state.name);
+  cvSkills.innerHTML=state.skills.split(",").map(s=>s.trim()).filter(Boolean).map(s=>`<div class="skill">${esc(s)}</div>`).join("");
+  const e=parse(state.experience,"exp"),ed=parse(state.education,"edu");
+  cvExperience.innerHTML=`<div class="entry"><div class="entry-head"><div><h4>${esc(e.title)}</h4><div class="company">${esc(e.company)}</div></div><div class="date">${esc(e.date)}</div></div><p>${esc(e.desc)}</p></div>`;
+  cvEducation.innerHTML=`<div class="entry"><div class="entry-head"><div><h4>${esc(ed.title)}</h4><div class="company">${esc(ed.company)}</div></div><div class="date">${esc(ed.date)}</div></div></div>`;
+  templateLabel.textContent=`${t.name} · ${roleLabel(t.category)}`;
+}
+swatches.innerHTML=MODULES.palettes.map(p=>`<button class="swatch" data-color="${p[0]}" style="background:${p[0]}"></button>`).join("");
+document.querySelectorAll("[data-color]").forEach(b=>b.onclick=()=>{state.color=b.dataset.color;renderCV();syncDesign();save()});
+fontOptions.innerHTML=MODULES.fonts.map(f=>`<button class="option" data-font="${f.value}">${f.name}</button>`).join("");
+document.querySelectorAll("[data-font]").forEach(b=>b.onclick=()=>{if(!state.premium){alert("La tipografía personalizada requiere Premium.");return}state.font=b.dataset.font;renderCV();syncDesign();save()});
+density.onchange=e=>{if(!state.premium){e.target.value=state.density;alert("El espaciado personalizado requiere Premium.");return}state.density=e.target.value;renderCV();save()};
+function syncDesign(){density.value=state.density;planNotice.textContent=state.premium?"Premium demo activo. Todas las plantillas y opciones avanzadas están disponibles.":"Plan gratuito activo. Tipografías y espaciado avanzado requieren Premium.";document.querySelectorAll(".swatch").forEach(b=>b.classList.toggle("active",b.dataset.color===state.color));document.querySelectorAll("[data-font]").forEach(b=>b.classList.toggle("active",b.dataset.font===state.font));document.querySelectorAll("[data-shape]").forEach(b=>b.classList.toggle("active",b.dataset.shape===state.photoShape))}
+exportPdf.onclick=()=>window.print();
+
+/* FAQ */
+document.querySelectorAll(".faq-q").forEach(q=>q.onclick=()=>q.parentElement.classList.toggle("open"));
+
+renderCarousel();restartCarousel();renderRoles();renderCatalog();populateFields();renderPhoto();renderCV();syncDesign();
+</script>
 </body>
 </html>
