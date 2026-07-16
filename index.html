@@ -286,7 +286,90 @@ top:290px;
 left:60px;
 
 }
+.c4{
 
+top:40px;
+right:40px;
+
+animation:float1 6s ease-in-out infinite;
+
+}
+
+.c5{
+
+bottom:30px;
+right:40px;
+
+animation:float2 8s ease-in-out infinite;
+
+}
+
+.c6{
+
+top:210px;
+right:170px;
+
+animation:float3 7s ease-in-out infinite;
+
+}
+
+.c1{
+
+animation:float1 8s ease-in-out infinite;
+
+}
+
+.c2{
+
+animation:float2 7s ease-in-out infinite;
+
+}
+
+.c3{
+
+animation:float3 9s ease-in-out infinite;
+
+}
+
+.card{
+
+transition:.4s;
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:scale(1.08) rotate(0deg);
+
+box-shadow:0 30px 70px rgba(37,99,235,.25);
+
+}
+
+@keyframes float1{
+
+0%{transform:translateY(0px) rotate(-6deg);}
+50%{transform:translateY(-18px) rotate(3deg);}
+100%{transform:translateY(0px) rotate(-6deg);}
+
+}
+
+@keyframes float2{
+
+0%{transform:translateY(0px) rotate(5deg);}
+50%{transform:translateY(15px) rotate(-3deg);}
+100%{transform:translateY(0px) rotate(5deg);}
+
+}
+
+@keyframes float3{
+
+0%{transform:translateY(0px) rotate(-2deg);}
+50%{transform:translateY(-12px) rotate(6deg);}
+100%{transform:translateY(0px) rotate(-2deg);}
+
+}
 </style>
 
 </head>
